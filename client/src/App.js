@@ -49,12 +49,12 @@ class App extends Component {
 
     var fetchThumbnailA = setInterval(function() {
       console.log('testing url a')
-      customFetch(urlA, { on404: (_) => (Promise.reject) }).then(_ => urlALoaded = true).then(clearInterval(fetchThumbnailA))
+      customFetch(urlA, { mode: 'no-cors', on404: (_) => (Promise.reject) }).then(_ => urlALoaded = true).then(clearInterval(fetchThumbnailA))
     }, 200)
 
     var fetchThumbnailB = setInterval(function() {
       console.log('testing url b')
-      customFetch(urlB, { on404: (_) => (Promise.reject) }).then(_ => urlBLoaded = true).then(clearInterval(fetchThumbnailB))
+      customFetch(urlB, { mode: 'no-cors', on404: (_) => (Promise.reject) }).then(_ => urlBLoaded = true).then(clearInterval(fetchThumbnailB))
     }, 200)
 
     var setUrlsInState = setInterval(function() {
