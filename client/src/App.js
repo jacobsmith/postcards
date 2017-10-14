@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import customFetch from './helpers/customFetch.js';
 
-import './app.css';
-
 class App extends Component {
   constructor() {
     super()
