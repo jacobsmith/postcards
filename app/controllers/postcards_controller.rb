@@ -1,6 +1,6 @@
 class PostcardsController < ApplicationController
   def preview
-    photo = Photo.find(params[:photo_id])
+    photo = Photo.find(params[:photoId])
     message = params[:message]
 
     front = render_as_string("4x6_postcard", front_photo_url: front_photo_url(photo))

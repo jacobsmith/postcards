@@ -40,10 +40,10 @@ class PhotosController < ApplicationController
 
     File.delete(filename)
 
-    photo = Photo.new(data: image_data)
+    photo = Photo.new(data: image_data, image_extension: image_extension)
 
     if photo.save
-      render json: photo, status: :created, location: photo
+      render json: { id: photo.id, photo: photo }, status: :created, location: photo
     else
       render json: photo.errors, status: :unprocessable_entity
     end

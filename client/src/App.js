@@ -18,7 +18,7 @@ class App extends Component {
       method: 'post',
       body: JSON.stringify(photoObject)
     })
-    .then((data) => this.setState({imgSrc: data.data, photoId: data.id}))
+    .then((data) => this.setState({imgSrc: data.photo, photoId: data.id}))
     .catch((error) => console.log(error));
   }
 
@@ -30,7 +30,7 @@ class App extends Component {
     customFetch('/api/postcards/preview', {
       method: 'post',
       body: JSON.stringify({
-        photo: this.state.imgSrc,
+        photoId: this.state.photoId,
         message: this.state.message
       })
     })
