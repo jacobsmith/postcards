@@ -9,7 +9,12 @@ class PhotosController < ApplicationController
   end
 
   def img
-    send_data @photo.data
+    filename = "tmp/" + SecureRandom.hex(20) + ".#{@photo.image_extension}"
+    File.open(filename, 'wb') do |f|
+      f.write Base64.decode64(@photo.data)
+    end
+
+    send_file filename
   end
 
   # GET /photos/1
@@ -40,6 +45,7 @@ class PhotosController < ApplicationController
 
     File.delete(filename)
 
+    binding.pry
     photo = Photo.new(data: image_data, image_extension: image_extension)
 
     if photo.save
