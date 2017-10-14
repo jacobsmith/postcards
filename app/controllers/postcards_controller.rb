@@ -3,7 +3,7 @@ class PostcardsController < ApplicationController
     photo = Photo.find(params[:photoId])
     message = params[:message]
 
-    front = render_as_string("4x6_postcard", front_photo_url: front_photo_url(photo))
+    front = render_as_string("4x6_postcard", front_photo_url: photo_view_url(photo))
 
     # create a to address
     to_address = $Lob.addresses.create(
@@ -27,13 +27,17 @@ class PostcardsController < ApplicationController
 
 
     # send a postcard
-    puts $Lob.postcards.create(
-      description: "Beach Postcard",
+    postcard = $Lob.postcards.create(
       to: to_address["id"],
       from: from_address["id"],
       front: front,
       message: message
     )
+
+    puts postcard # debug
+    render json: {
+      thumbnails: postcard["thumbnails"]
+    }
   end
 
   private

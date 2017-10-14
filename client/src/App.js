@@ -6,7 +6,8 @@ class App extends Component {
     super()
     this.state = {
       imgSrc: null,
-      photoId: null
+      photoId: null,
+      thumbnails: []
     }
     this.uploadPhoto = this.uploadPhoto.bind(this);
     this.handleMessageChange = this.handleMessageChange.bind(this);
@@ -18,7 +19,9 @@ class App extends Component {
       method: 'post',
       body: JSON.stringify(photoObject)
     })
-    .then((data) => this.setState({imgSrc: data.photo, photoId: data.id}))
+    .then((response) => {
+      this.setState({imgSrc: response.photo.data, photoId: response.id})
+    })
     .catch((error) => console.log(error));
   }
 
@@ -34,7 +37,7 @@ class App extends Component {
         message: this.state.message
       })
     })
-    .then(data => this.setState({ postcardUrl: data.postcardUrl }))
+    .then(data => setTimeout(() => this.setState({ thumbnails: data.thumbnails }), 5000))
   }
 
   render() {
@@ -47,6 +50,14 @@ class App extends Component {
         <textarea value={this.state.message} onChange={this.handleMessageChange} />
 
         <div className="generatePostCard-button" onClick={this.previewPostcard}>Preview Postcard</div>
+
+        {this.state.thumbnails.map((thumbnail) => {
+          return (
+            <div className="imageContainer" key={thumbnail.large} >
+              <img src={thumbnail.large} />
+            </div>
+          )
+        })}
       </div>
     );
   }
