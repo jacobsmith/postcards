@@ -11,7 +11,7 @@ class PhotosController < ApplicationController
   def img
     filename = "tmp/" + SecureRandom.hex(20) + ".#{@photo.image_extension}"
     File.open(filename, 'wb') do |f|
-      f.write Base64.decode64(@photo.data)
+      f.write Base64.decode64(@photo.data.gsub!(/\Adata:.+base64,/, ""))
     end
 
     send_file filename
