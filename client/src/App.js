@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import './app.css';
 import customFetch from './helpers/customFetch.js';
+
+import './app.css';
 
 class App extends Component {
   constructor() {
