@@ -35,8 +35,25 @@ class PostcardsController < ApplicationController
     )
 
     puts postcard # debug
+
+    thumbnail_urls = postcard["thumbnails"].map { |t| t['large'] }
+
+    threads = []
+    thumbnail_urls.each do |url_to_check|
+      threads << Thread.new do
+        loop do
+          puts "Getting thumbnail for #{url_to_check}"
+          break if Net::HTTP.get_response(URI(url_to_check)).code == "200"
+          sleep 1
+        end
+      end
+    end
+
+    threads.map(&:join)
+
     render json: {
-      thumbnails: postcard["thumbnails"]
+      front: thumbnail_urls.first,
+      back: thumbnail_urls.last
     }
   end
 

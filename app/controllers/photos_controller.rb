@@ -45,7 +45,6 @@ class PhotosController < ApplicationController
 
     File.delete(filename)
 
-    binding.pry
     photo = Photo.new(data: image_data, image_extension: image_extension)
 
     if photo.save

@@ -12,7 +12,6 @@ class App extends Component {
     this.uploadPhoto = this.uploadPhoto.bind(this);
     this.handleMessageChange = this.handleMessageChange.bind(this);
     this.previewPostcard = this.previewPostcard.bind(this);
-    this.fetchThumbnailsUntilLoaded = this.fetchThumbnailsUntilLoaded.bind(this);
   }
 
   uploadPhoto(photoObject) {
@@ -38,33 +37,7 @@ class App extends Component {
         message: this.state.message
       })
     })
-    .then(data => (this.fetchThumbnailsUntilLoaded(data.thumbnails)))
-  }
-
-  fetchThumbnailsUntilLoaded(thumbnails) {
-    let thumbnailsToFetch = thumbnails.map((thumbnail) => thumbnail.large)
-    let urlA = thumbnailsToFetch[0]
-    let urlB = thumbnailsToFetch[1]
-    var urlALoaded, urlBLoaded;
-
-    var fetchThumbnailA = setInterval(function() {
-      console.log('testing url a')
-      customFetch(urlA, { mode: 'no-cors', on404: function() { return Promise.reject() } }).then(_ => urlALoaded = true).then(clearInterval(fetchThumbnailA))
-    }, 200)
-
-    var fetchThumbnailB = setInterval(function() {
-      console.log('testing url b')
-      customFetch(urlB, { mode: 'no-cors', on404: function() { return Promise.reject() } }).then(_ => urlBLoaded = true).then(clearInterval(fetchThumbnailB))
-    }, 200)
-
-    var setUrlsInState = setInterval(function() {
-      console.log('checking if urls are loaded')
-      if (urlALoaded && urlBLoaded) {
-        this.setState({ thumbnails: thumbnailsToFetch })
-        clearInterval(setUrlsInState);
-      }
-    }, 200)
-
+    .then(data => this.setState({ front: data.front, back: data.back }))
   }
 
   render() {
@@ -78,13 +51,13 @@ class App extends Component {
 
         <div className="generatePostCard-button" onClick={this.previewPostcard}>Preview Postcard</div>
 
-        {this.state.thumbnails.map((thumbnail) => {
-          return (
-            <div className="imageContainer" key={thumbnail}>
-              <img src={thumbnail} />
-            </div>
-          )
-        })}
+        <div className="front-of-postcard">
+          <img src={this.state.front} />
+        </div>
+
+        <div className="back-of-postcard">
+          <img src={this.state.back} />
+        </div>
       </div>
     );
   }
