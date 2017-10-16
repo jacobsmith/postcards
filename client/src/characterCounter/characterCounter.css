@@ -1,0 +1,8 @@
+.CharacterCounter-Danger {
+  color: red;
+}
+
+.CharacterCounter div {
+  display: inline-block;
+  margin: 0.1em;
+}

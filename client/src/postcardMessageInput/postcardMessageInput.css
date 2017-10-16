@@ -1,0 +1,11 @@
+.PostcardMessageInput--Container {
+  display: flex;
+  justify-content: center;
+}
+
+textarea.PostcardMessageInput {
+  width: 80%;
+  border: 1px solid gray;
+  font-size: 16px;
+  height: 5em;
+}

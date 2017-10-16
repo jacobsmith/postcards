@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import customFetch from './helpers/customFetch.js';
+import CharacterCounter from './characterCounter/characterCounter.js';
+import PostcardMessageInput from './postcardMessageInput/postcardMessageInput.js';
+import Button from './button/button.js';
+import ImageUpload from './imageUpload/imageUpload.js'
+
+import './app.css';
 
 class App extends Component {
   constructor() {
@@ -7,7 +13,9 @@ class App extends Component {
     this.state = {
       imgSrc: null,
       photoId: null,
-      thumbnails: []
+      thumbnails: [],
+      messageLength: 0,
+      maxMessageLength: 300
     }
     this.uploadPhoto = this.uploadPhoto.bind(this);
     this.handleMessageChange = this.handleMessageChange.bind(this);
@@ -26,7 +34,7 @@ class App extends Component {
   }
 
   handleMessageChange(e) {
-    this.setState({ message: e.target.value })
+    this.setState({ message: e.target.value, messageLength: e.target.value.length })
   }
 
   previewPostcard() {
@@ -47,9 +55,11 @@ class App extends Component {
         <div className="imageContainer">
           <img src={this.state.imgSrc} />
         </div>
-        <textarea value={this.state.message} onChange={this.handleMessageChange} />
 
-        <div className="generatePostCard-button" onClick={this.previewPostcard}>Preview Postcard</div>
+        <PostcardMessageInput value={this.state.message} onChange={this.handleMessageChange} />
+        <CharacterCounter count={this.state.messageLength} max={this.state.maxMessageLength} />
+
+        <Button onClick={this.previewPostcard}>Send Postcard</Button>
 
         <div className="front-of-postcard">
           <img src={this.state.front} />
@@ -60,40 +70,6 @@ class App extends Component {
         </div>
       </div>
     );
-  }
-}
-
-class ImageUpload extends Component {
-  constructor() {
-    super()
-    this.getPhotoData = this.getPhotoData.bind(this);
-  }
-
-  getPhotoData(uploadPhoto) {
-    var file = this.refs.photo.files[0];
-    var reader = new FileReader();
-    reader.readAsDataURL(file);
-
-    reader.onloadend = function(event) {
-      let putBody = {
-        imgSrc: reader.result,
-        imgName: file.name
-      }
-
-      uploadPhoto(putBody)
-    };
-  }
-
-  render() {
-    return (
-      <input
-        ref="photo"
-        id="photo-uploader"
-        type="file"
-        accept="image/*"
-        onChange={() => this.getPhotoData(this.props.uploadPhoto)}
-      />
-    )
   }
 }
 

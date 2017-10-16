@@ -5,12 +5,3 @@
 .imageContainer img {
   width: 100%;
 }
-
-.generatePostCard-button {
-  border: 1px solid gray;
-  height: 10vh;
-  margin: 3em;
-  text-align: center;
-  border-radius: 3px;
-  padding-top: 2em;
-}
