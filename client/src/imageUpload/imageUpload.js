@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './imageUpload.css';
+import postcardImg from './../icons/postcard.svg';
 
 class ImageUpload extends Component {
   constructor() {
@@ -25,7 +26,10 @@ class ImageUpload extends Component {
   render() {
     return (
       <label>
-        <div className="fileUpload-Button">Upload Photo!</div>
+        <div className="fileUpload-Container">
+          <img width="100%" className="fileUpload-PostcardIcon" src={postcardImg} />
+          <div className="fileUpload-Text">Add your photo!</div>
+        </div>
         <input
           ref="photo"
           id="photo-uploader"

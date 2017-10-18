@@ -9,3 +9,21 @@
   margin: auto;
   margin-top: 3em;
 }
+
+.fileUpload-Container {
+  text-align: center;
+  margin: 3em;
+  padding: 1em;
+  background-color: rgb(143, 207, 254);
+  border-radius: 3px;
+}
+
+.fileUpload-PostcardIcon {
+  width: 50vw;
+  margin: auto;
+  margin-bottom: 0;
+}
+
+.fileUpload-Text {
+  color: white;
+}

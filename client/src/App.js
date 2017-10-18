@@ -5,6 +5,8 @@ import PostcardMessageInput from './postcardMessageInput/postcardMessageInput.js
 import Button from './button/button.js';
 import ImageUpload from './imageUpload/imageUpload.js'
 
+import Address from './address/address.js';
+
 import './app.css';
 
 class App extends Component {
@@ -15,11 +17,28 @@ class App extends Component {
       photoId: null,
       thumbnails: [],
       messageLength: 0,
-      maxMessageLength: 300
+      maxMessageLength: 300,
+      address: {
+        from: {
+          addressName: '',
+          street: '',
+          city: '',
+          state: '',
+          zip: ''
+        },
+        to: {
+          addressName: '',
+          street: '',
+          city: '',
+          state: '',
+          zip: ''
+        }
+      }
     }
     this.uploadPhoto = this.uploadPhoto.bind(this);
     this.handleMessageChange = this.handleMessageChange.bind(this);
     this.previewPostcard = this.previewPostcard.bind(this);
+    this.addressChanger = this.addressChanger.bind(this);
   }
 
   uploadPhoto(photoObject) {
@@ -42,10 +61,31 @@ class App extends Component {
       method: 'post',
       body: JSON.stringify({
         photoId: this.state.photoId,
-        message: this.state.message
+        message: this.state.message,
+        address: this.state.address
       })
     })
     .then(data => this.setState({ front: data.front, back: data.back }))
+  }
+
+  addressChanger(addressType) { // from | to
+    var self = this;
+
+    return function(attribute) { // name, street, city, state, zip
+      return function(event) {
+        event.persist(); // if we don't persis the event, it is nullified before setState function runs
+
+        this.setState(prevState => {
+          let oldAddress = Object.assign({}, prevState.address)
+          oldAddress[addressType][attribute] = event.target.value;
+
+          return {
+            address: oldAddress
+          }
+        }
+      )
+      }.bind(self);
+    }.bind(self);
   }
 
   render() {
@@ -55,6 +95,29 @@ class App extends Component {
         <div className="imageContainer">
           <img src={this.state.imgSrc} />
         </div>
+
+        <div className="fromAndTo">
+          <Address
+            namePlaceholder="From"
+            onChange={this.addressChanger('from')}
+            addressName={this.state.address.from.addressName}
+            street={this.state.address.from.street}
+            city={this.state.address.from.city}
+            state={this.state.address.from.state}
+            zip={this.state.address.from.zip}
+          />
+
+          <Address
+            namePlaceholder="To"
+            onChange={this.addressChanger('to')}
+            addressName={this.state.address.to.addressName}
+            street={this.state.address.to.street}
+            city={this.state.address.to.city}
+            state={this.state.address.to.state}
+            zip={this.state.address.to.zip}
+          />
+        </div>
+
 
         <PostcardMessageInput value={this.state.message} onChange={this.handleMessageChange} />
         <CharacterCounter count={this.state.messageLength} max={this.state.maxMessageLength} />

@@ -5,3 +5,9 @@
 .imageContainer img {
   width: 100%;
 }
+
+.fromAndTo {
+  /*display: flex;*/
+  /*flex-direction: row;*/
+  /*justify-content: space-around;*/
+}
