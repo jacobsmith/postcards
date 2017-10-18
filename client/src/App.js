@@ -57,6 +57,7 @@ class App extends Component {
   }
 
   previewPostcard() {
+    console.log('got here')
     customFetch('/api/postcards/preview', {
       method: 'post',
       body: JSON.stringify({
@@ -85,7 +86,7 @@ class App extends Component {
         }
       )
       }.bind(self);
-    }.bind(self);
+    }
   }
 
   render() {

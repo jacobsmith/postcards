@@ -9,7 +9,7 @@ const Button = ({ onClick, children, className }) => {
   ])
 
   return (
-    <div className={classes}>
+    <div className={classes} onClick={onClick}>
       {children}
     </div>
   )

@@ -3,26 +3,29 @@ class PostcardsController < ApplicationController
     photo = Photo.find(params[:photoId])
     message = params[:message]
 
+    from_address = params[:address][:from]
+    to_address = params[:address][:to]
+
     front = render_as_string("4x6_postcard", front_photo_url: photo_view_url(photo))
 
     # create a to address
     to_address = $Lob.addresses.create(
-      name: "ToAddress",
-      address_line1: "120 6th Ave",
-      address_city: "Boston",
-      address_state: "MA",
+      name: to_address[:addressName],
+      address_line1: to_address[:street],
+      address_city: to_address[:city],
+      address_state: to_address[:state],
       address_country: "US",
-      address_zip: 12345
+      address_zip: to_address[:zip],
     )
 
     # create a from address
     from_address = $Lob.addresses.create(
-      name: "FromAddress",
-      address_line1: "120 6th Ave",
-      address_city: "Boston",
-      address_state: "MA",
+      name: from_address[:addressName],
+      address_line1: from_address[:street],
+      address_city: from_address[:city],
+      address_state: from_address[:state],
       address_country: "US",
-      address_zip: 12345
+      address_zip: from_address[:zip],
     )
 
 
