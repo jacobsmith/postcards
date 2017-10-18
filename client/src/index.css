@@ -4,14 +4,6 @@ body {
   font-family: sans-serif;
 }
 
-.imageContainer {
-  max-width: 100vw;
-}
-
-.imageContainer img {
-  width: 100%;
-}
-
 .generatePostCard-button {
   border: 1px solid gray;
   height: 10vh;
@@ -19,4 +11,8 @@ body {
   text-align: center;
   border-radius: 3px;
   padding-top: 2em;
+}
+
+.generatePostCard-button-invalid {
+  background-color: gray;
 }

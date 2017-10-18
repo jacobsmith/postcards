@@ -24,12 +24,24 @@ class ImageUpload extends Component {
   }
 
   render() {
+    let emptyState = (
+      <div className="fileUpload-Container">
+        <img width="100%" className="fileUpload-PostcardIcon" src={postcardImg} />
+        <div className="fileUpload-Text">Add your photo!</div>
+      </div>
+    )
+
+    let photo = (
+      <div className="fileUpload-Container withImage">
+        <img src={this.props.imgSrc} />
+      </div>
+    )
+
     return (
       <label>
-        <div className="fileUpload-Container">
-          <img width="100%" className="fileUpload-PostcardIcon" src={postcardImg} />
-          <div className="fileUpload-Text">Add your photo!</div>
-        </div>
+
+        {this.props.imgSrc ? photo : emptyState}
+
         <input
           ref="photo"
           id="photo-uploader"
@@ -39,6 +51,7 @@ class ImageUpload extends Component {
           onChange={() => this.getPhotoData(this.props.uploadPhoto)}
         />
       </label>
+
     )
   }
 }

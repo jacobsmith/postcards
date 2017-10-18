@@ -39,6 +39,7 @@ class App extends Component {
     this.handleMessageChange = this.handleMessageChange.bind(this);
     this.previewPostcard = this.previewPostcard.bind(this);
     this.addressChanger = this.addressChanger.bind(this);
+    this.canPreview = this.canPreview.bind(this);
   }
 
   uploadPhoto(photoObject) {
@@ -89,13 +90,26 @@ class App extends Component {
     }
   }
 
+  canPreview() {
+    console.log('executing')
+    return this.state.imgSrc &&
+    this.state.address.from.addressName &&
+    this.state.address.from.street &&
+    this.state.address.from.city &&
+    this.state.address.from.state &&
+    this.state.address.from.zip &&
+    this.state.address.to.addressName &&
+    this.state.address.to.street &&
+    this.state.address.to.city &&
+    this.state.address.to.state &&
+    this.state.address.to.zip &&
+    this.state.message
+  }
+
   render() {
     return (
       <div className="App">
-        <ImageUpload uploadPhoto={this.uploadPhoto}/>
-        <div className="imageContainer">
-          <img src={this.state.imgSrc} />
-        </div>
+        <ImageUpload uploadPhoto={this.uploadPhoto} imgSrc={this.state.imgSrc}/>
 
         <div className="fromAndTo">
           <Address
@@ -123,7 +137,7 @@ class App extends Component {
         <PostcardMessageInput value={this.state.message} onChange={this.handleMessageChange} />
         <CharacterCounter count={this.state.messageLength} max={this.state.maxMessageLength} />
 
-        <Button onClick={this.previewPostcard}>Send Postcard</Button>
+        <Button valid={this.canPreview} onClick={this.previewPostcard}>Send Postcard</Button>
 
         <div className="front-of-postcard">
           <img src={this.state.front} />

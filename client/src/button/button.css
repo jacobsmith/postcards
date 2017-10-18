@@ -8,3 +8,7 @@
   text-align: center;
   margin: auto;
 }
+
+.Button-invalid {
+  background-color: rgba(26, 196, 181, 0.2)
+}
