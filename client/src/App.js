@@ -4,6 +4,8 @@ import CharacterCounter from './characterCounter/characterCounter.js';
 import PostcardMessageInput from './postcardMessageInput/postcardMessageInput.js';
 import Button from './button/button.js';
 import ImageUpload from './imageUpload/imageUpload.js'
+import PreviewPostcard from './previewPostcard/previewPostcard.js';
+
 
 import Address from './address/address.js';
 
@@ -33,7 +35,10 @@ class App extends Component {
           state: '',
           zip: ''
         }
-      }
+      },
+      previewingPostcard: true,
+      front: 'http://localhost:3000/photos/6/img',
+      back: 'http://localhost:3000/photos/7/img',
     }
     this.uploadPhoto = this.uploadPhoto.bind(this);
     this.handleMessageChange = this.handleMessageChange.bind(this);
@@ -58,7 +63,7 @@ class App extends Component {
   }
 
   previewPostcard() {
-    console.log('got here')
+    this.setState({ previewingPostcard: true })
     customFetch('/api/postcards/preview', {
       method: 'post',
       body: JSON.stringify({
@@ -67,7 +72,7 @@ class App extends Component {
         address: this.state.address
       })
     })
-    .then(data => this.setState({ front: data.front, back: data.back }))
+    .then(data => this.setState({ postcardReceived: true, front: data.front, back: data.back }))
   }
 
   addressChanger(addressType) { // from | to
@@ -91,7 +96,6 @@ class App extends Component {
   }
 
   canPreview() {
-    console.log('executing')
     return this.state.imgSrc &&
     this.state.address.from.addressName &&
     this.state.address.from.street &&
@@ -107,6 +111,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state)
     return (
       <div className="App">
         <ImageUpload uploadPhoto={this.uploadPhoto} imgSrc={this.state.imgSrc}/>
@@ -139,13 +144,12 @@ class App extends Component {
 
         <Button valid={this.canPreview} onClick={this.previewPostcard}>Send Postcard</Button>
 
-        <div className="front-of-postcard">
-          <img src={this.state.front} />
-        </div>
-
-        <div className="back-of-postcard">
-          <img src={this.state.back} />
-        </div>
+        <PreviewPostcard
+          previewingPostcard={this.state.previewingPostcard}
+          front={this.state.front}
+          back={this.state.back}
+          recipient={this.state.address.to.addressName}
+        />
       </div>
     );
   }
