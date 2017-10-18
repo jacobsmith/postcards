@@ -1,18 +1,18 @@
 import React from 'react';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from 'react-slick';
+import { Carousel } from 'react-responsive-carousel';
+
+import 'react-responsive-carousel/lib/styles/carousel.css';
+var ReactDOM = require('react-dom');
+
 
 const ImageCarousel = ({ images }) => {
   let settings = {
-    dots: true,
-    slidesToShow: 1,
-    slidesToScroll: 1
+    showArrows: true
   }
 
   return (
     <div className="ImageCarousel">
-      <Slider {...settings}>
+      <Carousel {...settings}>
         {images.map((img, i) => {
           console.log(img, i);
          return (
@@ -21,7 +21,7 @@ const ImageCarousel = ({ images }) => {
            </div>
          )
        })}
-      </Slider>
+     </Carousel>
     </div>
   )
 }

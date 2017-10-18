@@ -36,9 +36,9 @@ class App extends Component {
           zip: ''
         }
       },
-      previewingPostcard: true,
-      front: 'http://localhost:3000/photos/6/img',
-      back: 'http://localhost:3000/photos/7/img',
+      previewingPostcard: false,
+      front: '',
+      back: '',
     }
     this.uploadPhoto = this.uploadPhoto.bind(this);
     this.handleMessageChange = this.handleMessageChange.bind(this);

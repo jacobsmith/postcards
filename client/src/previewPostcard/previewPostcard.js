@@ -23,18 +23,12 @@ class PreviewPostcard extends Component {
     var content;
 
     if (loaded) {
-      content = <ImageCarousel images={ [this.props.front, this.props.back] } />
-    } else {
-      content = <div>Loading...</div>
-    }
-
-    return (
-      <Modal display={this.props.previewingPostcard}>
-        {content}
-
-        <div className="PreviewPostcard-Text">
-          Your postcard looks awesome! Click below to finish checkout!
-        </div>
+      content = (
+        <div>
+          <ImageCarousel images={ [this.props.front, this.props.back] } />
+          <div className="PreviewPostcard-Text">
+            Your postcard looks awesome! Click below to finish checkout!
+          </div>
 
         <div className="PreviewPostcard-ButtonContainer">
           <StripeCheckout
@@ -46,6 +40,14 @@ class PreviewPostcard extends Component {
             image={postcardImg}
           />
         </div>
+        </div>
+      )    } else {
+      content = <div>Loading... This is going to be awesome!</div>
+    }
+
+    return (
+      <Modal display={this.props.previewingPostcard}>
+        {content}
       </Modal>
     )
   }
