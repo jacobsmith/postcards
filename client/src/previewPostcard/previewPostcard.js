@@ -43,7 +43,7 @@ class PreviewPostcard extends Component {
         <div className="PreviewPostcard-ButtonContainer">
           <StripeCheckout
             token={this.onToken}
-            stripeKey="pk_test_1fP6F3hjLbG2TbLXPuEL3jEx"
+            stripeKey={process.env.REACT_APP_PUBLISHABLE_STRIPE_KEY}
             amount={149}
             name="Postcard"
             description={`Send postcard to ${this.props.recipient}`}

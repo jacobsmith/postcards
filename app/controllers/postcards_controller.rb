@@ -40,7 +40,7 @@ class PostcardsController < ApplicationController
     )
 
     # send a postcard
-    postcard = $Lob.postcards.create(
+    postcard = $LobTest.postcards.create(
       to: to_address["id"],
       from: from_address["id"],
       front: front,
