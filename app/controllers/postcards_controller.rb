@@ -8,41 +8,41 @@ class PostcardsController < ApplicationController
 
     front = render_as_string("4x6_postcard", front_photo_url: photo_view_url(photo))
 
-    # create a to address
-    to_address = $Lob.addresses.create(
+    to_address_arguments = {
       name: to_address[:addressName],
       address_line1: to_address[:street],
       address_city: to_address[:city],
       address_state: to_address[:state],
       address_country: "US",
       address_zip: to_address[:zip],
-    )
+    }
 
-    # create a from address
-    from_address = $Lob.addresses.create(
+    from_address_arguments = {
       name: from_address[:addressName],
       address_line1: from_address[:street],
       address_city: from_address[:city],
       address_state: from_address[:state],
       address_country: "US",
       address_zip: from_address[:zip],
-    )
+    }
 
-    # Dear future jacob,
-    # figure out how to make postcard_id autoincrementing. It's not set up correctly.
-    # Love, past jacob
+    # create a to address
+    to_address = $LobTest.addresses.create(to_address_arguments)
+
+    # create a from address
+    from_address = $LobTest.addresses.create(from_address_arguments)
 
     internal_postcard = Postcard.create(
       photo: photo,
       message: message,
-      to_address_lob_id: to_address['id'],
-      from_address_lob_id: from_address['id']
+      to_address: to_address_arguments.to_json
+      from_address: from_address_arguments.to_json,
     )
 
     # send a postcard
     postcard = $LobTest.postcards.create(
-      to: to_address["id"],
-      from: from_address["id"],
+      to: to_address['id'],
+      from: from_address['id'],
       front: front,
       message: message
     )
@@ -51,6 +51,8 @@ class PostcardsController < ApplicationController
 
     thumbnail_urls = postcard["thumbnails"].map { |t| t['large'] }
 
+
+    # S3 doesn't update immediately when we get back the URL for the thumbnails - so we poll until it's successful
     threads = []
     thumbnail_urls.each do |url_to_check|
       threads << Thread.new do
@@ -85,6 +87,22 @@ class PostcardsController < ApplicationController
     )
 
     if charge[:outcome][:type] == "authorized"
+      to_address = $Lob.addresses.create(JSON.parse(postcard.to_address))
+      from_address = $Lob.addresses.create(JSON.parse(postcard.from_address))
+
+      lob_postcard = $Lob.postcards.create(
+        to: JSON.parse(postcard.to),
+        from: JSON.parse(postcard.from),
+        front: postcard.front,
+        message: postcard.message,
+        size: '4x6',
+        metadata: {
+          postcard_id: postcard.id
+        }
+      )
+
+      puts lob_postcard
+
       render json: { success: true }
     else
       render json: { success: false }

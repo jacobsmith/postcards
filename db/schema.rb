@@ -25,10 +25,10 @@ ActiveRecord::Schema.define(version: 20171019014157) do
   create_table "postcards", force: :cascade do |t|
     t.integer  "photo_id"
     t.text     "message"
-    t.string   "to_address_lob_id"
-    t.string   "from_address_lob_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.text     "to_address"
+    t.text     "from_address"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.index ["photo_id"], name: "index_postcards_on_photo_id", using: :btree
   end
 

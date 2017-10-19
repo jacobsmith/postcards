@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'dotenv-rails', groups: [:development, :test]
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.5'
@@ -14,7 +15,6 @@ gem 'pg'
 gem 'puma', '~> 3.0'
 gem 'mini_magick'
 gem 'lob'
-gem 'dotenv'
 gem 'pry'
 
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
