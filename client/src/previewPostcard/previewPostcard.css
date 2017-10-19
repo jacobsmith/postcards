@@ -7,3 +7,7 @@
   margin: auto;
   margin-top: 2em;
 }
+
+.carousel .slide {
+  background: white !important;
+}

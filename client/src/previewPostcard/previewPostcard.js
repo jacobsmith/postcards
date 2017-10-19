@@ -25,7 +25,7 @@ class PreviewPostcard extends Component {
       method: 'post',
       body: JSON.stringify(body)
     })
-    .then((data) => (data.success === 'true') ? this.props.postcardCreatedSuccessfully() : null)
+    .then((data) => (data.success === true) ? this.props.postcardCreatedSuccessfully() : null)
   }
 
   render() {

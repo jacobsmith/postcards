@@ -12,6 +12,20 @@ import Address from './address/address.js';
 class App extends Component {
   constructor() {
     super()
+
+    var fromAddress;
+    if (localStorage.getItem('fromAddress')) {
+      fromAddress = JSON.parse(localStorage.getItem('fromAddress'));
+    } else {
+      fromAddress = {
+        addressName: '',
+        street: '',
+        city: '',
+        state: '',
+        zip: ''
+      }
+    }
+
     this.state = {
       imgSrc: null,
       photoId: null,
@@ -20,13 +34,7 @@ class App extends Component {
       messageLength: 0,
       maxMessageLength: 300,
       address: {
-        from: {
-          addressName: '',
-          street: '',
-          city: '',
-          state: '',
-          zip: ''
-        },
+        from: fromAddress,
         to: {
           addressName: '',
           street: '',
@@ -39,6 +47,8 @@ class App extends Component {
       front: '',
       back: '',
     }
+
+
     this.uploadPhoto = this.uploadPhoto.bind(this);
     this.handleMessageChange = this.handleMessageChange.bind(this);
     this.previewPostcard = this.previewPostcard.bind(this);
@@ -89,6 +99,10 @@ class App extends Component {
         this.setState(prevState => {
           let oldAddress = Object.assign({}, prevState.address)
           oldAddress[addressType][attribute] = event.target.value;
+
+          if (addressType === 'from') {
+            localStorage.setItem('fromAddress', JSON.stringify(oldAddress.from))
+          }
 
           return {
             address: oldAddress
