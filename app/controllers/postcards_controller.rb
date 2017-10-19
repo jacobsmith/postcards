@@ -35,7 +35,7 @@ class PostcardsController < ApplicationController
     internal_postcard = Postcard.create(
       photo: photo,
       message: message,
-      to_address: to_address_arguments.to_json
+      to_address: to_address_arguments.to_json,
       from_address: from_address_arguments.to_json,
     )
 
@@ -89,11 +89,12 @@ class PostcardsController < ApplicationController
     if charge[:outcome][:type] == "authorized"
       to_address = $Lob.addresses.create(JSON.parse(postcard.to_address))
       from_address = $Lob.addresses.create(JSON.parse(postcard.from_address))
+      front = render_as_string("4x6_postcard", front_photo_url: photo_view_url(postcard.photo))
 
       lob_postcard = $Lob.postcards.create(
-        to: JSON.parse(postcard.to),
-        from: JSON.parse(postcard.from),
-        front: postcard.front,
+        to: JSON.parse(postcard.to_address),
+        from: JSON.parse(postcard.from_address),
+        front: front,
         message: postcard.message,
         size: '4x6',
         metadata: {
