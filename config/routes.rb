@@ -5,5 +5,8 @@ Rails.application.routes.draw do
     post '/postcards/create', to: 'postcards#create'
   end
 
+  # used by lob to get the file to put on postcard
   get '/photos/:id/img', to: 'photos#img', as: 'photo_view'
+
+  get '/.well-known/:id', to: 'well_known#show'
 end

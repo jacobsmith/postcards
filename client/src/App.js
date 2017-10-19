@@ -73,6 +73,7 @@ class App extends Component {
   }
 
   postcardCreatedSuccessfully() {
+    console.log('created successfully!')
     this.setState({ previewingPostcard: false, postcardCreatedSuccessfully: true })
   }
 
@@ -131,7 +132,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div>{this.state.postcardCreatedSuccessfully ? 'Your postcard was created successfully!' : ''}</div>
+        <div>{this.state.postcardCreatedSuccessfully ? 'Your postcard was created successfully! Feel free to send this card to another person by entering in a new \'To\' address, or select a new photo by clicking the photo below!' : ''}</div>
         <ImageUpload uploadPhoto={this.uploadPhoto} imgSrc={this.state.imgSrc}/>
 
         <div className="fromAndTo">
