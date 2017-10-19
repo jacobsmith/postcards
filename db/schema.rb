@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171014173307) do
+ActiveRecord::Schema.define(version: 20171019014157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 20171014173307) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.text     "image_extension"
+  end
+
+  create_table "postcards", force: :cascade do |t|
+    t.integer  "photo_id"
+    t.text     "message"
+    t.string   "to_address_lob_id"
+    t.string   "from_address_lob_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.index ["photo_id"], name: "index_postcards_on_photo_id", using: :btree
   end
 
 end

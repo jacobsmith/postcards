@@ -28,6 +28,16 @@ class PostcardsController < ApplicationController
       address_zip: from_address[:zip],
     )
 
+    # Dear future jacob,
+    # figure out how to make postcard_id autoincrementing. It's not set up correctly.
+    # Love, past jacob
+
+    internal_postcard = Postcard.create(
+      photo: photo,
+      message: message,
+      to_address_lob_id: to_address['id'],
+      from_address_lob_id: from_address['id']
+    )
 
     # send a postcard
     postcard = $Lob.postcards.create(
@@ -56,8 +66,29 @@ class PostcardsController < ApplicationController
 
     render json: {
       front: thumbnail_urls.first,
-      back: thumbnail_urls.last
+      back: thumbnail_urls.last,
+      postcard_id: internal_postcard.id
     }
+  end
+
+  def create
+    postcard = Postcard.find(params[:postcard_id])
+    token = params[:stripeToken]
+
+    # Charge the user's card:
+    charge = $Stripe::Charge.create(
+      :amount => 149,
+      :currency => "usd",
+      :description => "Postcard",
+      :source => token["id"],
+      metadata: { postcard_id: postcard.id }
+    )
+
+    if charge[:outcome][:type] == "authorized"
+      render json: { success: true }
+    else
+      render json: { success: false }
+    end
   end
 
   private

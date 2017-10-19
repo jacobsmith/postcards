@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Modal from './../modal/modal.js';
 import postcardImg from './../icons/postcard.svg'
+import customFetch from './../helpers/customFetch.js';
 import StripeCheckout from 'react-stripe-checkout';
 import ImageCarousel from './../imageCarousel/imageCarousel.js';
 import './previewPostcard.css';
@@ -15,7 +16,16 @@ class PreviewPostcard extends Component {
   }
 
   onToken(token) {
-    console.log(token)
+    let body = {
+      stripeToken: token,
+      postcard_id: this.props.postcardId
+    }
+
+    customFetch('/api/postcards/create', {
+      method: 'post',
+      body: JSON.stringify(body)
+    })
+    .then((data) => (data.success === 'true') ? this.props.postcardCreatedSuccessfully() : null)
   }
 
   render() {
@@ -41,7 +51,8 @@ class PreviewPostcard extends Component {
           />
         </div>
         </div>
-      )    } else {
+      )
+    } else {
       content = <div>Loading... This is going to be awesome!</div>
     }
 

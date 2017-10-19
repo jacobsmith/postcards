@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/stripe/stripe-ruby
+  revision: 987bbd09c07a66a4be839f0ecc6d6f14ab2db811
+  specs:
+    stripe (3.6.0)
+      faraday (~> 0.10)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -47,6 +54,8 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.2.0)
     erubis (2.7.0)
+    faraday (0.13.1)
+      multipart-post (>= 1.2, < 3)
     ffi (1.9.18)
     foreman (0.84.0)
       thor (~> 0.19.1)
@@ -71,6 +80,7 @@ GEM
     mini_magick (4.8.0)
     mini_portile2 (2.3.0)
     minitest (5.10.3)
+    multipart-post (2.0.0)
     netrc (0.11.0)
     nio4r (2.1.0)
     nokogiri (1.8.1)
@@ -155,6 +165,7 @@ DEPENDENCIES
   rails (~> 5.0.5)
   spring
   spring-watcher-listen (~> 2.0.0)
+  stripe!
   tzinfo-data
 
 BUNDLED WITH

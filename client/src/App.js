@@ -18,6 +18,7 @@ class App extends Component {
       imgSrc: null,
       photoId: null,
       thumbnails: [],
+      message: '',
       messageLength: 0,
       maxMessageLength: 300,
       address: {
@@ -45,6 +46,7 @@ class App extends Component {
     this.previewPostcard = this.previewPostcard.bind(this);
     this.addressChanger = this.addressChanger.bind(this);
     this.canPreview = this.canPreview.bind(this);
+    this.postcardCreatedSuccessfully = this.postcardCreatedSuccessfully.bind(this);
   }
 
   uploadPhoto(photoObject) {
@@ -62,6 +64,10 @@ class App extends Component {
     this.setState({ message: e.target.value, messageLength: e.target.value.length })
   }
 
+  postcardCreatedSuccessfully() {
+    this.setState({ previewingPostcard: false, postcardCreatedSuccessfully: true })
+  }
+
   previewPostcard() {
     this.setState({ previewingPostcard: true })
     customFetch('/api/postcards/preview', {
@@ -72,7 +78,7 @@ class App extends Component {
         address: this.state.address
       })
     })
-    .then(data => this.setState({ postcardReceived: true, front: data.front, back: data.back }))
+    .then(data => this.setState({ postcardReceived: true, front: data.front, back: data.back, postcardId: data.postcard_id }))
   }
 
   addressChanger(addressType) { // from | to
@@ -107,13 +113,13 @@ class App extends Component {
     this.state.address.to.city &&
     this.state.address.to.state &&
     this.state.address.to.zip &&
-    this.state.message
+    0 < this.state.message.length < 301
   }
 
   render() {
-    console.log(this.state)
     return (
       <div className="App">
+        <div>{this.state.postcardCreatedSuccessfully ? 'Your postcard was created successfully!' : ''}</div>
         <ImageUpload uploadPhoto={this.uploadPhoto} imgSrc={this.state.imgSrc}/>
 
         <div className="fromAndTo">
@@ -149,6 +155,8 @@ class App extends Component {
           front={this.state.front}
           back={this.state.back}
           recipient={this.state.address.to.addressName}
+          postcardId={this.state.postcardId}
+          postcardCreatedSuccessfully={this.postcardCreatedSuccessfully}
         />
       </div>
     );
