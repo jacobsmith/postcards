@@ -9,8 +9,6 @@ import PreviewPostcard from './previewPostcard/previewPostcard.js';
 
 import Address from './address/address.js';
 
-import './app.css';
-
 class App extends Component {
   constructor() {
     super()
