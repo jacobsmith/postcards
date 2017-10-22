@@ -5,7 +5,7 @@ import PostcardMessageInput from './../postcardMessageInput/postcardMessageInput
 import Button from './../button/button.js';
 import ImageUpload from './../imageUpload/imageUpload.js'
 import PreviewPostcard from './../previewPostcard/previewPostcard.js';
-
+import TestReduxComponent from './testReduxComponent.js';
 
 import AddressInputs from './../address/addressInputs.js';
 
@@ -132,6 +132,8 @@ class PostcardCreationPage extends Component {
   render() {
     return (
       <div className="postcardCreationPage">
+        <TestReduxComponent />
+
         <div>{this.state.postcardCreatedSuccessfully ? 'Your postcard was created successfully! Feel free to send this card to another person by entering in a new \'To\' address, or select a new photo by clicking the photo below!' : ''}</div>
         <ImageUpload uploadPhoto={this.uploadPhoto} imgSrc={this.state.imgSrc}/>
 
