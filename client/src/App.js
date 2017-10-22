@@ -7,7 +7,7 @@ import ImageUpload from './imageUpload/imageUpload.js'
 import PreviewPostcard from './previewPostcard/previewPostcard.js';
 
 
-import Address from './address/address.js';
+import AddressInputs from './address/addressInputs.js';
 
 class App extends Component {
   constructor() {
@@ -135,28 +135,7 @@ class App extends Component {
         <div>{this.state.postcardCreatedSuccessfully ? 'Your postcard was created successfully! Feel free to send this card to another person by entering in a new \'To\' address, or select a new photo by clicking the photo below!' : ''}</div>
         <ImageUpload uploadPhoto={this.uploadPhoto} imgSrc={this.state.imgSrc}/>
 
-        <div className="fromAndTo">
-          <Address
-            namePlaceholder="From"
-            onChange={this.addressChanger('from')}
-            addressName={this.state.address.from.addressName}
-            street={this.state.address.from.street}
-            city={this.state.address.from.city}
-            state={this.state.address.from.state}
-            zip={this.state.address.from.zip}
-          />
-
-          <Address
-            namePlaceholder="To"
-            onChange={this.addressChanger('to')}
-            addressName={this.state.address.to.addressName}
-            street={this.state.address.to.street}
-            city={this.state.address.to.city}
-            state={this.state.address.to.state}
-            zip={this.state.address.to.zip}
-          />
-        </div>
-
+        <AddressInputs from={this.state.address.from} to={this.state.address.to} onChange={this.addressChanger} />
 
         <PostcardMessageInput value={this.state.message} onChange={this.handleMessageChange} />
         <CharacterCounter count={this.state.messageLength} max={this.state.maxMessageLength} />
