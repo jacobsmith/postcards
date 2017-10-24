@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import customFetch from './../helpers/customFetch.js';
-import CharacterCounter from './../characterCounter/characterCounter.js';
 import PostcardMessageInput from './../postcardMessageInput/postcardMessageInput.js';
 import Button from './../button/button.js';
 import ImageUpload from './../imageUpload/imageUpload.js'
@@ -68,10 +67,6 @@ class PostcardCreationPage extends Component {
     .catch((error) => console.log(error));
   }
 
-  handleMessageChange(e) {
-    this.setState({ message: e.target.value, messageLength: e.target.value.length })
-  }
-
   postcardCreatedSuccessfully() {
     console.log('created successfully!')
     this.setState({ previewingPostcard: false, postcardCreatedSuccessfully: true })
@@ -83,7 +78,7 @@ class PostcardCreationPage extends Component {
       method: 'post',
       body: JSON.stringify({
         photoId: this.state.photoId,
-        message: this.state.message,
+        message: window.reduxStore.getState().postcardMessage.message,
         address: this.state.address
       })
     })
@@ -126,7 +121,7 @@ class PostcardCreationPage extends Component {
     this.state.address.to.city &&
     this.state.address.to.state &&
     this.state.address.to.zip &&
-    0 < this.state.message.length < 301
+    0 < window.reduxStore.getState().postcardMessage.message.length < 301
   }
 
   render() {
@@ -139,9 +134,7 @@ class PostcardCreationPage extends Component {
 
         <AddressInputs from={this.state.address.from} to={this.state.address.to} onChange={this.addressChanger} />
 
-        <PostcardMessageInput value={this.state.message} onChange={this.handleMessageChange} />
-        <CharacterCounter count={this.state.messageLength} max={this.state.maxMessageLength} />
-
+        <PostcardMessageInput />
         <Button valid={this.canPreview} onClick={this.previewPostcard}>Send Postcard</Button>
 
         <PreviewPostcard

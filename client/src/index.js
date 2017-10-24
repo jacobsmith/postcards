@@ -7,6 +7,7 @@ import configureStore from './store/configureStore.js';
 import registerServiceWorker from './registerServiceWorker';
 
 const store = configureStore();
+window.reduxStore = store;
 
 ReactDOM.render(
   <Provider store={store}>

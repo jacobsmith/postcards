@@ -6,3 +6,12 @@ export function testAction(arg = "hey") {
     text: arg
   }
 }
+
+export function messageUpdated(event) {
+  return {
+    type: actions.MESSAGE_UPDATED,
+    payload: {
+      text: event.target.value
+    }
+  }
+}

@@ -1,5 +1,8 @@
 const initialState = {
-  test: 'foobar'
+  test: 'foobar',
+  postcardMessage: {
+    message: ''
+  }
 }
 
 export default initialState;
