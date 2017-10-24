@@ -15,3 +15,20 @@ export function messageUpdated(event) {
     }
   }
 }
+
+export function updateAddressInfo(addressType) {
+  return function(dispatch) {
+    return function(attribute) {
+      return function(event) {
+        dispatch({
+          type: actions.ADDRESS_INFO_UPDATED,
+          payload: {
+            addressAttribute: attribute,
+            addressType: addressType,
+            value: event.target.value
+          }
+        })
+      }
+    }
+  }
+}

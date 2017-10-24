@@ -9,7 +9,6 @@ export default function testReducer(state = initialState.test, action) {
       newState = action.text
       return newState;
     default:
-      console.log('not test received', action);
       return state;
   }
 }

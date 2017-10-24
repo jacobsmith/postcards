@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
 import Address from './address.js';
+import { updateAddressInfo } from './../actions/actions.js';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 class AddressInputs extends Component {
+  constructor({ updateAddressInfo }) {
+    super()
+
+    this.fromUpdater = updateAddressInfo('from');
+    this.toUpdater = updateAddressInfo('to');
+  }
+
   render() {
     return (
       <div className="fromAndTo">
         <Address
           namePlaceholder="From"
-          onChange={this.props.onChange('from')}
+          onChange={this.fromUpdater}
           addressName={this.props.from.addressName}
           street={this.props.from.street}
           city={this.props.from.city}
@@ -17,7 +27,7 @@ class AddressInputs extends Component {
 
         <Address
           namePlaceholder="To"
-          onChange={this.props.onChange('to')}
+          onChange={this.toUpdater}
           addressName={this.props.to.addressName}
           street={this.props.to.street}
           city={this.props.to.city}
@@ -29,4 +39,20 @@ class AddressInputs extends Component {
   }
 }
 
-export default AddressInputs;
+function mapStateToProps(state) {
+  return {
+    from: state.addresses.from,
+    to: state.addresses.to
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    updateAddressInfo: bindActionCreators(updateAddressInfo, dispatch)
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddressInputs);

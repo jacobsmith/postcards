@@ -47,11 +47,8 @@ class PostcardCreationPage extends Component {
       back: '',
     }
 
-
     this.uploadPhoto = this.uploadPhoto.bind(this);
-    this.handleMessageChange = this.handleMessageChange.bind(this);
     this.previewPostcard = this.previewPostcard.bind(this);
-    this.addressChanger = this.addressChanger.bind(this);
     this.canPreview = this.canPreview.bind(this);
     this.postcardCreatedSuccessfully = this.postcardCreatedSuccessfully.bind(this);
   }
@@ -85,54 +82,28 @@ class PostcardCreationPage extends Component {
     .then(data => this.setState({ postcardReceived: true, front: data.front, back: data.back, postcardId: data.postcard_id }))
   }
 
-  addressChanger(addressType) { // from | to
-    var self = this;
-
-    return function(attribute) { // name, street, city, state, zip
-      return function(event) {
-        event.persist(); // if we don't persis the event, it is nullified before setState function runs
-
-        this.setState(prevState => {
-          let oldAddress = Object.assign({}, prevState.address)
-          oldAddress[addressType][attribute] = event.target.value;
-
-          if (addressType === 'from') {
-            localStorage.setItem('fromAddress', JSON.stringify(oldAddress.from))
-          }
-
-          return {
-            address: oldAddress
-          }
-        }
-      )
-      }.bind(self);
-    }
-  }
-
   canPreview() {
     return this.state.imgSrc &&
-    this.state.address.from.addressName &&
-    this.state.address.from.street &&
-    this.state.address.from.city &&
-    this.state.address.from.state &&
-    this.state.address.from.zip &&
-    this.state.address.to.addressName &&
-    this.state.address.to.street &&
-    this.state.address.to.city &&
-    this.state.address.to.state &&
-    this.state.address.to.zip &&
+    window.reduxStore.getState().addresses.from.addressName &&
+    window.reduxStore.getState().addresses.from.street &&
+    window.reduxStore.getState().addresses.from.city &&
+    window.reduxStore.getState().addresses.from.state &&
+    window.reduxStore.getState().addresses.from.zip &&
+    window.reduxStore.getState().addresses.to.addressName &&
+    window.reduxStore.getState().addresses.to.street &&
+    window.reduxStore.getState().addresses.to.city &&
+    window.reduxStore.getState().addresses.to.state &&
+    window.reduxStore.getState().addresses.to.zip &&
     0 < window.reduxStore.getState().postcardMessage.message.length < 301
   }
 
   render() {
     return (
       <div className="postcardCreationPage">
-        <TestReduxComponent />
-
         <div>{this.state.postcardCreatedSuccessfully ? 'Your postcard was created successfully! Feel free to send this card to another person by entering in a new \'To\' address, or select a new photo by clicking the photo below!' : ''}</div>
         <ImageUpload uploadPhoto={this.uploadPhoto} imgSrc={this.state.imgSrc}/>
 
-        <AddressInputs from={this.state.address.from} to={this.state.address.to} onChange={this.addressChanger} />
+        <AddressInputs />
 
         <PostcardMessageInput />
         <Button valid={this.canPreview} onClick={this.previewPostcard}>Send Postcard</Button>
