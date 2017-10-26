@@ -1,8 +1,20 @@
-import initialState from './initialState.js';
 import { ADDRESS_INFO_UPDATED } from  '../actions/actionTypes.js';
 
+let emptyAddress = {
+  addressName: '',
+  street: '',
+  city: '',
+  state: '',
+  zip: ''
+}
 
-export default function addressesReducer(state = initialState.addresses, action) {
+let initialState = {
+  from: emptyAddress,
+  to: emptyAddress
+}
+
+
+export default function addressesReducer(state = initialState, action) {
   // easiest way to deeply copy the object
   let newState = JSON.parse(JSON.stringify(state));
 

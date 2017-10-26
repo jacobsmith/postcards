@@ -1,26 +1,21 @@
 import React, { Component } from 'react';
 import './imageUpload.css';
 import postcardImg from './../icons/postcard.svg';
+import * as photoActions from './../actions/photoActions.js';
+
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
 
 class ImageUpload extends Component {
   constructor() {
     super()
-    this.getPhotoData = this.getPhotoData.bind(this);
+    this.uploadPhoto = this.uploadPhoto.bind(this);
   }
 
-  getPhotoData(uploadPhoto) {
-    var file = this.refs.photo.files[0];
-    var reader = new FileReader();
-    reader.readAsDataURL(file);
-
-    reader.onloadend = function(event) {
-      let putBody = {
-        imgSrc: reader.result,
-        imgName: file.name
-      }
-
-      uploadPhoto(putBody)
-    };
+  uploadPhoto() {
+    this.props.photoActions.notifyUserOfUpdate()
+    this.props.photoActions.uploadPhoto(this.refs.photo.files[0]);
   }
 
   render() {
@@ -48,7 +43,7 @@ class ImageUpload extends Component {
           type="file"
           accept="image/*"
           style={{display: 'none'}}
-          onChange={() => this.getPhotoData(this.props.uploadPhoto)}
+          onChange={() => this.uploadPhoto()}
         />
       </label>
 
@@ -56,4 +51,22 @@ class ImageUpload extends Component {
   }
 }
 
-export default ImageUpload;
+function mapStateToProps(state) {
+  return {
+    imgSrc: state.photo.imgSrc,
+    uploading: state.photo.imageUploadInProgress,
+    success: state.photo.imageUploadSuccess,
+    failure: state.photo.imageUploadFailure
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    photoActions: bindActionCreators(photoActions, dispatch)
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ImageUpload);
