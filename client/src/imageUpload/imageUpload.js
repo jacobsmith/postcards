@@ -21,14 +21,14 @@ class ImageUpload extends Component {
   render() {
     let emptyState = (
       <div className="fileUpload-Container">
-        <img width="100%" className="fileUpload-PostcardIcon" src={postcardImg} />
+        <img width="100%" className="fileUpload-PostcardIcon" src={postcardImg} alt="upload"/>
         <div className="fileUpload-Text">Add your photo!</div>
       </div>
     )
 
     let photo = (
       <div className="fileUpload-Container withImage">
-        <img src={this.props.imgSrc} />
+        <img src={this.props.imgSrc} alt="your upload" />
       </div>
     )
 
@@ -53,10 +53,10 @@ class ImageUpload extends Component {
 
 function mapStateToProps(state) {
   return {
-    imgSrc: state.photo.imgSrc,
-    uploading: state.photo.imageUploadInProgress,
-    success: state.photo.imageUploadSuccess,
-    failure: state.photo.imageUploadFailure
+    imgSrc: state.postcard.photo.imgSrc,
+    uploading: state.postcard.photo.imageUploadInProgress,
+    success: state.postcard.photo.imageUploadSuccess,
+    failure: state.postcard.photo.imageUploadFailure
   }
 }
 

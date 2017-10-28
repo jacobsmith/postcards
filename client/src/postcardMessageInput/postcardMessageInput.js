@@ -21,7 +21,7 @@ const PostcardMessageInput = ({ value, messageUpdated }) => {
 
 function mapStateToProps(state) {
   return {
-    value: state.postcardMessage.message
+    value: state.postcard.message.value
   }
 }
 

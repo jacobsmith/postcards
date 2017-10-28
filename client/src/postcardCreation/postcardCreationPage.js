@@ -4,9 +4,10 @@ import PostcardMessageInput from './../postcardMessageInput/postcardMessageInput
 import Button from './../button/button.js';
 import ImageUpload from './../imageUpload/imageUpload.js'
 import PreviewPostcard from './../previewPostcard/previewPostcard.js';
-import TestReduxComponent from './testReduxComponent.js';
 
 import AddressInputs from './../address/addressInputs.js';
+
+import { connect } from 'react-redux';
 
 class PostcardCreationPage extends Component {
   constructor() {
@@ -31,30 +32,32 @@ class PostcardCreationPage extends Component {
 
   previewPostcard() {
     this.setState({ previewingPostcard: true })
+
     customFetch('/api/postcards/preview', {
       method: 'post',
       body: JSON.stringify({
-        photoId: this.state.photoId,
-        message: window.reduxStore.getState().postcardMessage.message,
-        address: window.reduxStore.getState().addresses
+        photoId: this.props.photo.photoId,
+        message: this.props.message.value,
+        address: this.props.addresses
       })
     })
     .then(data => this.setState({ postcardReceived: true, front: data.front, back: data.back, postcardId: data.postcard_id }))
   }
 
   canPreview() {
-    return window.reduxStore.getState().photo.imgSrc &&
-    window.reduxStore.getState().addresses.from.addressName &&
-    window.reduxStore.getState().addresses.from.street &&
-    window.reduxStore.getState().addresses.from.city &&
-    window.reduxStore.getState().addresses.from.state &&
-    window.reduxStore.getState().addresses.from.zip &&
-    window.reduxStore.getState().addresses.to.addressName &&
-    window.reduxStore.getState().addresses.to.street &&
-    window.reduxStore.getState().addresses.to.city &&
-    window.reduxStore.getState().addresses.to.state &&
-    window.reduxStore.getState().addresses.to.zip &&
-    0 < window.reduxStore.getState().postcardMessage.message.length < 301
+    return this.props.photo.imgSrc &&
+    this.props.addresses.from.addressName &&
+    this.props.addresses.from.street &&
+    this.props.addresses.from.city &&
+    this.props.addresses.from.state &&
+    this.props.addresses.from.zip &&
+    this.props.addresses.to.addressName &&
+    this.props.addresses.to.street &&
+    this.props.addresses.to.city &&
+    this.props.addresses.to.state &&
+    this.props.addresses.to.zip &&
+    0 < this.props.message.value.length &&
+    this.props.message.value.length < 301
   }
 
   render() {
@@ -72,7 +75,7 @@ class PostcardCreationPage extends Component {
           previewingPostcard={this.state.previewingPostcard}
           front={this.state.front}
           back={this.state.back}
-          recipient={window.reduxStore.getState().addresses.to.addressName}
+          recipient={this.props.addresses.to.addressName}
           postcardId={this.state.postcardId}
           postcardCreatedSuccessfully={this.postcardCreatedSuccessfully}
         />
@@ -81,4 +84,12 @@ class PostcardCreationPage extends Component {
   }
 }
 
-export default PostcardCreationPage;
+function mapStateToProps(state) {
+  return {
+    message: state.postcard.message,
+    addresses: state.postcard.addresses,
+    photo: state.postcard.photo
+  }
+}
+
+export default connect(mapStateToProps)(PostcardCreationPage);

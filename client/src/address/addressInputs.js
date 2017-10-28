@@ -41,8 +41,8 @@ class AddressInputs extends Component {
 
 function mapStateToProps(state) {
   return {
-    from: state.addresses.from,
-    to: state.addresses.to
+    from: state.postcard.addresses.from,
+    to: state.postcard.addresses.to
   }
 }
 

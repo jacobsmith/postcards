@@ -6,9 +6,14 @@ import photoReducer from './photoReducer.js';
 // might need to nest everything under a global 'postcard' reducer for things related to the actual postcard (?)
 
 const rootReducer = combineReducers({
-  postcardMessage: postcardMessageReducer,
-  addresses: addressesReducer,
-  photo: photoReducer,
+  postcard: combineReducers({
+    message: postcardMessageReducer,
+    addresses: addressesReducer,
+    photo: photoReducer
+  })
+  // postcardMessage: postcardMessageReducer,
+  // addresses: addressesReducer,
+  // photo: photoReducer,
 })
 
 export default rootReducer;
