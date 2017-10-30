@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :photos
     post '/postcards/preview', to: 'postcards#preview'
     post '/postcards/create', to: 'postcards#create'
+    post '/login', to: 'sessions#create'
   end
 
   # used by lob to get the file to put on postcard

@@ -16,6 +16,7 @@ gem 'puma', '~> 3.0'
 gem 'mini_magick'
 gem 'lob'
 gem 'pry'
+gem "koala"
 
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
