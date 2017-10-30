@@ -65,8 +65,6 @@ class PostcardCreationPage extends Component {
   render() {
     return (
       <div className="postcardCreationPage">
-        <LoginWithFacebook />
-
         <div>{this.state.postcardCreatedSuccessfully ? 'Your postcard was created successfully! Feel free to send this card to another person by entering in a new \'To\' address, or select a new photo by clicking the photo below!' : ''}</div>
         <ImageUpload />
 
