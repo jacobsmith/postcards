@@ -1,0 +1,17 @@
+.AppNavButton {
+  position: fixed;
+  bottom: 0;
+  height: 10vh;
+  width: 100vw;
+  text-transform: uppercase;
+  background-color: #dfdfdf;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.AppNavButton a {
+  text-decoration: none;
+}

@@ -11,7 +11,7 @@ class LoginWithFacebook extends Component {
     super();
   }
 
-  // oncomponentmount check if logged in to facebook, will need to update actions
+  // oncomponentmount check if logged in to facebook, will need to update actiona
 
   render() {
     let loggedInUserContent = (
