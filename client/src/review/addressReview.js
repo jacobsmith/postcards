@@ -13,7 +13,7 @@ class AddressReview extends Component {
           <div>{address.city}, {address.state} {address.zip}</div>
         </div>
 
-        <EditInfo to={this.props.editLocation} />
+        <EditInfo editLocation={this.props.editLocation} />
       </div>
     )
   }
