@@ -26,7 +26,6 @@ export default function addressesReducer(state = initialState, action) {
 
       newState[addressType][addressAttribute] = value
 
-      console.log('new state: ', newState)
       return newState;
     default:
       return newState;
