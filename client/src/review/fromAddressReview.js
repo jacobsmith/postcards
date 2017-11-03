@@ -1,10 +1,10 @@
 import React from 'react';
 
+import AddressReview from './addressReview.js';
+
 const FromAddressReview = ({ address }) => {
   return (
-    <div>
-      {address.street}
-    </div>
+    <AddressReview address={address} />
   )
 }
 

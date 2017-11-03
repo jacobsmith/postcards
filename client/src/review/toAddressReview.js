@@ -1,10 +1,9 @@
 import React from 'react';
+import AddressReview from './addressReview.js';
 
 const ToAddressReview = ({ address }) => {
   return (
-    <div>
-      {address.street}
-    </div>
+    <AddressReview address={address} />
   )
 }
 
