@@ -23,7 +23,7 @@ class Approval extends Component {
         <ToAddressReview address={postcard.addresses.to} />
         <MessageReview message={postcard.message.value} />
 
-        <AppNavButton text="Finish + Checkout" to="/" />
+        <AppNavButton text="Finish + Checkout" to="/payment" />
       </div>
     )
   }

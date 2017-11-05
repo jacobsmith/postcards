@@ -13,6 +13,20 @@ export function userLoggedInSuccessfully(user) {
   }
 }
 
+export function checkIfLoggedInToFacebook() {
+  return function(dispatch) {
+    let handleFbResponse = (response) => {
+      if (response['status'] === 'connected') {
+        dispatch(loginFacebookUser(response))
+      } else {
+        // nop, we don't auto-prompt for facebook login, that's creepy
+      }
+    }
+
+    window.FB.getLoginStatus(handleFbResponse)
+  }
+}
+
 export function getUserFacebookLogin() {
   return function(dispatch) {
     let handleFbResponse = (response) => {

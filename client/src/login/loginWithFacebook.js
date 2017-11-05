@@ -11,6 +11,10 @@ class LoginWithFacebook extends Component {
     super();
   }
 
+  componentWillMount() {
+    this.props.userActions.checkIfLoggedInToFacebook()
+  }
+
   // oncomponentmount check if logged in to facebook, will need to update actiona
 
   render() {
