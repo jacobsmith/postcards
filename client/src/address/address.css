@@ -1,41 +1,19 @@
 .Address {
   margin: 1em;
-  width: 60vw;
 }
 
-/*.Address input {
+.inputGroup {
+  margin: 1em;
+}
+
+.inputGroup label {
+  display: block;
+  font-size: 0.5em;
+  text-transform: uppercase;
+}
+
+.inputGroup input {
   border: 1px solid gray;
-  display: flex;
-  flex-direction: column;
-  font-size: 16px;
-  margin: 0.25em;
-}*/
-
-.Address-CityStateZip {
-  display: flex;
-  flex-direction: row;
-  max-width: 60vw;
-}
-
-.Address-Name {
-  width: 100%
-}
-
-.Address-Street {
+  height: 3em;
   width: 100%;
-}
-
-.Address-City {
-  width: 4em;
-  flex-grow: 3;
-}
-
-.Address-State {
-  width: 1em;
-  flex-grow: 1;
-}
-
-.Address-Zip {
-  width: 1em;
-  flex-grow: 1;
 }

@@ -20,10 +20,9 @@ class ImageUpload extends Component {
 
   render() {
     let emptyState = (
-      <div className="fileUpload-Container">
-        <img width="100%" className="fileUpload-PostcardIcon" src={postcardImg} alt="upload"/>
-        <div className="fileUpload-Text">Add your photo!</div>
-      </div>
+        <div className="fileUpload-Container">
+          <img width="100%" className="fileUpload-PostcardIcon" src={postcardImg} alt="upload"/>
+        </div>
     )
 
     let photo = (

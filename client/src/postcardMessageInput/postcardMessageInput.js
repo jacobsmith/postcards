@@ -12,7 +12,10 @@ const PostcardMessageInput = ({ value, messageUpdated }) => {
   return (
     <div>
       <div className="PostcardMessageInput--Container">
-        <textarea className="PostcardMessageInput" value={value} onChange={messageUpdated} />
+        <div className="inputGroup">
+          <label for="message">My Message</label>
+          <textarea name="message" className="PostcardMessageInput" value={value} onChange={messageUpdated} />
+        </div>
       </div>
       <CharacterCounter count={value.length} max={maxMessageLength} />
     </div>

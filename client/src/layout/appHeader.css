@@ -1,5 +1,7 @@
 .AppHeader {
   text-transform: uppercase;
   text-align: center;
-  margin: 2em;
+  font-size: 1.5rem;
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
