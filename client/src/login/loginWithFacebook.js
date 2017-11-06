@@ -12,7 +12,7 @@ class LoginWithFacebook extends Component {
   }
 
   componentWillMount() {
-    this.props.userActions.checkIfLoggedInToFacebook()
+    // this.props.userActions.checkIfLoggedInToFacebook()
   }
 
   // oncomponentmount check if logged in to facebook, will need to update actiona
