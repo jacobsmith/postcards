@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import StripeCheckout from 'react-stripe-checkout';
 import postcardImg from './../icons/postcard.svg'
 import customFetch from './../helpers/customFetch.js';
+import { connect } from 'react-redux';
+
 
 class Payment extends Component {
   constructor() {
@@ -11,6 +13,8 @@ class Payment extends Component {
   }
 
   onToken(token) {
+    // NEED TO PASS postcardId with Redux
+
     let body = {
       stripeToken: token,
       postcard_id: this.props.postcardId
@@ -101,4 +105,12 @@ class Payment extends Component {
   }
 }
 
-export default Payment;
+function mapStateToProps(state) {
+  return {
+    postcardId: state.postcardPreview.postcardId
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(Payment);

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Address from './address.js';
-import AppNavButton from './../nav/appNavButton.js';
 import { updateAddressInfo } from './../actions/actions.js';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -24,8 +23,6 @@ class AddressTo extends Component {
           state={this.props.to.state}
           zip={this.props.to.zip}
         />
-
-        <AppNavButton to="/address/from" text="Save to address" />
       </div>
     )
   }
