@@ -1,0 +1,16 @@
+.primaryButton {
+  text-transform: uppercase;
+  background-color: white;
+  color: #05313F;
+  height: 4rem;
+  width: 280px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: auto;
+  margin-top: 1rem;
+
+  border-radius: 40px;
+}

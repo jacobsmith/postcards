@@ -13,8 +13,6 @@ class Payment extends Component {
   }
 
   onToken(token) {
-    // NEED TO PASS postcardId with Redux
-
     let body = {
       stripeToken: token,
       postcard_id: this.props.postcardId
@@ -25,8 +23,6 @@ class Payment extends Component {
       body: JSON.stringify(body)
     })
   }
-
-
 
   render() {
     return (

@@ -1,0 +1,74 @@
+.page {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  height: 5rem;
+  background-color: #DDAE4C;
+  color: white;
+  display: flex;
+  justify-content: baseline;
+  align-items: center;
+  padding: 0 0.5em;
+}
+
+.headerImg {
+  float: left;
+}
+
+.headerName {
+  text-transform: uppercase;
+  font-size: 2em;
+  margin-left: 0.5em;
+}
+
+.mainBody {
+  background-color: #05313F;
+  /* 5rem for header, 3 rem for footer */
+  height: calc(100vh - 8rem);
+  color: white;
+
+  text-align: center;
+}
+
+.mainBody .getStarted {
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.mainBody .mainCameraOutsideBorder {
+  border: 2px solid #C4E4DD;
+  width: 315px;
+  height: 315px;
+  margin: auto;
+  margin-top: 2rem;
+  border-radius: 50%;
+}
+
+.mainBody .mainCamera {
+  background: #C4E4DD;
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  margin: auto;
+  margin-top: 7px; /* push the camera "down" half of the extra diameter of the border */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  -ms-align-items: center;
+  align-items: center;
+}
+
+.footer {
+  background-color: #C4E4DD;
+  text-align: center;
+  height: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #365B64;
+}

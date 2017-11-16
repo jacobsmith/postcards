@@ -7,6 +7,7 @@ import MessagePage from './message/messagePage.js';
 import ApprovalPage from './approval/approvalPage.js';
 import ImageUploadPage from './imageUpload/imageUploadPage.js';
 import PaymentPage from './payment/paymentPage.js';
+import IndexPage from './index/indexPage.js';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 
@@ -16,7 +17,8 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <Switch>
-            <Route path="/" exact={true} component={LoginPage} />
+            <Route path="/" exact={true} component={IndexPage} />
+            <Route path="/login" exact={true} component={LoginPage} />
             <Route path="/start" exact={true} component={ImageUploadPage} />
             <Route path="/address/to" exact={true} component={AddressToPage} />
             <Route path="/address/from" exact={true} component={AddressFromPage} />
