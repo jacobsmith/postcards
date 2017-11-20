@@ -4,7 +4,7 @@ import './layout.css';
 class Layout extends Component {
   render() {
     return (
-      <div className="Layout-Wrapper">
+      <div className="mainBody">
         {this.props.children}
       </div>
     )

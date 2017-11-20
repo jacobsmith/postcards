@@ -178,7 +178,7 @@ const IndexPage = () => {
           </div>
         </div>
 
-        <PrimaryButton text="Build your postcard" />
+        <PrimaryButton text="Build your postcard" to="/start"/>
       </div>
 
       <div className="footer-container">

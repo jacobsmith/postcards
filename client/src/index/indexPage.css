@@ -48,8 +48,9 @@
 .mainBody {
   background-color: #05313F;
   /* 5rem for header, 3 rem for footer */
-  height: calc(100vh - 8rem);
+  /*height: calc(100vh - 8rem);*/
   color: white;
+  padding-bottom: 3rem;
 
   text-align: center;
 }
