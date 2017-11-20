@@ -1,0 +1,38 @@
+.dropdownContent {
+  text-align: center;
+  position: absolute;
+  left: 0;
+  top: 5rem;
+  width: 100%;
+  background: #061F28;
+  padding-top: 1.5rem;
+  margin: 0 !important;
+}
+
+.contentHeader {
+  color: white;
+  text-transform: uppercase;
+  font-size: 1.25rem;
+}
+
+.pricecards {
+  display: flex;
+  justify-content: center;
+}
+
+.pricecardMain {
+  padding-top: 1rem;
+  font-size: 2.5rem;
+  color: #DDAE4C;
+}
+
+.pricecardDivider {
+  border-bottom: 1px solid #C4E4DD;
+}
+
+.pricecardAdditional {
+  padding-top: 1rem;
+  padding-bottom: 3rem;
+  color: #C4E4DD;
+  text-transform: uppercase;
+}

@@ -1,0 +1,45 @@
+.prints {
+  margin-top: 2em !important;
+  margin-bottom: 2em !important;
+
+  display: flex;
+  flex-direction: row;
+
+}
+
+.postcardPrintGraphic {
+  flex: 2;
+}
+
+.postcardPrintExplanation {
+  flex: 3;
+
+  text-align: left;
+}
+
+.postcardPrintDetail {
+  display: flex;
+
+  font-size: 18px;
+	font-weight: 600;
+	line-height: 1.67;
+	text-align: left;
+	color: #ffffff;
+	color: var(--white);
+}
+
+.postcardPrintDetails {
+  margin: 0 !important;
+}
+
+.postcardPrintDetail {
+  margin: 0 !important;
+}
+
+.postcardPrintDetail div {
+  margin-left: 0 !important;
+}
+
+.postcardPrintDetail .key {
+  color: var(--dull-orange);
+}

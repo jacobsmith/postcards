@@ -7,10 +7,31 @@
   height: 5rem;
   background-color: #DDAE4C;
   color: white;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.headerLeft {
+  height: 100%;
+  float: left;
   display: flex;
   justify-content: baseline;
   align-items: center;
-  padding: 0 0.5em;
+}
+
+.headerRight {
+  height: 100%;
+  float: right;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  color: #05313f;
+}
+
+.headerRight div {
+  margin: 0 1.5rem;
 }
 
 .headerImg {
@@ -22,6 +43,7 @@
   font-size: 2em;
   margin-left: 0.5em;
 }
+
 
 .mainBody {
   background-color: #05313F;
@@ -63,7 +85,7 @@
   align-items: center;
 }
 
-.footer {
+.footer-container {
   background-color: #C4E4DD;
   text-align: center;
   height: 3rem;
