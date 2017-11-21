@@ -6,7 +6,6 @@
   width: 100%;
   background: #061F28;
   padding-top: 1.5rem;
-  margin: 0 !important;
 }
 
 .contentHeader {
@@ -20,10 +19,12 @@
   justify-content: center;
 }
 
+.pricecard {
+  margin: 1.5em;
+}
+
 .pricecardMain {
   padding-top: 1rem;
-  font-size: 2.5rem;
-  color: #DDAE4C;
 }
 
 .pricecardDivider {
@@ -31,6 +32,11 @@
 }
 
 .pricecardAdditional {
+  font-family: Barlow;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 2px;
+
   padding-top: 1rem;
   padding-bottom: 3rem;
   color: #C4E4DD;

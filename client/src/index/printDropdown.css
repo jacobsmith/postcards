@@ -28,16 +28,8 @@
 	color: var(--white);
 }
 
-.postcardPrintDetails {
-  margin: 0 !important;
-}
-
-.postcardPrintDetail {
-  margin: 0 !important;
-}
-
 .postcardPrintDetail div {
-  margin-left: 0 !important;
+  margin-right: 0.5em;
 }
 
 .postcardPrintDetail .key {

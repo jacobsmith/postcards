@@ -5,7 +5,7 @@ class PrintsDropdown extends Component {
   render() {
     return (
       <div className="dropdownContent">
-        <div className="contentHeader">About our prints:</div>
+        <div className="contentHeader secondary-info">About our prints</div>
 
         <div className="prints">
           <div className="postcardPrintGraphic">
