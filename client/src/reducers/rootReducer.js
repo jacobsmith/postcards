@@ -4,8 +4,8 @@ import addressesReducer from './addressesReducer.js';
 import photoReducer from './photoReducer.js';
 import userReducer from './userReducer.js';
 import postcardPreviewReducer from './postcardPreviewReducer.js';
+import dropdownReducer from './dropdownReducer.js';
 
-// might need to nest everything under a global 'postcard' reducer for things related to the actual postcard (?)
 
 const rootReducer = combineReducers({
   postcard: combineReducers({
@@ -14,7 +14,8 @@ const rootReducer = combineReducers({
     photo: photoReducer
   }),
   postcardPreview: postcardPreviewReducer,
-  user: userReducer
+  user: userReducer,
+  dropdowns: dropdownReducer
 })
 
 export default rootReducer;

@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as dropdownActions from './../actions/dropdownActions.js';
 
 class DropdownToggle extends Component {
   constructor() {
     super()
-    this.state = {
-      display: false
-    }
-
     this.toggleDisplay = this.toggleDisplay.bind(this);
   }
 
   toggleDisplay() {
-    this.setState({ display: !this.state.display })
+    if (this.props.dropdownId === this.props.activeDropdownId) {
+      this.props.dropdownActions.setActive(null)
+    } else {
+      this.props.dropdownActions.setActive(this.props.dropdownId)
+    }
   }
 
   render() {
@@ -20,10 +23,25 @@ class DropdownToggle extends Component {
 
     return (
       <div onClick={this.toggleDisplay}>
-        {this.props.text} {this.state.display ? upArrow : downArrow }
-        { this.state.display ? this.props.children : ''}</div>
+        {this.props.text} {this.props.activeDropdownId === this.props.dropdownId ? upArrow : downArrow }
+      </div>
     )
   }
 }
 
-export default DropdownToggle;
+function mapStateToProps(state) {
+  return {
+    activeDropdownId: state.dropdowns.activeDropdownId
+  }
+}
+
+function mapDispatchToActions(dispatch) {
+  return {
+    dropdownActions: bindActionCreators(dropdownActions, dispatch)
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToActions
+)(DropdownToggle);
