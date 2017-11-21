@@ -7,6 +7,7 @@ class AddressReview extends Component {
 
     return (
       <div className="AddressReview">
+        <div className="AddressReview-Type">{this.props.type}</div>
         <div className="Address">
           <div>{address.addressName}</div>
           <div>{address.street}</div>

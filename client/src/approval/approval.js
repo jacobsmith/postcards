@@ -8,6 +8,8 @@ import MessageReview from './../review/messageReview.js';
 import PostcardImageReview from './../review/postcardImageReview.js';
 import * as previewActions from './../actions/previewActions.js';
 
+import './approval.css';
+
 class Approval extends Component {
   componentWillMount() {
     this.props.previewActions.previewPostcard(this.props.postcard);
@@ -16,14 +18,21 @@ class Approval extends Component {
   render() {
     let postcard = this.props.postcard;
     return (
-      <div>
-        <PostcardImageReview preview={this.props.postcardPreview} />
+      <div className="approvalContent">
+        <div>
+          <PostcardImageReview preview={this.props.postcardPreview} />
+        </div>
 
-        <FromAddressReview address={postcard.addresses.from} />
-        <ToAddressReview address={postcard.addresses.to} />
-        <MessageReview message={postcard.message.value} />
+        <div>
+          <div className="address-reviews">
+            <FromAddressReview address={postcard.addresses.from} />
+            <ToAddressReview address={postcard.addresses.to} />
+          </div>
 
-        <AppNavButton text="Finish + Checkout" to="/payment" />
+          <div className="message-review">
+            <MessageReview message={postcard.message.value} />
+          </div>
+        </div>
       </div>
     )
   }
