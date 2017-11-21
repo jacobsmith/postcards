@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="343px" height="243px" viewBox="0 0 343 243" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>postcard-icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1-Copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="03-Desktop" transform="translate(-247.000000, -256.000000)">
+            <g id="Group-2" transform="translate(0.000000, 120.000000)">
+                <g id="Group-5" transform="translate(184.000000, 134.000000)">
+                    <g id="Group-2" transform="translate(0.000000, 1.000000)">
+                        <g id="postcard-icon" transform="translate(63.000000, 1.000000)">
+                            <path d="M0,242.167 L342.515,242.167 L342.515,0 L0,0 L0,242.167 Z M2,240.167 L340.515,240.167 L340.515,2 L2,2 L2,240.167 Z" id="Fill-1" fill="#7D9E94"></path>
+                            <path d="M13.174259,227.912803 L330.341734,227.912803 L330.341734,12.2511938 L13.174259,12.2511938 L13.174259,227.912803 Z M11.168,229.876996 L332.347993,229.876996 L332.347993,10.287 L11.168,10.287 L11.168,229.876996 Z" id="Fill-2" fill="#DDDDDD"></path>
+                            <path d="M261.032,79.602 L309.345,79.602 L309.345,31.288 L261.032,31.288 L261.032,79.602 Z M259.033,81.602 L311.346,81.602 L311.346,29.288 L259.033,29.288 L259.033,81.602 Z" id="Fill-3" fill="#DDDDDD"></path>
+                            <polygon id="Fill-4" fill="#DDDDDD" points="163.725 199.281 165.725 199.281 165.725 70.601 163.725 70.601"></polygon>
+                            <polygon id="Fill-5" fill="#DDDDDD" points="32.168 129.971 144.725 129.971 144.725 127.971 32.168 127.971"></polygon>
+                            <polygon id="Fill-6" fill="#DDDDDD" points="32.168 166.738 144.725 166.738 144.725 164.738 32.168 164.738"></polygon>
+                            <polygon id="Fill-7" fill="#DDDDDD" points="32.168 148.354 144.725 148.354 144.725 146.354 32.168 146.354"></polygon>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

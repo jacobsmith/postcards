@@ -29,6 +29,8 @@ class Approval extends Component {
             <ToAddressReview address={postcard.addresses.to} />
           </div>
 
+          <div className="reviewHorizontalDivider"></div>
+          
           <div className="message-review">
             <MessageReview message={postcard.message.value} />
           </div>

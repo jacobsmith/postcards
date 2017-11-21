@@ -8,13 +8,15 @@ class AddressReview extends Component {
     return (
       <div className="AddressReview">
         <div className="AddressReview-Type">{this.props.type}</div>
-        <div className="Address">
-          <div>{address.addressName}</div>
-          <div>{address.street}</div>
-          <div>{address.city}, {address.state} {address.zip}</div>
-        </div>
 
-        <EditInfo editLocation={this.props.editLocation} />
+        <div className="AddressReviewAndEdit">
+          <div className="Address">
+            <div>{address.addressName}</div>
+            <div>{address.street}</div>
+            <div>{address.city}, {address.state} {address.zip}</div>
+          </div>
+          <EditInfo editLocation={this.props.editLocation} />
+        </div>
       </div>
     )
   }
