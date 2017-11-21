@@ -9,6 +9,8 @@ import cameraImg from './camera.png';
 import PrimaryButton from './../button/primaryButton.js'
 import DropdownToggle from './dropdown.js';
 
+import Footer from './../layout/footer.js';
+
 import DropdownsDisplay from './dropdowns/display.js';
 
 const IndexPage = () => {
@@ -41,9 +43,7 @@ const IndexPage = () => {
         <PrimaryButton text="Build your postcard" to="/start"/>
       </div>
 
-      <div className="footer-container">
-        &copy; Say it with a Postcard. All Rights Reserved.
-      </div>
+      <Footer />
     </div>
   )
 }

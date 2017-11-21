@@ -4,16 +4,21 @@ import AddressTo from './addressTo.js';
 import AppHeader from './../layout/appHeader.js';
 import AppNavButton from './../nav/appNavButton.js';
 import PageContent from './../page/pageContent.js';
+import PrimaryAction from './../layout/primaryAction.js';
+import PrimaryButton from './../button/primaryButton.js';
+import Footer from './../layout/footer.js';
 
 const AddressToPage = () => {
   return (
     <Layout>
       <PageContent>
-        <AppHeader text="Who are you sending to?" />
+        <AppHeader />
+        <PrimaryAction text="Recipient address" />
         <AddressTo />
-      </PageContent>
 
-      <AppNavButton to="/address/from" text="Save to address" />
+        <PrimaryButton to="/address/from" text="Save to address" />
+        <Footer />
+      </PageContent>
     </Layout>
   )
 }

@@ -13,7 +13,7 @@ const PostcardMessageInput = ({ value, messageUpdated }) => {
     <div>
       <div className="PostcardMessageInput--Container">
         <div className="inputGroup">
-          <label for="message">My Message</label>
+          <label for="message" className="small-detail">My Message</label>
           <textarea name="message" className="PostcardMessageInput" value={value} onChange={messageUpdated} />
         </div>
       </div>

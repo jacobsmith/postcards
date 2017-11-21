@@ -6,6 +6,7 @@ import AppHeader from './../layout/appHeader.js';
 import PageContent from './../page/pageContent.js';
 import PrimaryButton from './../button/primaryButton.js';
 import PrimaryAction from './../layout/primaryAction.js';
+import Footer from './../layout/footer.js';
 
 const ImageUploadPage = () => {
   return (
@@ -15,6 +16,8 @@ const ImageUploadPage = () => {
         <PrimaryAction text="select your image" />
         <ImageUpload />
         <PrimaryButton to="/address/to" text="Save this image" />
+
+        <Footer />
       </PageContent>
     </Layout>
   )

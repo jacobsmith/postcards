@@ -4,6 +4,14 @@ html, body {
   margin: 0;
 }
 
+div#root {
+  height: 100%;
+}
+
+div.App {
+  height: 100%;
+}
+
 :root {
 	--dull-orange: #dbaf32;
 	--dark-teal: #003041;
@@ -27,7 +35,9 @@ html, body {
 
 .primary-info {
 	font-family: 'Barlow Condensed';
-	font-size: 48px;
+  font-size: 1.8rem;
+  margin-top: 2rem;
+	/*font-size: 48px;*/
 	font-weight: 500;
 	font-stretch: condensed;
 	letter-spacing: 0.1px;

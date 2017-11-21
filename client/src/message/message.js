@@ -8,10 +8,7 @@ import PostcardMessageInput from './../postcardMessageInput/postcardMessageInput
 class AddressTo extends Component {
   render() {
     return (
-      <div>
-        <PostcardMessageInput />
-        <AppNavButton to="/approve" text="Save my message"/>
-      </div>
+      <PostcardMessageInput />
     )
   }
 }
