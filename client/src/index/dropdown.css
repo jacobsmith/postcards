@@ -8,6 +8,11 @@
   padding-top: 1.5rem;
 }
 
+.dropdownArrow {
+  margin-left: 0.5em;
+  transform: scale(0.8);
+}
+
 .contentHeader {
   color: white;
   text-transform: uppercase;

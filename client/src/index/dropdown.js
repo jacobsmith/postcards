@@ -3,6 +3,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as dropdownActions from './../actions/dropdownActions.js';
 
+import upArrowImg from './../assets/arrow-open.svg';
+import downArrowImg from './../assets/arrow-closed.svg';
+
 class DropdownToggle extends Component {
   constructor() {
     super()
@@ -18,8 +21,8 @@ class DropdownToggle extends Component {
   }
 
   render() {
-    let upArrow = '\u2303';
-    let downArrow = '\u2304';
+    let upArrow = <img className="dropdownArrow" src={upArrowImg} />
+    let downArrow = <img className="dropdownArrow" src={downArrowImg} />
 
     return (
       <div onClick={this.toggleDisplay}>

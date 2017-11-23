@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './imageUpload.css';
 import postcardImg from './../icons/postcard.svg';
 import * as photoActions from './../actions/photoActions.js';
-import cameraImg from './../index/camera.png';
+import photoImg from './../assets/polaroid-icon.svg';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -21,20 +21,12 @@ class ImageUpload extends Component {
 
   render() {
     let emptyState = (
-        <div className="mainCameraOutsideBorder">
-          <div className="mainCamera">
-            <img src={cameraImg} alt="upload" className=""/>
-          </div>
-        </div>
+      <img src={photoImg} alt="upload" className="selectImage"/>
     )
 
     let photo = (
       // this needs an "uploaded icon" or something
-      <div className="mainCameraOutsideBorder">
-        <div className="mainCamera">
-          <img src={cameraImg} alt="upload" className=""/>
-        </div>
-      </div>
+      <img src={photoImg} alt="upload" className="selectImage"/>
     )
 
     return (
