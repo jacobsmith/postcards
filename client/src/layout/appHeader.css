@@ -5,3 +5,9 @@
   margin-top: 0.5em;
   margin-bottom: 1em;
 }
+
+.headerLink {
+  display: flex;
+  align-items: center;
+  color: white;
+}

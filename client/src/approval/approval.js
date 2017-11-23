@@ -9,21 +9,40 @@ import PostcardImageReview from './../review/postcardImageReview.js';
 import postcardImg from './../icons/postcard.svg'
 import StripeCheckout from 'react-stripe-checkout';
 import PrimaryButton from './../button/primaryButton.js';
+import customFetch from './../helpers/customFetch.js';
 import * as previewActions from './../actions/previewActions.js';
 
 import './approval.css';
 
 class Approval extends Component {
+  constructor() {
+    super()
+    this.onToken = this.onToken.bind(this);
+  }
+
   componentWillMount() {
     this.props.previewActions.previewPostcard(this.props.postcard);
   }
+
+  onToken(token) {
+    let body = {
+      stripeToken: token,
+      postcard_id: this.props.postcard.id
+    }
+
+    customFetch('/api/postcards/create', {
+      method: 'post',
+      body: JSON.stringify(body)
+    })
+  }
+
 
   render() {
     let postcard = this.props.postcard;
     return (
     <div>
       <div className="approvalContent">
-        <div>
+        <div className="postcardImageReviewContainer">
           <PostcardImageReview preview={this.props.postcardPreview} />
         </div>
 
