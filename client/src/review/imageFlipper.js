@@ -22,7 +22,7 @@ class ImageFlipper extends Component {
     }
 
     return (
-      <div className={containerClassName} onTouchStart={this.toggleHover}>
+      <div className={containerClassName} onTouchStart={this.toggleHover} onClick={this.toggleHover}>
         <div className="flipper">
           <div className="front">
             <img src={this.props.frontImage} className="image" />

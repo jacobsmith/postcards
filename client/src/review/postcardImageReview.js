@@ -15,7 +15,6 @@ class PostcardImageReview extends Component {
     } else if (postcardSuccess) {
       return (
         <div style={{width: '100%'}}>
-          {/* <img src={this.props.preview.frontImage} style={{maxWidth: '100%'}}/> */}
           <ImageFlipper frontImage={this.props.preview.frontImage} backImage={this.props.preview.backImage} />
         </div>
       )
