@@ -5,7 +5,8 @@ import './processDropdown.css';
 import './printDropdown.css';
 
 import headerImg from './headerImg.png';
-import cameraImg from './camera.png';
+import cameraImg from './../assets/camera.svg';
+// import cameraImg from './camera.png';
 import PrimaryButton from './../button/primaryButton.js'
 import DropdownToggle from './dropdown.js';
 
@@ -34,11 +35,7 @@ const IndexPage = () => {
         <DropdownsDisplay />
 
         <div className="getStarted">Hello, let's get started!</div>
-        <div className="mainCameraOutsideBorder">
-          <div className="mainCamera">
-            <img src={cameraImg} alt="" className=""/>
-          </div>
-        </div>
+        <img src={cameraImg} alt="" className="selectImage"/>
 
         <PrimaryButton text="Build your postcard" to="/start"/>
       </div>
