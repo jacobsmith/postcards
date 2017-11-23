@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import cameraImg from './../camera.png';
 
+import uploadImg from './../../assets/upload-icon.svg';
+import addressImg from './../../assets/address-icon.svg';
+import noteImg from './../../assets/note-icon.svg';
+import sendImg from './../../assets/send-icon.svg';
+
 class ProcessDropdown extends Component {
   render() {
     return (
@@ -11,7 +16,7 @@ class ProcessDropdown extends Component {
           <div className="processCard">
             <div className="processImageContainer">
               <div className="processImage">
-                <img src={cameraImg} />
+                <img src={uploadImg} />
               </div>
             </div>
 
@@ -26,7 +31,7 @@ class ProcessDropdown extends Component {
           </div>
           <div className="processCard">
             <div className="processImage">
-
+                <img src={addressImg} />
             </div>
 
             <div className="processStep secondary-action">
@@ -40,7 +45,7 @@ class ProcessDropdown extends Component {
           </div>
           <div className="processCard">
             <div className="processImage">
-
+                <img src={noteImg} />
             </div>
 
             <div className="processStep secondary-action">
@@ -54,7 +59,7 @@ class ProcessDropdown extends Component {
           </div>
           <div className="processCard">
             <div className="processImage">
-
+                <img src={sendImg} />
             </div>
 
             <div className="processStep secondary-action">
