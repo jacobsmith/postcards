@@ -16,8 +16,6 @@ const ImageUploadPage = () => {
         <PrimaryAction text="select your image" />
         <ImageUpload />
         <PrimaryButton to="/address/to" text="Save this image" />
-
-        <Footer />
       </PageContent>
     </Layout>
   )

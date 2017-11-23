@@ -17,7 +17,6 @@ const AddressToPage = () => {
         <AddressTo />
 
         <PrimaryButton to="/address/from" text="Save to address" />
-        <Footer />
       </PageContent>
     </Layout>
   )

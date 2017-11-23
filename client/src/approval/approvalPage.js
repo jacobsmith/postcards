@@ -14,9 +14,6 @@ const ApprovalPage = () => {
         <AppHeader  />
         <PrimaryAction text="Review all final information" />
         <Approval />
-
-        <PrimaryButton to="/payment" text="Finish + Checkout" />
-        <Footer />
       </PageContent>
     </Layout>
   )

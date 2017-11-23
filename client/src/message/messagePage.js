@@ -14,7 +14,6 @@ const MessagePage = () => {
       <Message />
 
       <PrimaryButton to="/approve" text="Save my message" />
-      <Footer />
     </Layout>
   )
 }
