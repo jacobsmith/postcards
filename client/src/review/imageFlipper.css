@@ -48,3 +48,17 @@
 .back {
 	transform: rotateY(180deg);
 }
+
+
+.flipperArrow {
+	width: 100px;
+	position: absolute;
+	z-index: 3;
+	top: 50%;
+
+	transform: rotate(15deg);
+}
+
+.flipperArrow-Right {
+	transform: rotateY(180deg) rotate(15deg) translateX(100%) translateY(-43%);
+}

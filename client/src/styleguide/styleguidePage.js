@@ -47,6 +47,7 @@ const StyleguidePage = () => {
           <PostcardImageReview preview={{frontImage: "https://placebear.com/600/400", backImage: "https://placebear.com/600/400"}} />
         </StyleguideElement>
 
+        <StyleguideElement />
       </PageContent>
     </Layout>
   )
