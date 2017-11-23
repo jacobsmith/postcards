@@ -26,7 +26,7 @@ class ImageUpload extends Component {
 
     let photo = (
       // this needs an "uploaded icon" or something
-      <img src={photoImg} alt="upload" className="selectImage"/>
+      <img src={this.props.imgSrc} alt="upload" className="selectImage"/>
     )
 
     return (
