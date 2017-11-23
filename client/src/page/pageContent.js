@@ -1,5 +1,4 @@
 import React from 'react';
-import './pageContent.css';
 
 const PageContent = (props) => {
   return (
