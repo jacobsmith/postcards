@@ -5,6 +5,7 @@ import photoReducer from './photoReducer.js';
 import userReducer from './userReducer.js';
 import postcardPreviewReducer from './postcardPreviewReducer.js';
 import dropdownReducer from './dropdownReducer.js';
+import postcardCreationReducer from './postcardCreationReducer.js';
 
 
 const rootReducer = combineReducers({
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
     photo: photoReducer
   }),
   postcardPreview: postcardPreviewReducer,
+  postcardCreation: postcardCreationReducer,
   user: userReducer,
   dropdowns: dropdownReducer
 })

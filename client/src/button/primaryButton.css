@@ -17,3 +17,38 @@
 
   border-radius: 40px;
 }
+
+.primaryButton--disabled {
+  text-transform: uppercase;
+  background-color: gray;
+  color: #05313F;
+  height: 4rem;
+  width: 280px;
+
+  font-weight: 600;
+  letter-spacing: 2px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: auto;
+  margin-top: 1rem;
+
+  border-radius: 40px;
+}
+
+.disabledContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.disabled-lock-icon {
+  margin-right: 1em;
+}
+
+.disabledText {
+  color: white;
+}

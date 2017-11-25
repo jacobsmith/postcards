@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import lockIcon from './../assets/lock.svg'
 import './primaryButton.css';
 
-const PrimaryButton = ({ text, to, link = true }) => {
-  if (link) {
+const PrimaryButton = ({ text, to, link = true, disabled = false }) => {
+  if (link && !disabled) {
     return (
       <Link to={to} className="primaryButton">
         <div>
@@ -13,9 +14,12 @@ const PrimaryButton = ({ text, to, link = true }) => {
     )
   } else {
     return (
-      <div className="primaryButon">
-        {text} &rsaquo;
-      </div>
+      <a href="#" className={`primaryButon ${disabled ? 'primaryButton--disabled' : ''}`}>
+        <div className="disabledContainer">
+          { disabled ? <img className="disabled-lock-icon" src={lockIcon} /> : '' }
+          <div className="disabledText">{text} &rsaquo;</div>
+        </div>
+      </a>
 
     )
   }
