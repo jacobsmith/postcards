@@ -26,6 +26,18 @@ export default function addressesReducer(state = initialState, action) {
 
       newState[addressType][addressAttribute] = value
 
+      if (
+        newState[addressType]['addressName'] &&
+        newState[addressType]['street'] &&
+        newState[addressType]['city'] &&
+        newState[addressType]['state'] &&
+        newState[addressType]['zip']
+      ) {
+        newState[addressType]['allPresent'] = true
+      } else {
+        newState[addressType]['allPresent'] = false
+      }
+
       return newState;
     default:
       return newState;

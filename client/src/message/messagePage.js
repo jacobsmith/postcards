@@ -13,7 +13,7 @@ const MessagePage = () => {
       <PrimaryAction text="What do you want it to say?" />
       <Message />
 
-      <PrimaryButton to="/approve" text="Save my message" />
+      <PrimaryButton to="/approve" text="Save my message" enabledProp="postcard.message.value" />
     </Layout>
   )
 }

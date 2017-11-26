@@ -16,7 +16,7 @@ const AddressToPage = () => {
         <PrimaryAction text="Recipient address" />
         <AddressTo />
 
-        <PrimaryButton to="/address/from" text="Save to address" />
+        <PrimaryButton to="/address/from" text="Save to address" enabledProp="postcard.addresses.to.allPresent" />
       </PageContent>
     </Layout>
   )

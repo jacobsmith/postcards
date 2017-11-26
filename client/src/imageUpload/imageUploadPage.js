@@ -15,7 +15,7 @@ const ImageUploadPage = () => {
         <AppHeader />
         <PrimaryAction text="select your image" />
         <ImageUpload />
-        <PrimaryButton to="/address/to" text="Save this image" />
+        <PrimaryButton to="/address/to" text="Save this image" enabledProp={'postcard.photo.imgSrc'} />
       </PageContent>
     </Layout>
   )
