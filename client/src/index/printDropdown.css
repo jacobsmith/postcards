@@ -11,6 +11,18 @@
   flex: 2;
 }
 
+.four-inches {
+  position: absolute;
+  left: 8%;
+  top: 50%;
+}
+
+.six-inches {
+  position: absolute;
+  bottom: 3%;
+  left: 25%;
+}
+
 .postcardPrintExplanation {
   flex: 2;
 

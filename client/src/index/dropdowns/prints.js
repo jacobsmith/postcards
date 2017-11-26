@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import cameraImg from './../camera.png';
+import postcardImg from './../../assets/postcard-icon.svg';
 
 class PrintsDropdown extends Component {
   render() {
@@ -9,7 +9,9 @@ class PrintsDropdown extends Component {
 
         <div className="prints">
           <div className="postcardPrintGraphic">
-            <img src={cameraImg} />
+            <div className="four-inches">4"</div>
+            <div className="six-inches">6"</div>
+            <img src={postcardImg} />
           </div>
 
           <div className="postcardPrintExplanation small-detail">
