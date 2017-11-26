@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import lockIcon from './../assets/lock.svg'
 import './primaryButton.css';
 
-const PrimaryButton = ({ text, to, link = true, disabled = false }) => {
-  if (link && !disabled) {
+const PrimaryButton = ({ text, to, link = true, disabled = false, enabled = true }) => {
+  if (link && enabled && !disabled) {
     return (
       <Link to={to} className="primaryButton">
         <div>

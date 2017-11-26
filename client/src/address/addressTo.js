@@ -22,6 +22,7 @@ class AddressTo extends Component {
           city={this.props.to.city}
           state={this.props.to.state}
           zip={this.props.to.zip}
+          postcardImage={this.props.postcardImage}
         />
       </div>
     )
@@ -30,7 +31,8 @@ class AddressTo extends Component {
 
 function mapStateToProps(state) {
   return {
-    to: state.postcard.addresses.to
+    to: state.postcard.addresses.to,
+    postcardImage: state.postcard.photo.imgSrc
   }
 }
 
