@@ -17,6 +17,10 @@
   width: 100%;
 }
 
+.cityStateZipInputGroup .inputGroup {
+  margin-top: 0;
+}
+
 .addressCity {
   flex: 5;
 }
