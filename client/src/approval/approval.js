@@ -20,7 +20,7 @@ class PostcardCreatedSuccessfully extends Component {
     return (
     <div style={{marginTop: '3rem'}}>
       <div>your postcard was created successfully!</div>
-      <primarybutton to="/start" text="send another postcard!" />
+      <PrimaryButton to="/start" text="send another postcard!" />
     </div>
     )
   }
@@ -31,7 +31,7 @@ class PostcardError extends Component {
     return (
       <div style={{marginTop: '3rem'}}>
         <div>Uh-oh, something happened while trying to make your postcard!</div>
-        <primarybutton to="/start" text="Double check the information" />
+        <PrimaryButton to="/address/to" text="Double check the information" />
       </div>
     )
   }
