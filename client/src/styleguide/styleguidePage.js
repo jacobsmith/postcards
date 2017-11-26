@@ -6,6 +6,9 @@ import PageContent from './../page/pageContent.js';
 import PrimaryAction from './../layout/primaryAction.js';
 import PrimaryButton from './../button/primaryButton.js';
 import PostcardImageReview from './../review/postcardImageReview.js';
+
+import ImageUploadingIndicator from './../imageUpload/imageUploadingIndicator';
+
 import './styleguide.css';
 
 
@@ -31,6 +34,10 @@ const StyleguidePage = () => {
       <PageContent>
         <AppHeader />
         <PrimaryAction text="Styleguide" />
+
+        <StyleguideElement>
+          <ImageUploadingIndicator imgSrc="https://placebear.com/400/400" />
+        </StyleguideElement>
 
         <StyleguideElement>
           <Text>Fetching Postcard</Text>

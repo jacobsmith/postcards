@@ -8,6 +8,8 @@ import customFetch from './../helpers/customFetch.js';
 
 export function uploadPhoto(file) {
   return function(dispatch) {
+    dispatch(imageUploadInProgress());
+
     var reader = new FileReader();
     reader.readAsDataURL(file);
 
@@ -38,6 +40,13 @@ export function notifyUserOfUpdate() {
     type: IMAGE_UPLOAD_BEGIN
   }
 }
+
+function imageUploadInProgress() {
+  return {
+    type: IMAGE_UPLOAD_BEGIN
+  }
+}
+
 export function imageUploadSuccess(imgData, photoId) {
   return {
     type: IMAGE_UPLOAD_SUCCESS,
