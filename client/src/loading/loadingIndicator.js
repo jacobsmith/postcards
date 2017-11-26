@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import './imageUploadingIndicator.css';
+import './loadingIndicator.css';
 
-class ImageUploadingIndicator extends Component {
+class LoadingIndicator extends Component {
   render() {
     return (
-      <div className="spinner">
+      <div className={'spinner ' + (this.props.wide ? 'spinner-wide' : '') }>
         <div className="text">{this.props.text}</div>
         <div className="cube1"></div>
         <div className="cube2"></div>
@@ -13,4 +13,4 @@ class ImageUploadingIndicator extends Component {
   }
 }
 
-export default ImageUploadingIndicator;
+export default LoadingIndicator;

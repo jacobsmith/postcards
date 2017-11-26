@@ -8,7 +8,7 @@ import './primaryButton.css';
 
 class PrimaryButton  extends Component {
   render() {
-    let { text, to, link = true, disabled = false, enabled = true, enabledProp } = this.props
+    let { text, to, link = true, disabled = false, enabled = true, enabledProp, onClick } = this.props
 
     var deep_value = function(obj, path){
       for (var i=0, path=path.split('.'), len=path.length; i<len; i++){
@@ -23,7 +23,7 @@ class PrimaryButton  extends Component {
 
     if (link && enabled && !disabled) {
       return (
-        <Link to={to} className="primaryButton">
+        <Link to={to} className="primaryButton" onClick={onClick}>
           <div>
             {text} &rsaquo;
           </div>

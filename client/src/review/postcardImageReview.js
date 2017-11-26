@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ImageFlipper from './imageFlipper.js';
-
+import LoadingIndicator from './../loading/loadingIndicator.js';
 
 class PostcardImageReview extends Component {
   render() {
@@ -10,7 +10,7 @@ class PostcardImageReview extends Component {
 
     if (postcardLoading) {
       return (
-        <div>Postcard is loading!</div>
+        <LoadingIndicator text="Generating a final preview of your postcard!" wide={true} />
       )
     } else if (postcardSuccess) {
       return (

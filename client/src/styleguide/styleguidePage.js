@@ -7,7 +7,7 @@ import PrimaryAction from './../layout/primaryAction.js';
 import PrimaryButton from './../button/primaryButton.js';
 import PostcardImageReview from './../review/postcardImageReview.js';
 
-import ImageUploadingIndicator from './../imageUpload/imageUploadingIndicator';
+import LoadingIndicator from './../loading/loadingIndicator';
 
 import './styleguide.css';
 
@@ -36,7 +36,15 @@ const StyleguidePage = () => {
         <PrimaryAction text="Styleguide" />
 
         <StyleguideElement>
-          <ImageUploadingIndicator imgSrc="https://placebear.com/400/400" />
+          <LoadingIndicator />
+        </StyleguideElement>
+
+        <StyleguideElement>
+          <LoadingIndicator text="Uploading"/>
+        </StyleguideElement>
+
+        <StyleguideElement>
+          <LoadingIndicator text="Securely processing your payment and sending the postcard!" wide={true} />
         </StyleguideElement>
 
         <StyleguideElement>

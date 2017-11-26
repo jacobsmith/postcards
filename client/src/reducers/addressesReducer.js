@@ -1,4 +1,5 @@
 import { ADDRESS_INFO_UPDATED } from  '../actions/actionTypes.js';
+import { CREATE_NEW_POSTCARD } from '../actions/postcardActions';
 
 let emptyAddress = {
   addressName: '',
@@ -39,6 +40,8 @@ export default function addressesReducer(state = initialState, action) {
       }
 
       return newState;
+    case CREATE_NEW_POSTCARD:
+      newState.to = emptyAddress;
     default:
       return newState;
   }

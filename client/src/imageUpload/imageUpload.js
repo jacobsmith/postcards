@@ -3,7 +3,7 @@ import './imageUpload.css';
 import postcardImg from './../icons/postcard.svg';
 import * as photoActions from './../actions/photoActions.js';
 import photoImg from './../assets/polaroid-icon.svg';
-import ImageUploadingIndicator from './imageUploadingIndicator';
+import LoadingIndicator from './../loading/loadingIndicator';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -30,7 +30,7 @@ class ImageUpload extends Component {
     )
 
     if (this.props.uploading) {
-      return (<ImageUploadingIndicator text="Uploading" />)
+      return (<LoadingIndicator text="Uploading" />)
     }
 
     return (

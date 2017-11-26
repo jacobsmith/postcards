@@ -12,6 +12,7 @@ import PrimaryButton from './../button/primaryButton.js';
 import customFetch from './../helpers/customFetch.js';
 import * as previewActions from './../actions/previewActions.js';
 import * as postcardActions from './../actions/postcardActions.js';
+import LoadingIndicator from './../loading/loadingIndicator.js';
 
 import './approval.css';
 
@@ -19,8 +20,8 @@ class PostcardCreatedSuccessfully extends Component {
   render() {
     return (
     <div style={{marginTop: '3rem'}}>
-      <div>your postcard was created successfully!</div>
-      <PrimaryButton to="/start" text="send another postcard!" />
+      <div>Your postcard was created successfully!</div>
+      <PrimaryButton to="/start" text="send another postcard!" onClick={this.props.postcardActions.createNewPostcard} />
     </div>
     )
   }
@@ -33,6 +34,14 @@ class PostcardError extends Component {
         <div>Uh-oh, something happened while trying to make your postcard!</div>
         <PrimaryButton to="/address/to" text="Double check the information" />
       </div>
+    )
+  }
+}
+
+class CreatingPostcard extends Component {
+  render() {
+    return (
+      <LoadingIndicator text="Securely processing your payment and sending your postcard!" wide={true} />
     )
   }
 }
@@ -65,6 +74,8 @@ class Approval extends Component {
       postcard_id: this.props.postcardPreview.postcardId
     }
 
+    this.props.postcardActions.creatingPostcard();
+
     customFetch('/api/postcards/create', {
       method: 'post',
       body: JSON.stringify(body)
@@ -76,8 +87,10 @@ class Approval extends Component {
   render() {
     let postcard = this.props.postcard;
 
-    if (this.props.postcardCreation.postcardCreatedSuccessfully) {
-      return <PostcardCreatedSuccessfully />
+    if (this.props.postcardCreation.creatingPostcard) {
+      return <CreatingPostcard />
+    } else if (this.props.postcardCreation.postcardCreatedSuccessfully) {
+      return <PostcardCreatedSuccessfully postcardActions={this.props.postcardActions} />
     } else if (this.props.postcardCreation.postcardCreatedSuccessfully === false) {
       return <PostcardError />
     } else {
@@ -106,7 +119,7 @@ class Approval extends Component {
             <StripeCheckout
               ComponentClass="div"
               token={this.onToken}
-              stripeKey="pk_live_lzEl0T1QkJfJNGTu8mwlANIK"
+              stripeKey="pk_test_1fP6F3hjLbG2TbLXPuEL3jEx"
               amount={149}
               name="Postcard"
               description={`Send postcard to ${this.props.postcard.addresses.to.addressName}`}
@@ -133,7 +146,7 @@ class Approval extends Component {
   function mapDispatchToProps(dispatch) {
     return {
       previewActions: bindActionCreators(previewActions, dispatch),
-      postcardActions: bindActionCreators(postcardActions, dispatch)
+      postcardActions: bindActionCreators(postcardActions, dispatch),
     }
   }
 
