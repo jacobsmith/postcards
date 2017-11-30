@@ -1,4 +1,6 @@
 class PostcardsController < ApplicationController
+  LOGO_SOURCE = File.read("#{Rails.root}/client/src/assets/postcard-logo-and-text.svg")
+
   def preview
     photo = Photo.find(params[:photoId])
     message = params[:message]
@@ -7,6 +9,9 @@ class PostcardsController < ApplicationController
     to_address = params[:address][:to]
 
     front = render_as_string("4x6_postcard", front_photo_url: photo_view_url(photo))
+
+    # will need to render message here
+    back = render_as_string("4x6_postcard_message", message: message, logo_source: LOGO_SOURCE)
 
     to_address_arguments = {
       name: to_address[:addressName],
@@ -44,7 +49,7 @@ class PostcardsController < ApplicationController
       to: to_address['id'],
       from: from_address['id'],
       front: front,
-      message: message
+      back: back
     )
 
     puts postcard # debug
@@ -90,12 +95,14 @@ class PostcardsController < ApplicationController
       to_address = $Lob.addresses.create(JSON.parse(postcard.to_address))
       from_address = $Lob.addresses.create(JSON.parse(postcard.from_address))
       front = render_as_string("4x6_postcard", front_photo_url: photo_view_url(postcard.photo))
+      back = render_as_string("4x6_postcard_message", message: postcard.message, logo_source: LOGO_SOURCE)
+
 
       lob_postcard = $Lob.postcards.create(
         to: JSON.parse(postcard.to_address),
         from: JSON.parse(postcard.from_address),
         front: front,
-        message: postcard.message,
+        back: back,
         size: '4x6',
         metadata: {
           postcard_id: postcard.id
