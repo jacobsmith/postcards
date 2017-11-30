@@ -5,6 +5,10 @@
   justify-content: space-evenly;
 }
 
+.approvalAddressAndMessage {
+  width: 50%;
+}
+
 .postcardImageReviewContainer {
   width: 30%;
 }
@@ -15,7 +19,7 @@
 }
 
 .AddressReview {
-  width: 15vw;
+  width: 40%;
   margin: 1em;
 }
 

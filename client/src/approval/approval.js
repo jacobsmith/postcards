@@ -101,7 +101,7 @@ class Approval extends Component {
               <PostcardImageReview preview={this.props.postcardPreview} />
             </div>
 
-            <div>
+            <div className="approvalAddressAndMessage">
               <div className="address-reviews">
                 <FromAddressReview address={postcard.addresses.from} />
                 <ToAddressReview address={postcard.addresses.to} />
