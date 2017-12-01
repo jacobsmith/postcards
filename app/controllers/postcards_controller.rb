@@ -4,13 +4,14 @@ class PostcardsController < ApplicationController
     message = params[:message]
     font = params[:font] || "Gloria Hallelujah"
     fontSize = params[:fontSize] || "14"
+    alignment = params[:alignment] || "left"
 
     from_address = params[:address][:from]
     to_address = params[:address][:to]
 
     front = render_as_string("4x6_postcard", front_photo_url: photo_view_url(photo))
 
-    back = render_as_string("4x6_postcard_message", message: message, font: font, fontSize: fontSize)
+    back = render_as_string("4x6_postcard_message", message: message, font: font, fontSize: fontSize, alignment: alignment)
 
     to_address_arguments = {
       name: to_address[:addressName],

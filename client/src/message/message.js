@@ -13,7 +13,7 @@ class AddressTo extends Component {
       <div style={{display: 'flex', justifyContent: 'center', marginBottom: '3rem'}}>
         <PostcardMessageInput />
         <MessageFontSelect />
-        <MessageLiveUpdate message={this.props.messageValue} font={this.props.font} fontSize={this.props.fontSize}/>
+        <MessageLiveUpdate message={this.props.messageValue} font={this.props.font} fontSize={this.props.fontSize} alignment={this.props.alignment}/>
       </div>
     )
   }
@@ -23,7 +23,8 @@ function mapStateToProps(state) {
   return {
     messageValue: state.postcard.message.value,
     font: state.postcard.message.font,
-    fontSize: state.postcard.message.fontSize
+    fontSize: state.postcard.message.fontSize,
+    alignment: state.postcard.message.alignment
   }
 }
 

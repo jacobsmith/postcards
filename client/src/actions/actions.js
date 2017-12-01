@@ -27,6 +27,15 @@ export function fontSizeUpdated(event) {
   }
 }
 
+export function alignmentUpdated(event) {
+  return {
+    type: actions.ALIGNMENT_UPDATED,
+    payload: {
+      alignment: event.target.value
+    }
+  }
+}
+
 export function updateAddressInfo(addressType) {
   return function(dispatch) {
     return function(attribute) {

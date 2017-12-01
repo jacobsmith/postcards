@@ -9,9 +9,9 @@ class MessageLiveUpdate extends Component {
         <div className="card">
           <div id="safe-area">
 
-            <div className="text" style={{fontFamily: this.props.font, fontSize: this.props.fontSize}}>
+            <div className="text" style={{fontFamily: this.props.font, fontSize: this.props.fontSize, textAlign: this.props.alignment}}>
               <div id="spacer"></div>
-              <div id="ink-free">
+              <div id="ink-free" style={{textAlign: 'center', backgroundColor: 'rgba(1, 1, 1, 0.05)'}}>
                 Address Information
                 <br/>
                 No text allowed here

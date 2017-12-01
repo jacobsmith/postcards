@@ -6,11 +6,12 @@ export function previewPostcard(postcard) {
     customFetch('/api/postcards/preview', {
       method: 'post',
       body: JSON.stringify({
-        photoId: postcard.photo.photoId,
-        message: postcard.message.value,
-        font:    postcard.message.font,
-        fontSize:postcard.message.fontSize,
-        address: postcard.addresses
+        photoId:   postcard.photo.photoId,
+        message:   postcard.message.value,
+        font:      postcard.message.font,
+        fontSize:  postcard.message.fontSize,
+        alignment: postcard.message.alignment,
+        address:   postcard.addresses
       })
     })
     .then(data => dispatch(postcardPreviewReceived(data.front, data.back, data.postcard_id)))

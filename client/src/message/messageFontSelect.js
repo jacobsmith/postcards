@@ -25,13 +25,17 @@ class MessageFontSelect extends Component {
 
 
     return (
-      <div>
+      <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
         <select onChange={this.props.messageActions.fontUpdated} value={this.props.font} className="fontSelect">
           {fonts.map(font => <option value={font}>{font}</option>)}
         </select>
 
         <select onChange={this.props.messageActions.fontSizeUpdated} value={this.props.fontSize} className="fontSizeSelect">
           {fontSizes.map(font => <option value={font}>{font}</option>)}
+        </select>
+
+        <select onChange={this.props.messageActions.alignmentUpdated} value={this.props.alignment} className="fontSizeSelect">
+          {["left", "center"].map(alignment => <option value={alignment}>{alignment}</option>)}
         </select>
       </div>
     )
@@ -40,8 +44,9 @@ class MessageFontSelect extends Component {
 
 function mapStateToProps(state) {
   return {
-    font:     state.postcard.message.font,
-    fontSize: state.postcard.message.fontSize
+    font:      state.postcard.message.font,
+    fontSize:  state.postcard.message.fontSize,
+    alignment: state.postcard.message.alignment,
   }
 }
 

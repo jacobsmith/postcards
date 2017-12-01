@@ -46,9 +46,10 @@
     width: 5.5in;
     height: 100%;
     overflow: hidden;
-    font-family: 'Open Sans';
+    font-family: <%= font || 'Open Sans' %>;
     font-weight: 400;
-    font-size: 16px;
+    font-size: <%= fontSize || '16px' %>;
+    text-align: <%= alignment || 'left' %>
     color: black;
   }
 
@@ -68,11 +69,7 @@
 
 <body>
   <div id="safe-area">
-    <!-- All text should appear within the safe area. -->
-
-    <div class="text" style="font-family: <%= font %>; font-size: <%= fontSize %>px;">
-      <div id="spacer"></div>
-      <div id="ink-free"></div><%= message %><%= image_tag("/postcard-logo-and-text.png", id: "logo") %></div>
+    <div class="text"><div id="spacer"></div><div id="ink-free"></div><%= message %><%= image_tag("/postcard-logo-and-text.png", id: "logo") %></div>
     </div>
 </body>
 
