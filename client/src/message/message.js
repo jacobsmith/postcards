@@ -10,7 +10,7 @@ import MessageFontSelect from './messageFontSelect.js';
 class AddressTo extends Component {
   render() {
     return (
-      <div style={{display: 'flex', justifyContent: 'center', marginBottom: '3rem'}}>
+      <div style={{display: 'flex', justifyContent: 'center', marginBottom: '3rem', marginTop: '3rem'}}>
         <PostcardMessageInput />
         <MessageFontSelect />
         <MessageLiveUpdate message={this.props.messageValue} font={this.props.font} fontSize={this.props.fontSize} alignment={this.props.alignment}/>
