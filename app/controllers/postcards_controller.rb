@@ -2,14 +2,15 @@ class PostcardsController < ApplicationController
   def preview
     photo = Photo.find(params[:photoId])
     message = params[:message]
+    font = params[:font] || "Gloria Hallelujah"
+    fontSize = params[:fontSize] || "14"
 
     from_address = params[:address][:from]
     to_address = params[:address][:to]
 
     front = render_as_string("4x6_postcard", front_photo_url: photo_view_url(photo))
 
-    # will need to render message here
-    back = render_as_string("4x6_postcard_message", message: message)
+    back = render_as_string("4x6_postcard_message", message: message, font: font, fontSize: fontSize)
 
     to_address_arguments = {
       name: to_address[:addressName],

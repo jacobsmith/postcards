@@ -9,6 +9,24 @@ export function messageUpdated(event) {
   }
 }
 
+export function fontUpdated(event) {
+  return {
+    type: actions.FONT_UPDATED,
+    payload: {
+      font: event.target.value
+    }
+  }
+}
+
+export function fontSizeUpdated(event) {
+  return {
+    type: actions.FONT_SIZE_UPDATED,
+    payload: {
+      fontSize: event.target.value
+    }
+  }
+}
+
 export function updateAddressInfo(addressType) {
   return function(dispatch) {
     return function(attribute) {

@@ -5,13 +5,15 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PostcardMessageInput from './../postcardMessageInput/postcardMessageInput.js';
 import MessageLiveUpdate from './messageLiveUpdate.js';
+import MessageFontSelect from './messageFontSelect.js';
 
 class AddressTo extends Component {
   render() {
     return (
       <div style={{display: 'flex', justifyContent: 'center', marginBottom: '3rem'}}>
         <PostcardMessageInput />
-        <MessageLiveUpdate message={this.props.messageValue} />
+        <MessageFontSelect />
+        <MessageLiveUpdate message={this.props.messageValue} font={this.props.font} fontSize={this.props.fontSize}/>
       </div>
     )
   }
@@ -19,7 +21,9 @@ class AddressTo extends Component {
 
 function mapStateToProps(state) {
   return {
-    messageValue: state.postcard.message.value
+    messageValue: state.postcard.message.value,
+    font: state.postcard.message.font,
+    fontSize: state.postcard.message.fontSize
   }
 }
 

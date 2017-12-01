@@ -37,6 +37,7 @@
 }
 
 .postcard-live-preview .text {
+  white-space: pre-wrap;
   margin: 10px;
   width: 5.5in;
   height: 100%;

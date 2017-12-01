@@ -8,6 +8,8 @@ export function previewPostcard(postcard) {
       body: JSON.stringify({
         photoId: postcard.photo.photoId,
         message: postcard.message.value,
+        font:    postcard.message.font,
+        fontSize:postcard.message.fontSize,
         address: postcard.addresses
       })
     })

@@ -3,7 +3,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 100px;
 }
 
 textarea.PostcardMessageInput {
@@ -11,5 +10,4 @@ textarea.PostcardMessageInput {
   width: 300px;
   border: 1px solid gray;
   font-size: 16px;
-
 }

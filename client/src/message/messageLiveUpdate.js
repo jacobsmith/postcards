@@ -9,7 +9,7 @@ class MessageLiveUpdate extends Component {
         <div className="card">
           <div id="safe-area">
 
-            <div className="text">
+            <div className="text" style={{fontFamily: this.props.font, fontSize: this.props.fontSize}}>
               <div id="spacer"></div>
               <div id="ink-free">
                 Address Information

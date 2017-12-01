@@ -46,6 +46,10 @@
   margin: 1em;
 }
 
+.MessageReview {
+  white-space: pre-wrap;
+}
+
 .MessageReviewLabel {
   margin-bottom: 1em;
   color: var(--greyish-teal);
