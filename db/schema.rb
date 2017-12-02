@@ -10,10 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171030161229) do
+ActiveRecord::Schema.define(version: 20171202160714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "hospital_surgeons", force: :cascade do |t|
+    t.integer  "surgeon_id"
+    t.integer  "hospital_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["hospital_id"], name: "index_hospital_surgeons_on_hospital_id", using: :btree
+    t.index ["surgeon_id"], name: "index_hospital_surgeons_on_surgeon_id", using: :btree
+  end
+
+  create_table "hospitals", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "patients", force: :cascade do |t|
+    t.string   "name"
+    t.date     "date_of_birth"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "photos", force: :cascade do |t|
     t.text     "data"
@@ -29,7 +51,35 @@ ActiveRecord::Schema.define(version: 20171030161229) do
     t.text     "from_address"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "font"
+    t.string   "font_size"
+    t.string   "alignment"
     t.index ["photo_id"], name: "index_postcards_on_photo_id", using: :btree
+  end
+
+  create_table "surgeons", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "surgeries", force: :cascade do |t|
+    t.integer  "surgery_type_id"
+    t.date     "performed_on"
+    t.integer  "hospital_surgeon_id"
+    t.integer  "patient_id"
+    t.date     "rehab_date_of_admission"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["hospital_surgeon_id"], name: "index_surgeries_on_hospital_surgeon_id", using: :btree
+    t.index ["patient_id"], name: "index_surgeries_on_patient_id", using: :btree
+    t.index ["surgery_type_id"], name: "index_surgeries_on_surgery_type_id", using: :btree
+  end
+
+  create_table "surgery_types", force: :cascade do |t|
+    t.string   "surgery_type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -40,4 +90,9 @@ ActiveRecord::Schema.define(version: 20171030161229) do
     t.datetime "updated_at",       null: false
   end
 
+  add_foreign_key "hospital_surgeons", "hospitals"
+  add_foreign_key "hospital_surgeons", "surgeons"
+  add_foreign_key "surgeries", "hospital_surgeons"
+  add_foreign_key "surgeries", "patients"
+  add_foreign_key "surgeries", "surgery_types"
 end

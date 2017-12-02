@@ -3,7 +3,7 @@ class PostcardsController < ApplicationController
     photo = Photo.find(params[:photoId])
     message = params[:message]
     font = params[:font] || "Gloria Hallelujah"
-    fontSize = params[:fontSize] || "14"
+    font_size = params[:fontSize] || "14"
     alignment = params[:alignment] || "left"
 
     from_address = params[:address][:from]
@@ -11,7 +11,7 @@ class PostcardsController < ApplicationController
 
     front = render_as_string("4x6_postcard", front_photo_url: photo_view_url(photo))
 
-    back = render_as_string("4x6_postcard_message", message: message, font: font, fontSize: fontSize, alignment: alignment)
+    back = render_as_string("4x6_postcard_message", message: message, font: font, font_size: font_size, alignment: alignment)
 
     to_address_arguments = {
       name: to_address[:addressName],
@@ -38,9 +38,12 @@ class PostcardsController < ApplicationController
     from_address = $LobTest.addresses.create(from_address_arguments)
 
     internal_postcard = Postcard.create(
-      photo: photo,
-      message: message,
-      to_address: to_address_arguments.to_json,
+      photo:        photo,
+      message:      message,
+      font:         font,
+      font_size:    font_size,
+      alignment:    alignment,
+      to_address:   to_address_arguments.to_json,
       from_address: from_address_arguments.to_json,
     )
 
@@ -95,17 +98,25 @@ class PostcardsController < ApplicationController
       to_address = $Lob.addresses.create(JSON.parse(postcard.to_address))
       from_address = $Lob.addresses.create(JSON.parse(postcard.from_address))
       front = render_as_string("4x6_postcard", front_photo_url: photo_view_url(postcard.photo))
-      back = render_as_string("4x6_postcard_message", message: postcard.message)
+      back = render_as_string(
+        "4x6_postcard_message",
+        message:   postcard.message,
+        font:      postcard.font,
+        font_size: postcard.font_size,
+        alignment: postcard.alignment
+      )
 
 
-      lob_postcard = $Lob.postcards.create(
+      lob_client = Rails.env.production? ? $Lob : $LobTest
+
+      lob_postcard = lob_client.postcards.create(
         to: JSON.parse(postcard.to_address),
         from: JSON.parse(postcard.from_address),
         front: front,
         back: back,
         size: '4x6',
         metadata: {
-          postcard_id: postcard.id
+          postcard_id: postcard.id,
         }
       )
 
