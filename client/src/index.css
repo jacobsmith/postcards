@@ -16,6 +16,11 @@ input {
   font-size: 16px; /* make all inputs 16px to avoid iphone zoom %*/
 }
 
+select {
+  font-size: 16px;
+  max-height: 3.25rem;
+}
+
 :root {
 	--dull-orange: #dbaf32;
 	--dark-teal: #003041;
