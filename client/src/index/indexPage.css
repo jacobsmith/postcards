@@ -4,6 +4,7 @@
   min-height: 100%;
 }
 
+
 .header {
   height: 5rem;
   background-color: #DDAE4C;
@@ -11,6 +12,7 @@
   padding-left: 1rem;
   padding-right: 1rem;
 }
+
 
 .headerLeft {
   height: 100%;
@@ -90,7 +92,7 @@
 }
 
 .footer-container {
-  position: relative;
+  /*position: relative;*/
   /*bottom: 0;*/
   width: 100%;
 
@@ -101,4 +103,24 @@
   flex-direction: column;
   justify-content: center;
   color: #365B64;
+}
+
+
+@media all and (max-width: 750px) {
+
+  .indexHeader .headerLeft {
+    height: 60%;
+  }
+
+  .header {
+    height: 5rem;
+  }
+
+  .indexHeader {
+    height: 10rem;
+  }
+
+  .headerRight {
+    height: 30%;
+  }
 }

@@ -134,3 +134,11 @@ a {
 .generatePostCard-button-invalid {
   background-color: gray;
 }
+
+@media all and (max-width: 320px) {
+  .primary-info {
+    max-width: 80vw;
+    margin: auto;
+    margin-top: 1rem;
+  }
+}

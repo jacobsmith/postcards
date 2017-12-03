@@ -7,3 +7,24 @@
   height: 3rem;
   margin: 3rem;
 }
+
+
+.fontSelect-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media all and (max-width: 750px) {
+  .fontSelect-container {
+    flex-direction: row;
+  }
+
+  .fontSelect {
+    margin: 0.5rem;
+  }
+
+  .fontSizeSelect {
+    margin: 0.5rem;
+  }
+}

@@ -25,7 +25,7 @@ class MessageFontSelect extends Component {
 
 
     return (
-      <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+      <div className="fontSelect-container" >
         <select onChange={this.props.messageActions.fontUpdated} value={this.props.font} className="fontSelect">
           {fonts.map(font => <option value={font}>{font}</option>)}
         </select>

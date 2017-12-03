@@ -14,7 +14,7 @@ const PostcardMessageInput = ({ value, messageUpdated }) => {
       <div className="PostcardMessageInput--Container">
         <div className="inputGroup">
           <label htmlFor="message" className="small-detail">My Message</label>
-          <textarea name="message" className="PostcardMessageInput" value={value} onChange={messageUpdated} placeholder="Write a custom message! &#10;You will see a live preview to the right."/>
+          <textarea name="message" className="PostcardMessageInput" value={value} onChange={messageUpdated} placeholder="Write a custom message!"/>
         </div>
       </div>
     </div>

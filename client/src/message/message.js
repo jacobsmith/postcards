@@ -7,10 +7,12 @@ import PostcardMessageInput from './../postcardMessageInput/postcardMessageInput
 import MessageLiveUpdate from './messageLiveUpdate.js';
 import MessageFontSelect from './messageFontSelect.js';
 
-class AddressTo extends Component {
+import './message.css';
+
+class Message extends Component {
   render() {
     return (
-      <div style={{display: 'flex', justifyContent: 'center', marginBottom: '3rem', marginTop: '3rem'}}>
+      <div className="messagePageContent">
         <PostcardMessageInput />
         <MessageFontSelect />
         <MessageLiveUpdate message={this.props.messageValue} font={this.props.font} fontSize={this.props.fontSize} alignment={this.props.alignment}/>
@@ -36,4 +38,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AddressTo);
+)(Message);

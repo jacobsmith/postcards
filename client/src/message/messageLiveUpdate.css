@@ -62,3 +62,24 @@
   bottom: 0.25in;
   left: 0in;
 }
+
+
+@media all and (max-width: 750px) {
+  .postcard-live-preview {
+    margin-left: 2vw;
+    transform: scale(0.6);
+    transform-origin: left;
+  }
+}
+
+@media all and (max-width: 414px) {
+  .postcard-live-preview {
+    transform: scale(0.6);
+  }
+}
+
+@media all and (max-width: 350px) {
+  .postcard-live-preview {
+    transform: scale(0.5);
+  }
+}

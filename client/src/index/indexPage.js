@@ -17,7 +17,7 @@ import DropdownsDisplay from './dropdowns/display.js';
 const IndexPage = () => {
   return (
     <div className="page">
-      <div className="header">
+      <div className="header indexHeader">
         <div className="headerLeft">
           <img src={headerImg} alt="logo" className="headerLogo"/>
           <div className="headerName">Say it with a Postcard</div>

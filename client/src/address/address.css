@@ -70,3 +70,13 @@ select {
   margin: 1em;
   border: 3px solid var(--greyish-teal);
 }
+
+@media all and (max-width: 750px) {
+  .postcardImageContainer {
+    display: none;
+  }
+
+  .Address {
+    width: 100%;
+  }
+}

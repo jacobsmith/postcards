@@ -47,3 +47,34 @@
 .postcardPrintDetail .key {
   color: var(--dull-orange);
 }
+
+@media all and (max-width: 750px) {
+  .prints {
+    flex-direction: column;
+  }
+
+  .postcardPrintGraphic {
+    position: relative;
+  }
+
+  .postcardPrintGraphic img {
+    max-width: 80vw;
+  }
+
+  .postcardPrintExplanation {
+    margin: 1rem;
+    margin-top: 3rem;
+  }
+
+  .four-inches {
+    position: absolute;
+    left: 5%;
+    top: 40%;
+  }
+
+  .six-inches {
+    position: absolute;
+    top: 100%;
+    left: 52%;
+  }
+}

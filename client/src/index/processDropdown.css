@@ -36,3 +36,24 @@
   width: 10vw;
   height: 10vw;
 }
+
+@media all and (max-width: 750px) {
+  .processCards {
+    flex-direction: column;
+  }
+
+  .processCards .processImage img {
+    border-radius: 50%;
+    width: 30vw;
+    height: 30vw;
+  }
+
+  .processCard {
+    border-bottom: 3px solid var(--light-blue-grey);
+    margin-bottom: 1rem;
+  }
+
+  .processCard:last-child {
+    border: none;
+  }
+}
