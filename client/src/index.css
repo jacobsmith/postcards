@@ -12,6 +12,10 @@ div.App {
   height: 100%;
 }
 
+input {
+  font-size: 16px; /* make all inputs 16px to avoid iphone zoom %*/
+}
+
 :root {
 	--dull-orange: #dbaf32;
 	--dark-teal: #003041;
