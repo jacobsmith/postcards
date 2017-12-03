@@ -69,6 +69,20 @@
 
     margin: auto;
   }
+
+  .approvalAddressAndMessage {
+    width: 80%;
+  }
+
+  .address-reviews {
+    flex-direction: column;
+  }
+
+  .AddressReview {
+    width: 80%;
+  }
+
+
 }
 
 @media all and (max-width: 414px) {
