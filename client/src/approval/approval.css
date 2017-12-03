@@ -52,6 +52,10 @@
   white-space: pre-wrap;
 }
 
+.messageAndEdit {
+  display: flex;
+}
+
 .MessageReviewLabel {
   margin-bottom: 1em;
   color: var(--greyish-teal);
@@ -61,11 +65,9 @@
   text-align: left;
 }
 
-@media all and (max-width: 750px) {
+@media all and (max-width: 768px) {
   .postcardImageReviewContainer {
     margin-left: 2vw;
-    transform: scale(0.6);
-    transform-origin: left;
 
     margin: auto;
   }
@@ -79,7 +81,7 @@
   }
 
   .AddressReview {
-    width: 80%;
+    width: 100%;
   }
 
 
@@ -88,6 +90,7 @@
 @media all and (max-width: 414px) {
   .postcardImageReviewContainer {
     transform: scale(0.6);
+    transform-origin: left;
   }
 }
 

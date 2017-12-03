@@ -106,7 +106,7 @@
 }
 
 
-@media all and (max-width: 750px) {
+@media all and (max-width: 768px) {
 
   .indexHeader .headerLeft {
     height: 60%;

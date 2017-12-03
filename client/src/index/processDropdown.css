@@ -37,7 +37,7 @@
   height: 10vw;
 }
 
-@media all and (max-width: 750px) {
+@media all and (max-width: 768px) {
   .processCards {
     flex-direction: column;
   }

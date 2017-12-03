@@ -64,22 +64,36 @@
 }
 
 
-@media all and (max-width: 750px) {
+@media all and (max-width: 768px) {
   .postcard-live-preview {
-    margin-left: 2vw;
-    transform: scale(0.6);
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom : 2rem;
+    transform: scale(1);
     transform-origin: left;
+    max-height: 400px;
   }
 }
 
 @media all and (max-width: 414px) {
   .postcard-live-preview {
-    transform: scale(0.6);
+    margin: auto;
+    transform: scale(0.6) translate(0, -70px);
+    max-height: 275px;
+    margin-left: 1.8rem;
+  }
+}
+
+@media all and (max-width: 375px) {
+  .postcard-live-preview {
+    margin-left: 0.5rem;
   }
 }
 
 @media all and (max-width: 350px) {
   .postcard-live-preview {
-    transform: scale(0.5);
+    margin: auto;
+    transform: scale(0.5) translate(0px, -70px);
+    max-height: 250px;
   }
 }

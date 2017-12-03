@@ -15,7 +15,7 @@
   justify-content: center;
 }
 
-@media all and (max-width: 750px) {
+@media all and (max-width: 768px) {
   .fontSelect-container {
     flex-direction: row;
   }

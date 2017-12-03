@@ -71,7 +71,7 @@ select {
   border: 3px solid var(--greyish-teal);
 }
 
-@media all and (max-width: 750px) {
+@media all and (max-width: 768px) {
   .postcardImageContainer {
     display: none;
   }

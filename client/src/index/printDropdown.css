@@ -48,7 +48,7 @@
   color: var(--dull-orange);
 }
 
-@media all and (max-width: 750px) {
+@media all and (max-width: 768px) {
   .prints {
     flex-direction: column;
   }
