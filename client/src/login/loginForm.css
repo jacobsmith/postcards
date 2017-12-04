@@ -1,0 +1,28 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+
+  width: 80%;
+  margin: auto;
+  margin-top: 1rem;
+}
+
+.login-form input {
+  width: 45%;
+  margin: 1rem;
+}
+
+.login-form label {
+  width: 3rem;
+}
+
+.form-error {
+  font-size: 1.2em;
+  color: var(--dull-orange);
+}
+
+.login-form .input-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

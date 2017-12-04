@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import Layout from './../layout/layout.js';
-import LoginWithFacebook from './loginWithFacebook.js'
+import PageContent from './../page/pageContent.js';
+import AppHeader from './../layout/appHeader.js';
+import PrimaryAction from './../layout/primaryAction.js';
+import PrimaryButton from './../button/primaryButton.js';
+import Footer from './../layout/footer.js';
+import LoginForm from './loginForm.js';
 
 const LoginPage = ({ match }) => {
   return (
@@ -13,7 +18,11 @@ const LoginPage = ({ match }) => {
 class LoginPageData extends Component {
   render() {
     return (
-      <LoginWithFacebook />
+      <PageContent>
+        <AppHeader />
+        <PrimaryAction text="Log in" />
+        <LoginForm />
+      </PageContent>
     )
   }
 }

@@ -1,18 +1,14 @@
 class SessionsController < ApplicationController
+  SECRET = ENV["JWT_SECRET"]
+
   def create
-    facebook_api = Koala::Facebook::API.new(params['facebookUserAccessToken'])
+    user = User.find_by(email: params[:email])
 
-    facebook_user = facebook_api.get_object('me', fields: "id,name,email")
+    authenticated_user = user&.authenticate(params[:password])
 
-    render json: { error: "no user with that id" } and return unless facebook_user["id"].present?
+    not_found! unless authenticated_user.present?
 
-    user = User.find_by(facebook_user_id: facebook_user["id"])
-
-    unless user.present?
-      user = User.create(facebook_user_id: facebook_user["id"], name: facebook_user["name"], email: facebook_user["email"])
-    end
-
-    session["current_user_id"] = user.id
-    render json: { user: user }
+    payload = { user_id: user.id }
+    render json: { token: JWT.encode(payload, SECRET, 'HS256') }
   end
 end
