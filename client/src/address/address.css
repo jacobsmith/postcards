@@ -8,6 +8,10 @@
   width: 50%;
 }
 
+.Address .remove {
+  text-align: end;
+}
+
 .inputGroup {
   margin: 1em;
 }

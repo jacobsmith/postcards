@@ -36,7 +36,7 @@ export function alignmentUpdated(event) {
   }
 }
 
-export function updateAddressInfo(addressType) {
+export function updateAddressInfo(addressType, index) {
   return function(dispatch) {
     return function(attribute) {
       return function(event) {
@@ -45,10 +45,26 @@ export function updateAddressInfo(addressType) {
           payload: {
             addressAttribute: attribute,
             addressType: addressType,
-            value: event.target.value
+            value: event.target.value,
+            index: index
           }
         })
       }
+    }
+  }
+}
+
+export function addToAddress() {
+  return {
+    type: actions.ADD_TO_ADDRESS
+  }
+}
+
+export function removeToAddress(index) {
+  return {
+    type: actions.REMOVE_TO_ADDRESS,
+    payload: {
+      index: index
     }
   }
 }

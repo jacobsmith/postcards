@@ -8,7 +8,7 @@ class AddressTo extends Component {
   constructor({ updateAddressInfo }) {
     super()
 
-    this.fromUpdater = updateAddressInfo('from');
+    this.fromUpdater = updateAddressInfo('from', 0);
   }
 
   render() {
@@ -31,7 +31,7 @@ class AddressTo extends Component {
 
 function mapStateToProps(state) {
   return {
-    from: state.postcard.addresses.from,
+    from: state.postcard.addresses.from[0],
     postcardImage: state.postcard.photo.imgSrc
   }
 }
