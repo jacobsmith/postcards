@@ -41,7 +41,8 @@ const IndexPage = () => {
       <div className="mainBody">
         <DropdownsDisplay />
 
-        <div className="getStarted">Hello, let's get started!</div>
+        <div className="getStarted">let's get started</div>
+        <div className="frontCopy">In this day of hustle and bustle, take a minute to let someone know you care. A real, physical postcard delivered straight to their mailbox will surely bring a smile to their face!</div>
         <img src={cameraImg} alt="" className="selectImage"/>
 
         <PrimaryButton text="Build your postcard" to="/start"/>

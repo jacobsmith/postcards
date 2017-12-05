@@ -4,6 +4,10 @@
   min-height: 100%;
 }
 
+.frontCopy {
+  margin: 0.5em;
+}
+
 
 .header {
   height: 5rem;
