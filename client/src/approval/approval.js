@@ -59,8 +59,6 @@ class Approval extends Component {
 
   preventCheckout() {
     // ensure that we have all the necessary data for checkout
-    console.log(this.props.postcardPreview.postcardId);
-
     if (!this.props.postcardPreview.postcardId) {
       return true;
     } else {
@@ -68,10 +66,11 @@ class Approval extends Component {
     }
   }
 
-  onToken(token) {
+  onToken(token, useCredit = false) {
     let body = {
       stripeToken: token,
-      postcard_id: this.props.postcardPreview.postcardId
+      postcard_id: this.props.postcardPreview.postcardId,
+      use_credit: useCredit
     }
 
     this.props.postcardActions.creatingPostcard();
@@ -120,20 +119,8 @@ class Approval extends Component {
             </div>
           </div>
 
-          <div className="PreviewPostcard-ButtonContainer">
-            <StripeCheckout
-              ComponentClass="div"
-              token={this.onToken}
-              stripeKey="pk_live_lzEl0T1QkJfJNGTu8mwlANIK"
-              // stripeKey="pk_test_1fP6F3hjLbG2TbLXPuEL3jEx"
-              amount={149 * numberOfPostcards}
-              name="Postcard"
-              description={`Send postcard to ${recipientDescription}`}
-              image={postcardImg}
-              disabled={this.preventCheckout()}
-              >
-                <PrimaryButton text="Finish + Checkout" to="#" disabled={this.preventCheckout()} />
-              </StripeCheckout>
+            <div className="PreviewPostcard-ButtonContainer">
+              <Checkout onToken={this.onToken} numberOfPostcards={numberOfPostcards} recipientDescription={recipientDescription} disabled={this.preventCheckout} credits={this.props.credits} />
             </div>
           </div>
         )
@@ -141,11 +128,57 @@ class Approval extends Component {
     }
   }
 
+  const Checkout = ({ onToken, numberOfPostcards, recipientDescription, disabled, credits = 0}) => {
+      let creditCheckout = (
+        <div>
+          <PrimaryButton text={`Checkout for ${numberOfPostcards} credit${numberOfPostcards > 1 ? 's' : ''}`} to="#" disabled={disabled()} onClick={() => onToken(null, true)} />
+          <div className="credits-checkout-desc">{`You have ${credits} credits.`}</div>
+        </div>
+        )
+
+        function stripeCheckout(stripeText = "Finish + Checkout") {
+          return (
+            <StripeCheckout
+              ComponentClass="div"
+              token={onToken}
+              stripeKey="pk_live_lzEl0T1QkJfJNGTu8mwlANIK"
+              // stripeKey="pk_test_1fP6F3hjLbG2TbLXPuEL3jEx"
+              amount={149 * numberOfPostcards}
+              name="Postcard"
+              description={`Send postcard to ${recipientDescription}`}
+              image={postcardImg}
+              disabled={disabled()}
+              >
+                <PrimaryButton text={stripeText} to="#" disabled={disabled()} />
+              </StripeCheckout>
+          )
+        }
+
+      if (credits >= numberOfPostcards) {
+        let stripeText = "Checkout with Credit Card"
+
+        return (
+          <div className="checkout-buttons">
+            {creditCheckout}
+            <div className="checkout-button-divider" style={{fontSize: '1.5rem', margin: '0.5rem'}}>OR</div>
+            {stripeCheckout(stripeText)}
+          </div>
+        )
+      } else {
+        return (
+          <div>
+            {stripeCheckout()}
+          </div>
+        )
+      }
+  }
+
   function mapStateToProps(state) {
     return {
       postcard: state.postcard,
       postcardPreview: state.postcardPreview,
-      postcardCreation: state.postcardCreation
+      postcardCreation: state.postcardCreation,
+      credits: state.user.credits
     }
   }
 

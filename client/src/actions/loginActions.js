@@ -45,17 +45,22 @@ export function login(email, password) {
       method: 'post',
       body: JSON.stringify({ email: email, password: password })
     })
-    .then(response => dispatch(loginResponseReceived(response)))
+    .then(response => {
+      let status = response.status;
+      response.json().then(json => dispatch(loginResponseReceived(status, json)))
+    })
   }
 }
 
-function loginResponseReceived(response) {
-  if (response.status === 200) {
-
-    response.json().then(json => window.localStorage.setItem('postcardToken', json.token))
+function loginResponseReceived(status, json) {
+  if (status === 200) {
+    window.localStorage.setItem('postcardToken', json.token)
 
     return {
-      type: LOGIN_SUCCESSFUL
+      type: LOGIN_SUCCESSFUL,
+      payload: {
+        credits: json.credits
+      }
     }
   } else {
     return {

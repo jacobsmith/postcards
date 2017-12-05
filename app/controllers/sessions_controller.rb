@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     user.update!(revocable_session_token: session_token)
 
     payload = { user_id: user.id, revocable_session_token: session_token }
-    render json: { token: JWT.encode(payload, SECRET, 'HS256') }
+    render json: { token: JWT.encode(payload, SECRET, 'HS256'), credits: user.credits }
   end
 
   def destroy

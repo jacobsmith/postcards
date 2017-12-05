@@ -87,22 +87,36 @@ class PostcardsController < ApplicationController
     def create
       postcard = Postcard.find(params[:postcard_id])
       token = params[:stripeToken]
+      use_credit = params[:use_credit]
 
       to_addresses = JSON.parse(postcard.to_address)
       number_of_postcards = to_addresses.length
 
       from_address = JSON.parse(postcard.from_address)
 
-      # Charge the user's card:
-      charge = $Stripe::Charge.create(
-        :amount => number_of_postcards * 149,
-        :currency => "usd",
-        :description => "Postcard",
-        :source => token["id"],
-        metadata: { postcard_id: postcard.id }
-      )
+      can_continue;
 
-      if charge[:outcome][:type] == "authorized"
+      if use_credit
+        return render json: { error: "You don't have enough credits for this transaction." } unless current_user.credits > number_of_postcards
+        user.update!(credits: user.credits - number_of_postcards)
+        can_continue = true
+      else
+        # Charge the user's card:
+        charge = $Stripe::Charge.create(
+          :amount => number_of_postcards * 149,
+          :currency => "usd",
+          :description => "Postcard",
+          :source => token["id"],
+          metadata: { postcard_id: postcard.id }
+        )
+
+        if charge[:outcome][:type] == "authorized"
+          can_continue = true
+        end
+      end
+
+
+      if can_continue
         to_addresses.each do |to_address|
           puts "to_address: #{to_address.inspect}"
 

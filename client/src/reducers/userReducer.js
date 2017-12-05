@@ -47,6 +47,8 @@ function userReducer(state = initialState, action) {
     case LOGIN_SUCCESSFUL:
       newState.login.loggedIn = true;
       newState.login.errored = false;
+      newState.credits = action.payload.credits;
+      
       return newState;
     case LOGIN_UNSUCCESSFUL:
       newState.login.loggedIn = false;
