@@ -10,6 +10,8 @@ import cameraImg from './../assets/camera.svg';
 import PrimaryButton from './../button/primaryButton.js'
 import DropdownToggle from './dropdown.js';
 
+import ChangeLoginStatus from './../login/changeLoginStatus.js';
+
 import Flash from './../layout/flash.js';
 
 import Footer from './../layout/footer.js';
@@ -30,6 +32,7 @@ const IndexPage = () => {
           <DropdownToggle text="Pricing" dropdownId="pricing" />
           <DropdownToggle text="Process" dropdownId="process" />
           <DropdownToggle text="Prints"  dropdownId="prints" />
+          <ChangeLoginStatus />
         </div>
       </div>
 

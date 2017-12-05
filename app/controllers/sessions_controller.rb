@@ -8,7 +8,16 @@ class SessionsController < ApplicationController
 
     not_found! unless authenticated_user.present?
 
-    payload = { user_id: user.id }
+    session_token = SecureRandom.uuid
+    user.update!(revocable_session_token: session_token)
+
+    payload = { user_id: user.id, revocable_session_token: session_token }
     render json: { token: JWT.encode(payload, SECRET, 'HS256') }
+  end
+
+  def destroy
+    @curret_user.update!(revocable_session_token: SecureRandom.uuid)
+
+    render json: { success: true }
   end
 end

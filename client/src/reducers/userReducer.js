@@ -6,7 +6,8 @@ import {
   LOGIN_UPDATE_EMAIL,
   LOGIN_UPDATE_PASSWORD,
   LOGIN_SUCCESSFUL,
-  LOGIN_UNSUCCESSFUL
+  LOGIN_UNSUCCESSFUL,
+  USER_LOGGED_OUT
 } from './../actions/loginActions.js';
 
 let initialState = {
@@ -37,6 +38,9 @@ function userReducer(state = initialState, action) {
     case LOGIN_UNSUCCESSFUL:
       newState.login.loggedIn = false;
       newState.login.errored = true;
+      return newState;
+    case USER_LOGGED_OUT:
+      newState.login.loggedIn = false;
       return newState;
     default:
       return newState;

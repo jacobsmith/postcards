@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171204190524) do
+ActiveRecord::Schema.define(version: 20171205183239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
   create_table "hospital_surgeons", force: :cascade do |t|
     t.integer  "surgeon_id"
@@ -86,9 +87,10 @@ ActiveRecord::Schema.define(version: 20171204190524) do
     t.string   "name"
     t.string   "email"
     t.string   "facebook_user_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.string   "password_digest"
+    t.uuid     "revocable_session_token"
   end
 
   add_foreign_key "hospital_surgeons", "hospitals"

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PostcardCreationPage from './postcardCreation/postcardCreationPage.js';
 import LoginPage from './login/loginPage.js';
+import SignupPage from './login/signupPage.js';
 import AddressToPage from './address/addressToPage.js';
 import AddressFromPage from './address/addressFromPage.js';
 import MessagePage from './message/messagePage.js';
@@ -21,6 +22,7 @@ class App extends Component {
           <Switch>
             <Route path="/" exact={true} component={IndexPage} />
             <Route path="/login" exact={true} component={LoginPage} />
+            <Route path="/signup" exact={true} component={SignupPage} />
             <Route path="/start" exact={true} component={ImageUploadPage} />
             <Route path="/address/to" exact={true} component={AddressToPage} />
             <Route path="/address/from" exact={true} component={AddressFromPage} />
