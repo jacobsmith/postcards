@@ -124,8 +124,8 @@ class Approval extends Component {
             <StripeCheckout
               ComponentClass="div"
               token={this.onToken}
-              // stripeKey="pk_live_lzEl0T1QkJfJNGTu8mwlANIK"
-              stripeKey="pk_test_1fP6F3hjLbG2TbLXPuEL3jEx"
+              stripeKey="pk_live_lzEl0T1QkJfJNGTu8mwlANIK"
+              // stripeKey="pk_test_1fP6F3hjLbG2TbLXPuEL3jEx"
               amount={149 * numberOfPostcards}
               name="Postcard"
               description={`Send postcard to ${recipientDescription}`}
