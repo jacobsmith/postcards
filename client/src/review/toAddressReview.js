@@ -1,9 +1,18 @@
 import React from 'react';
 import AddressReview from './addressReview.js';
 
-const ToAddressReview = ({ address }) => {
+const ToAddressReview = ({ addresses }) => {
   return (
-    <AddressReview address={address} editLocation="/address/to" type="to" />
+    <div>
+      {
+        addresses.map(address => {
+          return (
+            <AddressReview address={address} editLocation="/address/to" type="to" />
+          );
+        }
+        )
+      }
+    </div>
   )
 }
 

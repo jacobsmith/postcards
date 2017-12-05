@@ -104,7 +104,7 @@ class Approval extends Component {
             <div className="approvalAddressAndMessage">
               <div className="address-reviews">
                 <FromAddressReview address={postcard.addresses.from} />
-                <ToAddressReview address={postcard.addresses.to} />
+                <ToAddressReview addresses={postcard.addresses.to} />
               </div>
 
               <div className="reviewHorizontalDivider"></div>
