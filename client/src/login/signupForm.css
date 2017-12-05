@@ -1,0 +1,28 @@
+.signup-form {
+  display: flex;
+  flex-direction: column;
+
+  width: 80%;
+  margin: auto;
+  margin-top: 1rem;
+}
+
+.signup-form input {
+  width: 65%;
+  margin: 1rem;
+}
+
+.signup-form label {
+  width: 5rem;
+}
+
+.form-error {
+  font-size: 1.2em;
+  color: var(--dull-orange);
+}
+
+.signup-form .input-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

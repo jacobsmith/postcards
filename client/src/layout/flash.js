@@ -31,10 +31,10 @@ class Flash extends Component {
   }
 
   render() {
-    this.removeFlash()
-    this.addStamp();
-
     if (this.props.level) {
+      this.removeFlash()
+      this.addStamp();
+
       return (
         <div className="flash">
           <div className="flash-stamp">

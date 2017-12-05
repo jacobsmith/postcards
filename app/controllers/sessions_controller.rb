@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    @curret_user.update!(revocable_session_token: SecureRandom.uuid)
+    @current_user.update!(revocable_session_token: SecureRandom.uuid)
 
     render json: { success: true }
   end

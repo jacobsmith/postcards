@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as loginActions from './../actions/loginActions.js';
 import * as flashActions from './../actions/flashActions.js';
 import PrimaryButton from './../button/primaryButton.js';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 import './loginForm.css';
 
@@ -42,6 +42,8 @@ class LoginForm extends Component {
 
 
         <PrimaryButton text="Start making postcards!" onClick={this.login} to="#" type="submit" />
+
+        <Link className="already-have-account white-text" to="/signup" style={{marginTop: '2rem'}}>Don't have an account? Click here to sign up!</Link>
       </form>
     )
   }

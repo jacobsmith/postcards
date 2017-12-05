@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
     resources :sessions, only: [:create]
     delete '/sessions', to: 'sessions#destroy'
+
+    resources :users, only: [:create]
   end
 
   # used by lob to get the file to put on postcard

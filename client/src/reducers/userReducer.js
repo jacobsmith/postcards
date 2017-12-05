@@ -10,9 +10,22 @@ import {
   USER_LOGGED_OUT
 } from './../actions/loginActions.js';
 
+import {
+  SIGNUP_VALUE_CHANGED,
+  SIGNUP_SUCCESSFUL,
+  SIGNUP_NOT_SUCCESSFUL
+} from './../actions/signupActions.js';
+
 let initialState = {
   login: {
-    loggedIn: window.localStorage.getItem('postcardToken')
+    email:                '',
+    password:             '',
+    loggedIn:             window.localStorage.getItem('postcardToken')
+  },
+  signup: {
+    email:                '',
+    password:             '',
+    passwordConfirmation: ''
   }
 }
 
@@ -41,6 +54,16 @@ function userReducer(state = initialState, action) {
       return newState;
     case USER_LOGGED_OUT:
       newState.login.loggedIn = false;
+      return newState;
+    case SIGNUP_VALUE_CHANGED:
+      newState.signup[action.payload.field] = action.payload.value
+      return newState;
+    case SIGNUP_SUCCESSFUL:
+      newState.login.loggedIn = true;
+      newState.signup.success = true;
+      return newState;
+    case SIGNUP_NOT_SUCCESSFUL:
+      newState.signup.errors = action.payload.errors
       return newState;
     default:
       return newState;

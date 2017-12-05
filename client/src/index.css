@@ -16,6 +16,10 @@ div.App {
   color: black;
 }
 
+.white-text {
+  color: white;
+}
+
 input {
   font-size: 16px; /* make all inputs 16px to avoid iphone zoom %*/
 }
