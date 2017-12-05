@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="148px" height="122px" viewBox="0 0 148 122" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>postcard-logo</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="postcard-logo" transform="translate(1.000000, 1.000000)">
+            <rect id="Rectangle" stroke="#979797" fill="#DBAF32" stroke-dasharray="3" x="0" y="0" width="146" height="120"></rect>
+            <rect id="Rectangle-2" fill="#0D3041" fill-rule="nonzero" x="22" y="23" width="101" height="60"></rect>
+            <polygon id="Fill-1" fill="#FFFFFF" fill-rule="nonzero" points="98.5114167 46.980725 113.2 46.980725 113.2 32.2921417 98.5114167 32.2921417"></polygon>
+            <path d="M22,22.0001583 L22,84.7830338 L40.6698862,84.7830338 L46.3300663,97.7468252 L46.3308579,97.7468252 L54.3168574,84.7830338 L123.487424,84.7830338 L123.487424,22.0001583 L22,22.0001583 Z M96.9249513,48.5626313 L114.779455,48.5626313 L114.779455,30.7089193 L96.9249513,30.7089193 L96.9249513,48.5626313 Z M72.1305297,74.4917974 L73.7145885,74.4917974 L73.7145885,32.2921864 L72.1305297,32.2921864 L72.1305297,74.4917974 Z M30.7079693,50.7095415 L63.0058275,50.7095415 L63.0058275,51.5011751 L63.1950279,52.2698513 L37.2650702,58.6258773 L63.0058275,58.6258773 L63.0058275,59.4175108 L63.1950279,60.186187 L37.2650702,66.542213 L63.0058275,66.542213 L63.0058275,68.1254802 L30.7079693,68.1254802 L30.7079693,67.3338466 L30.5187689,66.5643788 L56.4495182,60.2091444 L30.7079693,60.2091444 L30.7079693,59.4175108 L30.5187689,58.648043 L56.4495182,52.2928087 L30.7079693,52.2928087 L30.7079693,50.7095415 Z" id="Fill-2" fill="#FFFFFF" fill-rule="nonzero"></path>
+        </g>
+    </g>
+</svg>

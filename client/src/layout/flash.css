@@ -1,0 +1,71 @@
+.flash {
+  position: absolute;
+  box-sizing: border-box;
+  top: 10%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 40vw;
+
+
+  animation-duration: 5s;
+  animation-name: flashmessagepostcard;
+  transition-timing-function: cubic-bezier(0.05, 0.99, 0.9, 0.05);
+}
+
+.flash-stamp-image, .flash-postcard-image {
+  width: 100%;
+}
+
+.flash-stamp {
+  position: absolute;
+  top: 10%;
+  right: 6%;
+  width: 19%;
+  animation-delay: 2s;
+  animation-duration: 1s;
+  animation-name: flashmessagestamp;
+}
+
+.flash-text {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  font-size: 1.5em;
+}
+
+@keyframes flashmessagestamp {
+  0% {
+    opacity: 1;
+    transform: rotate3d(1, 1, 1, 180deg) translate3d(100vw, 100vw, 100vw);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotate3d(0, 0, 0, 0deg) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes flashmessagepostcard {
+  0% {
+    transform: translate(-100vw, 0);
+  }
+
+  40% {
+    transform: translate(0, 0);
+  }
+
+  60% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(100vw, 0);
+  }
+}
+
+@media all and (max-width: 714px) {
+  .flash {
+    width: 80vw;
+  }
+}

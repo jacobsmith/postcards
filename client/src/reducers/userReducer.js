@@ -10,7 +10,9 @@ import {
 } from './../actions/loginActions.js';
 
 let initialState = {
-  login: {}
+  login: {
+    loggedIn: window.localStorage.getItem('postcardToken')
+  }
 }
 
 function userReducer(state = initialState, action) {

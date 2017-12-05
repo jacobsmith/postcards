@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as loginActions from './../actions/loginActions.js';
+import * as flashActions from './../actions/flashActions.js';
 import PrimaryButton from './../button/primaryButton.js';
+import { Redirect } from 'react-router-dom';
 
 import './loginForm.css';
 
@@ -17,8 +19,15 @@ class LoginForm extends Component {
   }
 
   render() {
+    if (this.props.loggedIn) {
+      this.props.flashActions.flash('success', 'You are logged in!');
+      return (
+        <Redirect to="/" push />
+      )
+    }
+
     return (
-      <div className="login-form">
+      <form className="login-form">
         <div className="form-error">{this.props.errors ? 'Email or password was incorrect. Please try again!' : ''}</div>
 
         <div className="input-group">
@@ -32,8 +41,8 @@ class LoginForm extends Component {
         </div>
 
 
-        <PrimaryButton text="Start making postcards!" onClick={this.login} to="#" />
-      </div>
+        <PrimaryButton text="Start making postcards!" onClick={this.login} to="#" type="submit" />
+      </form>
     )
   }
 }
@@ -43,12 +52,14 @@ function mapStateToProps(state) {
     email:    state.user.login.email,
     password: state.user.login.password,
     errors:   state.user.login.errored,
+    loggedIn: state.user.login.loggedIn
   }
 }
 
 function mapDispatchToActions(dispatch) {
   return {
-    loginActions: bindActionCreators(loginActions, dispatch)
+    loginActions: bindActionCreators(loginActions, dispatch),
+    flashActions: bindActionCreators(flashActions, dispatch)
   }
 }
 
