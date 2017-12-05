@@ -94,7 +94,7 @@ class PostcardsController < ApplicationController
 
       from_address = JSON.parse(postcard.from_address)
 
-      can_continue;
+      can_continue = false
 
       if use_credit
         return render json: { error: "You don't have enough credits for this transaction." } unless current_user.credits > number_of_postcards
