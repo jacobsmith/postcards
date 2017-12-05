@@ -97,8 +97,8 @@ class PostcardsController < ApplicationController
       can_continue = false
 
       if use_credit
-        return render json: { error: "You don't have enough credits for this transaction." } unless current_user.credits > number_of_postcards
-        user.update!(credits: user.credits - number_of_postcards)
+        return render json: { error: "You don't have enough credits for this transaction." } unless current_user.credits >= number_of_postcards
+        current_user.update!(credits: current_user.credits - number_of_postcards)
         can_continue = true
       else
         # Charge the user's card:
