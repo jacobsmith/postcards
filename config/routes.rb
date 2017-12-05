@@ -10,6 +10,11 @@ Rails.application.routes.draw do
     resources :users, only: [:create]
   end
 
+  scope "/admin" do
+    resources :users
+    post '/users/:id/:credit', to: "users#give_credit"
+  end
+
   # used by lob to get the file to put on postcard
   get '/photos/:id/img', to: 'photos#img', as: 'photo_view'
 

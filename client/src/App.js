@@ -9,6 +9,8 @@ import ApprovalPage from './approval/approvalPage.js';
 import ImageUploadPage from './imageUpload/imageUploadPage.js';
 import PaymentPage from './payment/paymentPage.js';
 import IndexPage from './index/indexPage.js';
+import AdminPage from './admin/adminPage';
+
 import StyleguidePage from './styleguide/styleguidePage.js';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
@@ -30,6 +32,7 @@ class App extends Component {
             <Route path="/approve" exact={true} component={ApprovalPage} />
             <Route path="/styleguide" exact={true} component={StyleguidePage} />
             <Route path="/payment" exact={true} component={PaymentPage} />
+            <Route path="/admin" exact={true} component={AdminPage} />
           </Switch>
         </div>
       </BrowserRouter>
