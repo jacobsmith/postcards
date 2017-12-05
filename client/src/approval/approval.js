@@ -87,6 +87,11 @@ class Approval extends Component {
   render() {
     let postcard = this.props.postcard;
 
+    let numberOfPostcards = this.props.postcard.addresses.to.length;
+    let recipientDescription = this.props.postcard.addresses.to.length === 1 ?
+      this.props.postcard.addresses.to[0].addressName :
+      (this.props.postcard.addresses.to.length + ' recipients' )
+
     if (this.props.postcardCreation.creatingPostcard) {
       return <CreatingPostcard />
     } else if (this.props.postcardCreation.postcardCreatedSuccessfully) {
@@ -119,10 +124,11 @@ class Approval extends Component {
             <StripeCheckout
               ComponentClass="div"
               token={this.onToken}
-              stripeKey="pk_live_lzEl0T1QkJfJNGTu8mwlANIK"
-              amount={149}
+              // stripeKey="pk_live_lzEl0T1QkJfJNGTu8mwlANIK"
+              stripeKey="pk_test_1fP6F3hjLbG2TbLXPuEL3jEx"
+              amount={149 * numberOfPostcards}
               name="Postcard"
-              description={`Send postcard to ${this.props.postcard.addresses.to.addressName}`}
+              description={`Send postcard to ${recipientDescription}`}
               image={postcardImg}
               disabled={this.preventCheckout()}
               >

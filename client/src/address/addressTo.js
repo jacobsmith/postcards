@@ -20,11 +20,11 @@ class AddressTo extends Component {
           key={`addressTo:${address.id}`}
           namePlaceholder="To"
           onChange={this.props.updateAddressInfo('to', index)}
-          addressName={this.props.to.addressName}
-          street={this.props.to.street}
-          city={this.props.to.city}
-          state={this.props.to.state}
-          zip={this.props.to.zip}
+          addressName={address.addressName}
+          street={address.street}
+          city={address.city}
+          state={address.state}
+          zip={address.zip}
           postcardImage={this.props.postcardImage}
           canRemove={index !== 0}
           onRemove={() => this.props.removeToAddress(index)}
