@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     delete '/sessions', to: 'sessions#destroy'
 
     resources :users, only: [:create]
+    get '/me', to: 'users#me'
   end
 
   scope "/admin" do

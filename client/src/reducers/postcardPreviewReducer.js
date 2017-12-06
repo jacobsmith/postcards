@@ -19,6 +19,10 @@ export default function postcardPreviewReducer(state = {}, action) {
     case actions.POSTCARD_PREVIEW_ERROR:
       newState.fetchingPostcard = false;
       newState.errorDuringFetch = true;
+    case actions.RESET_PREVIEW_STATE:
+      newState.errorDuringFetch = false;
+      newState.fetchingPostcard = false;
+      newState.fetchingPostcard = false;
     case CREATE_NEW_POSTCARD:
       newState.fetchingPostcard = false;
       newState.errorDuringFetch = false;

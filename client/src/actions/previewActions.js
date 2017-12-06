@@ -21,6 +21,12 @@ export function previewPostcard(postcard) {
   }
 }
 
+export function resetPreviewState() {
+  return {
+    type: actions.RESET_PREVIEW_STATE
+  }
+}
+
 function fetchingPostcardPreview() {
   return {
     type: actions.FETCHING_POSTCARD_PREVIEW

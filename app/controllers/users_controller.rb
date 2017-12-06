@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   skip_before_action :set_current_user, only: [:create]
 
+  def me
+    render json: current_user
+  end
+
   def index
     return unauthorized! unless current_user.email == 'jacob.wesley.smith@gmail.com'
 

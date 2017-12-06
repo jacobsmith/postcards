@@ -12,6 +12,7 @@ import PrimaryButton from './../button/primaryButton.js';
 import customFetch from './../helpers/customFetch.js';
 import * as previewActions from './../actions/previewActions.js';
 import * as postcardActions from './../actions/postcardActions.js';
+import * as userActions from './../actions/userActions'
 import LoadingIndicator from './../loading/loadingIndicator.js';
 
 import './approval.css';
@@ -55,6 +56,11 @@ class Approval extends Component {
 
   componentWillMount() {
     this.props.previewActions.previewPostcard(this.props.postcard);
+    this.props.userActions.fetchCredits();
+  }
+
+  componentWillUnmount() {
+    this.props.previewActions.resetPreviewState();
   }
 
   preventCheckout() {
@@ -186,6 +192,7 @@ class Approval extends Component {
     return {
       previewActions: bindActionCreators(previewActions, dispatch),
       postcardActions: bindActionCreators(postcardActions, dispatch),
+      userActions:    bindActionCreators(userActions, dispatch)
     }
   }
 

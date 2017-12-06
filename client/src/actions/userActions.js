@@ -1,6 +1,7 @@
 import customFetch from './../helpers/customFetch.js';
 
 export const USER_LOGGED_IN_SUCCESSFULLY = 'USER_LOGGED_IN_SUCCESSFULLY';
+export const USER_FETCHED = 'USER_FETCHED';
 
 export function userLoggedInSuccessfully(user) {
   return {
@@ -10,6 +11,20 @@ export function userLoggedInSuccessfully(user) {
       id: user.id,
       email: user.email
     }
+  }
+}
+
+export function fetchCredits() {
+  return function(dispatch) {
+    customFetch('/api/me')
+    .then(json => dispatch(userFetched(json)) )
+  }
+}
+
+function userFetched(json) {
+  return {
+    type: USER_FETCHED,
+    payload: json
   }
 }
 

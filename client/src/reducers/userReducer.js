@@ -1,5 +1,6 @@
 import {
-  USER_LOGGED_IN_SUCCESSFULLY
+  USER_LOGGED_IN_SUCCESSFULLY,
+  USER_FETCHED
 } from './../actions/userActions.js';
 
 import {
@@ -48,7 +49,7 @@ function userReducer(state = initialState, action) {
       newState.login.loggedIn = true;
       newState.login.errored = false;
       newState.credits = action.payload.credits;
-      
+
       return newState;
     case LOGIN_UNSUCCESSFUL:
       newState.login.loggedIn = false;
@@ -66,6 +67,9 @@ function userReducer(state = initialState, action) {
       return newState;
     case SIGNUP_NOT_SUCCESSFUL:
       newState.signup.errors = action.payload.errors
+      return newState;
+    case USER_FETCHED:
+      newState.credits = action.payload.credits;
       return newState;
     default:
       return newState;
