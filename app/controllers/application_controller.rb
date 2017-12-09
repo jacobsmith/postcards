@@ -3,11 +3,11 @@ class ApplicationController < ActionController::API
   before_action :set_current_user
 
   def not_found!
-    return render status: :not_found
+    return render json: {}, status: :not_found
   end
 
   def unauthorized!
-    return render stauts: :unauthorized
+    return render json: {}, stauts: :unauthorized
   end
 
   private

@@ -18,6 +18,6 @@ class SessionsController < ApplicationController
   def destroy
     @current_user.update!(revocable_session_token: SecureRandom.uuid)
 
-    render json: { success: true, bust: "cache_on_heroku" }
+    render json: { success: true }
   end
 end
