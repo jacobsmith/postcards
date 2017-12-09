@@ -6,7 +6,6 @@ import './printDropdown.css';
 
 import headerImg from './headerImg.png';
 import cameraImg from './../assets/camera.svg';
-// import cameraImg from './camera.png';
 import PrimaryButton from './../button/primaryButton.js'
 import DropdownToggle from './dropdown.js';
 
@@ -17,6 +16,7 @@ import Flash from './../layout/flash.js';
 import Footer from './../layout/footer.js';
 
 import DropdownsDisplay from './dropdowns/display.js';
+import { Link } from 'react-router-dom';
 
 const IndexPage = () => {
   return (
@@ -43,7 +43,10 @@ const IndexPage = () => {
 
         <div className="getStarted">let's get started</div>
         <div className="frontCopy">In this day of hustle and bustle, take a minute to let someone know you care. A real, physical postcard delivered straight to their mailbox will surely bring a smile to their face!</div>
-        <img src={cameraImg} alt="" className="selectImage"/>
+
+        <Link to="/start">
+          <img src={cameraImg} alt="" className="selectImage"/>
+        </Link>
 
         <PrimaryButton text="Build your postcard" to="/start"/>
       </div>
