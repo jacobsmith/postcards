@@ -22,8 +22,12 @@ class ApplicationController < ActionController::API
     payload = decoded_token&.first
 
     user = User.find_by(id: payload["user_id"])
-    unauthorized! unless user.revocable_session_token == payload["revocable_session_token"]
+    if user.revocable_session_token == payload["revocable_session_token"]
+      # only set current user if the tokens match - otherwise, it could be a guest user
+      @current_user = user
+    end
 
-    @current_user = user
+  rescue JWT::DecodeError
+    @current_user = nil # user is a guest, presumably
   end
 end
