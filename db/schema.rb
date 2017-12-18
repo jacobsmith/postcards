@@ -10,11 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171205221527) do
+ActiveRecord::Schema.define(version: 20171209214923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
+
+  create_table "addresses", force: :cascade do |t|
+    t.jsonb   "address"
+    t.jsonb   "verified_address"
+    t.string  "lob_id"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
+  end
 
   create_table "hospital_surgeons", force: :cascade do |t|
     t.integer  "surgeon_id"
@@ -94,6 +102,7 @@ ActiveRecord::Schema.define(version: 20171205221527) do
     t.integer  "credits",                 default: 0
   end
 
+  add_foreign_key "addresses", "users"
   add_foreign_key "hospital_surgeons", "hospitals"
   add_foreign_key "hospital_surgeons", "surgeons"
   add_foreign_key "surgeries", "hospital_surgeons"

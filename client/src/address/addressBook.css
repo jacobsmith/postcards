@@ -1,0 +1,19 @@
+.AddressBook {
+  height: 100%;
+  width: 100%;
+  z-index: 20;
+  position: absolute;
+  top: 5rem;
+  left: 0;
+  background: var(--dark-teal);
+  overflow: scroll;
+}
+
+.AddressBook-list {
+  width: 40%;
+  border-right: 1px solid white;
+}
+
+.AddressBook-list .Address {
+  width: 100%;
+}

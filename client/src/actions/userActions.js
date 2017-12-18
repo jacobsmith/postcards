@@ -22,9 +22,16 @@ export function fetchCredits() {
 }
 
 function userFetched(json) {
-  return {
-    type: USER_FETCHED,
-    payload: json
+  if (json.id) {
+    return {
+      type: USER_FETCHED,
+      payload: json
+    }
+  } else {
+    // else, we are a guest, show a signup button in the future
+    return {
+      type: 'NOP'
+    }
   }
 }
 

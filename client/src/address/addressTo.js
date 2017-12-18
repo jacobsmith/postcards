@@ -4,7 +4,8 @@ import {
    updateAddressInfo,
    addToAddress,
    removeToAddress,
-  } from './../actions/actions.js';
+   showAddressBook,
+ } from './../actions/addressActions.js';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -34,6 +35,7 @@ class AddressTo extends Component {
 
     return (
       <div>
+        <div onClick={this.props.showAddressBook}>Address Book</div>
         {toAddresses}
         <div onClick={this.props.addToAddress}>Add Another Recipient</div>
       </div>
@@ -52,7 +54,8 @@ function mapDispatchToProps(dispatch) {
   return {
     updateAddressInfo: bindActionCreators(updateAddressInfo, dispatch),
     addToAddress:      bindActionCreators(addToAddress,      dispatch),
-    removeToAddress:   bindActionCreators(removeToAddress,   dispatch)
+    removeToAddress:   bindActionCreators(removeToAddress,   dispatch),
+    showAddressBook:   bindActionCreators(showAddressBook,   dispatch)
   }
 }
 

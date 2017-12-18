@@ -2,23 +2,33 @@ import {
   ADDRESS_INFO_UPDATED,
   ADD_TO_ADDRESS,
   REMOVE_TO_ADDRESS,
+  SHOW_ADDRESS_BOOK,
+  ADDRESS_BOOK_ADDRESS_SELECTED,
+  SET_ADDRESSES,
+  UPDATE_ADDRESS_SEARCH
 } from  '../actions/actionTypes.js';
 import { CREATE_NEW_POSTCARD } from '../actions/postcardActions';
 
-function emptyAddress() {
+function emptyAddressNoId() {
   return {
     addressName: '',
     street: '',
     city: '',
     state: '',
-    zip: '',
-    id: Math.random().toString(36).substr(2, 10)
+    zip: ''
   }
+}
+
+function emptyAddress() {
+  let id = { id: Math.random().toString(36).substr(2, 10) }
+  return Object.assign(emptyAddressNoId(), id)
 }
 
 let initialState = {
   from: [emptyAddress()],
-  to: [emptyAddress()]
+  to: [emptyAddress()],
+  addressBook: { display: false },
+  list: []
 }
 
 
@@ -53,10 +63,57 @@ export default function addressesReducer(state = initialState, action) {
       allPresent(newState, 'to')
 
       return newState;
+    case SHOW_ADDRESS_BOOK:
+      newState.addressBook.display = true
+      return newState;
+    case ADDRESS_BOOK_ADDRESS_SELECTED:
+      let address;
+      if (addressesEqual(newState.to[0], emptyAddressNoId())) {
+        address = newState.to[0]
+      } else {
+        address = emptyAddress();
+      }
 
+      let selectedAddress = action.payload.address;
+
+      Object.assign(address, selectedAddress)
+      newState['to'].push(address);
+
+      allPresent(newState, 'to')
+
+      return newState;
+    case SET_ADDRESSES:
+      newState.originalList = action.payload.addresses;
+      newState.list = action.payload.addresses;
+      return newState;
+    case UPDATE_ADDRESS_SEARCH:
+      let searchTerm = action.payload.search;
+      newState.listSearch = searchTerm;
+
+      newState.list = newState.originalList.filter((address) => {
+        return safeInclude(address.addressName, searchTerm) ||
+               safeInclude(address.nickname, searchTerm) ||
+               safeInclude(address.city, searchTerm) ||
+               safeInclude(address.state, searchTerm) ||
+               safeInclude(address.zip, searchTerm)
+     })
+
+      return newState;
     default:
       return newState;
   }
+}
+
+function safeInclude(string, substring) {
+  return (string || '').includes(substring);
+}
+
+function addressesEqual(addressA, addressB) {
+   return addressA.addressName === addressB.addressName &&
+   addressA.street === addressB.street &&
+   addressA.city === addressB.city &&
+   addressA.state === addressB.state &&
+   addressA.zip === addressB.zip
 }
 
 function allPresent(state, addressType) {

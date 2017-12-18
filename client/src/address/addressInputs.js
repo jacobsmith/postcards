@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Address from './address.js';
-import { updateAddressInfo } from './../actions/actions.js';
+import { updateAddressInfo } from './../actions/addressActions.js';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
