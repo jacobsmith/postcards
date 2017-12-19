@@ -154,7 +154,18 @@ class PostcardsController < ApplicationController
 
     rescue Lob::InvalidRequestError => e
       puts e.json_body
-      NotifyMeMailer.oh_shit(postcard_id: postcard.id, errors: { original: e.json_body, backtrace: e.backtrace }, current_user: current_user).deliver_now
+
+      NotifyMeMailer.oh_shit(
+        postcard_id: postcard.id,
+        errors: { original: e.json_body.inspect, backtrace: e.backtrace },
+        current_user: current_user,
+        used_credits: use_credit
+      ).deliver_now
+
+      if (use_credit)
+        current_user.credits += number_of_postcards
+        current_user.save
+      end
 
       render json: e.json_body
     end
