@@ -1,18 +1,24 @@
 .fontSelect {
   height: 3rem;
-  margin: 3rem;
+  margin: 1rem 3rem;
 }
 
 .fontSizeSelect {
   height: 3rem;
-  margin: 3rem;
+  margin: 1rem 3rem;
 }
 
 
 .fontSelect-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
+}
+
+.liveUpdate-inputGroup {
+  display: flex;
+  flex-direction: column;
+
 }
 
 @media all and (max-width: 768px) {
