@@ -119,7 +119,7 @@ export default function addressesReducer(state = initialState, action) {
 }
 
 function safeInclude(string, substring) {
-  return (string || '').includes(substring);
+  return (string || '').toLowerCase().includes(substring);
 }
 
 function addressesEqual(addressA, addressB) {

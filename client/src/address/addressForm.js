@@ -37,7 +37,7 @@ class AddressForm extends Component {
 
             <div className="inputGroup addressZip">
               <label htmlFor="zip">ZIP</label>
-              <input value={zip} name="zip" type="number" onChange={onChange('zip')} className="Address-Zip"  autoComplete="shipping postal-code"/>
+              <input value={zip} name="zip" type="text" onChange={onChange('zip')} className="Address-Zip"  autoComplete="shipping postal-code"/>
             </div>
           </div>
         </form>

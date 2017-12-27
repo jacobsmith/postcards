@@ -8,7 +8,7 @@ class AddressBookEntry extends Component {
 
     return (
       <div>
-          <div className="Address" onClick={clickHandler}>
+          <div className="Address" onClick={clickHandler} key={`${address.id}:${address.lob_id}`}>
             <div>{address.nickname}</div>
             <div>{address.addressName}</div>
             <div>{address.street}</div>

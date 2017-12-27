@@ -6,6 +6,7 @@ import AddressBookEntry from './addressBookEntry'
 import AddressSearch from './addressSearch.js';
 import AddressForm from './addressForm';
 import PrimaryButton from './../button/primaryButton'
+import PrimaryAction from './../layout/primaryAction'
 
 import './addressBook.css';
 
@@ -18,7 +19,7 @@ class AddressBook extends Component {
     if (this.props.display || this.props.reallyDisplay) {
       return (
         <div className="AddressBook">
-          <div>Address Book</div>
+          <PrimaryAction text="address book" />
 
           <div className="AddressBook-Header">
             <AddressSearch />
