@@ -6,7 +6,7 @@ import * as addressActions from './../actions/addressActions.js';
 class AddressSearch extends Component {
   render() {
     return (
-      <input value={this.props.value} onChange={this.props.addressActions.updateSearch} />
+      <input value={this.props.value} onChange={this.props.addressActions.updateSearch} placeholder="Search Addresses" />
     )
   }
 }

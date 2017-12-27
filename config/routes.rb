@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
     resources :users, only: [:create]
     get '/me', to: 'users#me'
+
+    resources :addresses
   end
 
   scope "/admin" do

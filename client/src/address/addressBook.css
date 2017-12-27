@@ -9,11 +9,11 @@
   overflow: scroll;
 }
 
-.AddressBook-list {
-  width: 40%;
-  border-right: 1px solid white;
-}
-
 .AddressBook-list .Address {
   width: 100%;
+}
+
+.AddressBook-Header {
+  display: flex;
+  justify-content: space-around;
 }

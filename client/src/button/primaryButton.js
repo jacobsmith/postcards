@@ -10,15 +10,6 @@ class PrimaryButton  extends Component {
   render() {
     let { text, to, link = true, disabled = false, enabled = true, enabledProp, onClick, type } = this.props
 
-    let actuallyEnabled;
-    if (enabled) {
-      actuallyEnabled = true;
-    } else if (!disabled) {
-      actuallyEnabled = true;
-    } else {
-      actuallyEnabled = false;
-    }
-
     var deep_value = function(obj, path){
       for (var i=0, path=path.split('.'), len=path.length; i<len; i++){
         obj = obj[path[i]];
@@ -26,8 +17,15 @@ class PrimaryButton  extends Component {
       return obj;
     };
 
+    let actuallyEnabled;
     if (enabledProp) {
       actuallyEnabled = deep_value(this.props.state, enabledProp)
+    } else if (!disabled) {
+      actuallyEnabled = true;
+    } else if (enabled) {
+      actuallyEnabled = true;
+    } else {
+      actuallyEnabled = false;
     }
 
     if (link && actuallyEnabled) {
@@ -40,7 +38,7 @@ class PrimaryButton  extends Component {
       )
     } else if (actuallyEnabled) { // no Link
       return (
-        <a href="#" className="primaryButton">
+        <a href="#" className="primaryButton" onClick={onClick}>
           <div>
             <div className="">{text} &rsaquo;</div>
           </div>

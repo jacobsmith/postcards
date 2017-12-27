@@ -5,7 +5,9 @@ import {
   SHOW_ADDRESS_BOOK,
   ADDRESS_BOOK_ADDRESS_SELECTED,
   SET_ADDRESSES,
-  UPDATE_ADDRESS_SEARCH
+  UPDATE_ADDRESS_SEARCH,
+  NEW_ADDRESS_SAVED,
+  SHOW_CREATE_NEW_ADDRESS,
 } from  '../actions/actionTypes.js';
 import { CREATE_NEW_POSTCARD } from '../actions/postcardActions';
 
@@ -27,8 +29,10 @@ function emptyAddress() {
 let initialState = {
   from: [emptyAddress()],
   to: [emptyAddress()],
-  addressBook: { display: false },
-  list: []
+  new: [emptyAddress()],
+  addressBook: { display: false, showCreateNewAddress: false },
+  list: [],
+  originalList: []
 }
 
 
@@ -37,6 +41,13 @@ export default function addressesReducer(state = initialState, action) {
   let newState = JSON.parse(JSON.stringify(state));
 
   switch (action.type) {
+    case NEW_ADDRESS_SAVED:
+      console.log('hey!', state, action)
+      newState.originalList.push(action.payload.address);
+      newState.addressBook.display = false;
+      newState.addressBook.showCreateNewAddress = false;
+
+      return newState;
     case ADDRESS_INFO_UPDATED:
       let addressType = action.payload.addressType;
       let addressAttribute = action.payload.addressAttribute;
@@ -65,6 +76,9 @@ export default function addressesReducer(state = initialState, action) {
       return newState;
     case SHOW_ADDRESS_BOOK:
       newState.addressBook.display = true
+      return newState;
+    case SHOW_CREATE_NEW_ADDRESS:
+      newState.addressBook.showCreateNewAddress = true;
       return newState;
     case ADDRESS_BOOK_ADDRESS_SELECTED:
       let address;
