@@ -4,7 +4,7 @@ import './address.css';
 var stateList = new Array("","AK","AL","AR","AZ","CA","CO","CT","DC","DE","FL","GA","GU","HI","IA","ID", "IL","IN","KS","KY","LA","MA","MD","ME","MH","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY", "OH","OK","OR","PA","PR","PW","RI","SC","SD","TN","TX","UT","VA","VI","VT","WA","WI","WV","WY");
 
 const Address = ({ namePlaceholder, addressName, street, city, state, zip, onChange, postcardImage, canRemove, onRemove }) => {
-  let stateOptions = stateList.map((state) => <option value={state} key={state}>{state}</option>)
+  let stateOptions = stateList.map((stateOption) => <option value={stateOption} key={stateOption}>{stateOption}</option>)
 
   return (
     <div className="AddressContainer">

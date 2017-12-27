@@ -16,8 +16,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    # don't throw error if we can't update
-    current_user.update(revocable_session_token: SecureRandom.uuid)
+    # don't throw error if we can't find the current user (their token is already invalid)
+    current_user.try(:update, revocable_session_token: SecureRandom.uuid)
 
     render json: { success: true }
   end

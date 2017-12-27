@@ -26,17 +26,26 @@ class MessageFontSelect extends Component {
 
     return (
       <div className="fontSelect-container" >
-        <select onChange={this.props.messageActions.fontUpdated} value={this.props.font} className="fontSelect">
-          {fonts.map(font => <option value={font}>{font}</option>)}
-        </select>
+        <div className="liveUpdate-inputGroup">
+          <label>Font</label>
+          <select onChange={this.props.messageActions.fontUpdated} value={this.props.font} className="fontSelect">
+            {fonts.map(font => <option value={font}>{font}</option>)}
+          </select>
+        </div>
 
-        <select onChange={this.props.messageActions.fontSizeUpdated} value={this.props.fontSize} className="fontSizeSelect">
-          {fontSizes.map(font => <option value={font}>{font}</option>)}
-        </select>
+        <div className="liveUpdate-inputGroup">
+          <label>Size</label>
+          <select onChange={this.props.messageActions.fontSizeUpdated} value={this.props.fontSize} className="fontSizeSelect">
+            {fontSizes.map(font => <option value={font}>{font}</option>)}
+          </select>
+        </div>
 
-        <select onChange={this.props.messageActions.alignmentUpdated} value={this.props.alignment} className="fontSizeSelect">
-          {["left", "center"].map(alignment => <option value={alignment}>{alignment}</option>)}
-        </select>
+        <div className="liveUpdate-inputGroup">
+          <label>Alignment</label>
+          <select onChange={this.props.messageActions.alignmentUpdated} value={this.props.alignment} className="fontSizeSelect">
+            {["left", "center"].map(alignment => <option value={alignment}>{alignment}</option>)}
+          </select>
+        </div>
       </div>
     )
   }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import cameraImg from './../camera.png';
 
 import uploadImg from './../../assets/upload-icon.svg';
@@ -13,7 +14,7 @@ class ProcessDropdown extends Component {
         <div className="contentHeader secondary-info">How our process works</div>
 
         <div className="processCards">
-          <div className="processCard">
+          <Link to="/start" className="processCard">
             <div className="processImageContainer">
               <div className="processImage">
                 <img src={uploadImg} />
@@ -28,7 +29,7 @@ class ProcessDropdown extends Component {
               Choose the perfect image for your postcard from your image library.
             </div>
 
-          </div>
+          </Link>
           <div className="processCard">
             <div className="processImage">
                 <img src={addressImg} />

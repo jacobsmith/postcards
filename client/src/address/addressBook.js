@@ -29,15 +29,6 @@ function mapStateToProps(state) {
   return {
     display:   state.postcard.addresses.addressBook.display,
     addresses: state.postcard.addresses.list
-    // addresses: [
-    //   {
-    //     addressName: 'jacob',
-    //     street: '123 main street',
-    //     city: 'westfield',
-    //     state: 'in',
-    //     zip: '46074'
-    //   }
-    // ]
   }
 }
 

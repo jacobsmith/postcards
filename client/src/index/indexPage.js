@@ -41,7 +41,7 @@ const IndexPage = () => {
       <div className="mainBody">
         <DropdownsDisplay />
 
-        <div className="getStarted">let's get started</div>
+        <Link to="/start" className="getStarted">let's get started</Link>
         <div className="frontCopy">In this day of hustle and bustle, take a minute to let someone know you care. A real, physical postcard delivered straight to their mailbox will surely bring a smile to their face!</div>
 
         <Link to="/start">
