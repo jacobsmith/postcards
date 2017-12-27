@@ -10,6 +10,15 @@ class PrimaryButton  extends Component {
   render() {
     let { text, to, link = true, disabled = false, enabled = true, enabledProp, onClick, type } = this.props
 
+    let actuallyEnabled;
+    if (enabled) {
+      actuallyEnabled = true;
+    } else if (!disabled) {
+      actuallyEnabled = true;
+    } else {
+      actuallyEnabled = false;
+    }
+
     var deep_value = function(obj, path){
       for (var i=0, path=path.split('.'), len=path.length; i<len; i++){
         obj = obj[path[i]];
@@ -18,10 +27,10 @@ class PrimaryButton  extends Component {
     };
 
     if (enabledProp) {
-      enabled = deep_value(this.props.state, enabledProp)
+      actuallyEnabled = deep_value(this.props.state, enabledProp)
     }
 
-    if (link && enabled && !disabled) {
+    if (link && actuallyEnabled) {
       return (
         <Link to={to} className="primaryButton" onClick={onClick} type={type}>
           <div>
@@ -29,15 +38,23 @@ class PrimaryButton  extends Component {
           </div>
         </Link>
       )
-    } else {
+    } else if (actuallyEnabled) { // no Link
       return (
-        <a href="#" className={`primaryButon ${(!enabled || disabled) ? 'primaryButton--disabled' : ''}`}>
+        <a href="#" className="primaryButton">
+          <div>
+            <div className="">{text} &rsaquo;</div>
+          </div>
+        </a>
+      )
+    } else {
+      // actually *disabled*
+      return (
+        <a href="#" className="primaryButton primaryButton--disabled">
           <div className="disabledContainer">
-            { (disabled || !enabled) ? <img className="disabled-lock-icon" src={lockIcon} /> : '' }
+            <img className="disabled-lock-icon" src={lockIcon} />
             <div className="disabledText">{text} &rsaquo;</div>
           </div>
         </a>
-
       )
     }
   }
