@@ -25,13 +25,6 @@ class AddressBook extends Component {
         <div className="AddressBook">
           <PrimaryAction text="address book" />
 
-          <PrimaryButton 
-            link={false}
-            text={`Add ${selectedAddressCount} addresses to postcard`}
-            enabled={selectedAddressCount > 0}
-            wide={true}
-            onClick={this.props.addressActions.addSelectedAddressesToPostcard}
-          />
 
           <div className="AddressBook-Header">
             <AddressSearch />
@@ -62,6 +55,14 @@ class AddressBook extends Component {
               })
             }
           </div>
+
+          <PrimaryButton 
+            link={false}
+            text={`Add ${selectedAddressCount} addresses to postcard`}
+            enabled={selectedAddressCount > 0}
+            wide={true}
+            onClick={this.props.addressActions.addSelectedAddressesToPostcard}
+          />
         </div>
       )
     } else {
