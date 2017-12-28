@@ -63,9 +63,9 @@ class Approval extends Component {
     this.props.previewActions.resetPreviewState();
   }
 
-  preventCheckout() {
+  allowCheckout() {
     // ensure that we have all the necessary data for checkout
-    if (!this.props.postcardPreview.postcardId) {
+    if (this.props.postcardPreview.postcardId) {
       return true;
     } else {
       return false;
@@ -126,7 +126,7 @@ class Approval extends Component {
           </div>
 
             <div className="PreviewPostcard-ButtonContainer">
-              <Checkout onToken={this.onToken} numberOfPostcards={numberOfPostcards} recipientDescription={recipientDescription} disabled={this.preventCheckout} credits={this.props.credits} />
+              <Checkout onToken={this.onToken} numberOfPostcards={numberOfPostcards} recipientDescription={recipientDescription} enabled={this.allowCheckout} credits={this.props.credits} />
             </div>
           </div>
         )
@@ -134,10 +134,10 @@ class Approval extends Component {
     }
   }
 
-  const Checkout = ({ onToken, numberOfPostcards, recipientDescription, disabled, credits = 0}) => {
+  const Checkout = ({ onToken, numberOfPostcards, recipientDescription, enabled, credits = 0}) => {
       let creditCheckout = (
         <div>
-          <PrimaryButton text={`Checkout for ${numberOfPostcards} credit${numberOfPostcards > 1 ? 's' : ''}`} to="#" disabled={disabled()} onClick={() => onToken(null, true)} />
+          <PrimaryButton text={`Checkout for ${numberOfPostcards} credit${numberOfPostcards > 1 ? 's' : ''}`} to="#" enabled={enabled()} onClick={() => onToken(null, true)} />
           <div className="credits-checkout-desc">{`You have ${credits} credits.`}</div>
         </div>
         )
@@ -153,9 +153,9 @@ class Approval extends Component {
               name="Postcard"
               description={`Send postcard to ${recipientDescription}`}
               image={postcardImg}
-              disabled={disabled()}
+              disabled={!enabled()}
               >
-                <PrimaryButton text={stripeText} to="#" disabled={disabled()} />
+                <PrimaryButton text={stripeText} to="#" enabled={enabled()} />
               </StripeCheckout>
           )
         }

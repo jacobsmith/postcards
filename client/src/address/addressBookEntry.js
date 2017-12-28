@@ -9,6 +9,7 @@ class AddressBookEntry extends Component {
     return (
       <div>
           <div className="Address" onClick={clickHandler} key={`${address.id}:${address.lob_id}`}>
+            { address.selected ? (<div className="Address-selected">Selected</div>) : null }
             <div>{address.nickname}</div>
             <div>{address.addressName}</div>
             <div>{address.street}</div>

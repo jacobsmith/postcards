@@ -9,7 +9,8 @@ class Address < ApplicationRecord
       state: address.address_state,
       country: address.address_country,
       zip: address.address_zip,
-      lob_id: address.id
+      lob_id: address.id,
+      id: id
     }
   end
 end

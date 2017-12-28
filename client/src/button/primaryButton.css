@@ -38,6 +38,10 @@
   border-radius: 40px;
 }
 
+.primaryButton-wide {
+  width: 310px;
+}
+
 .disabledContainer {
   display: flex;
   justify-content: center;

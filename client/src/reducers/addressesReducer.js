@@ -3,7 +3,8 @@ import {
   ADD_TO_ADDRESS,
   REMOVE_TO_ADDRESS,
   SHOW_ADDRESS_BOOK,
-  ADDRESS_BOOK_ADDRESS_SELECTED,
+  TOGGLE_ADDRESS_BOOK_ADDRESS_SELECTED,
+  ADD_SELECTED_ADDRESSES_TO_POSTCARD,
   SET_ADDRESSES,
   UPDATE_ADDRESS_SEARCH,
   NEW_ADDRESS_SAVED,
@@ -65,8 +66,7 @@ export default function addressesReducer(state = initialState, action) {
       allPresent(newState, 'from')
 
     case ADD_TO_ADDRESS:
-      newState['to'].push(emptyAddress());
-      allPresent(newState, 'to')
+      addToAddress(newState)
       return newState;
 
     case REMOVE_TO_ADDRESS:
@@ -80,20 +80,23 @@ export default function addressesReducer(state = initialState, action) {
     case SHOW_CREATE_NEW_ADDRESS:
       newState.addressBook.showCreateNewAddress = true;
       return newState;
-    case ADDRESS_BOOK_ADDRESS_SELECTED:
-      let address;
-      if (addressesEqual(newState.to[0], emptyAddressNoId())) {
-        address = newState.to[0]
-      } else {
-        address = emptyAddress();
-      }
+    case TOGGLE_ADDRESS_BOOK_ADDRESS_SELECTED:
+      let selectedAddress = newState.originalList.find((originalListAddress) => originalListAddress.id == action.payload.address.id)
+      selectedAddress.selected = !selectedAddress.selected;
 
-      let selectedAddress = action.payload.address;
-
-      Object.assign(address, selectedAddress)
-      newState['to'].push(address);
-
-      allPresent(newState, 'to')
+      // let address;
+      // if (addressesEqual(newState.to[0], emptyAddressNoId())) {
+      //   address = newState.to[0]
+      // } else {
+      //   address = emptyAddress();
+      // }
+      //
+      // let selectedAddress = action.payload.address;
+      //
+      // Object.assign(address, selectedAddress)
+      // newState['to'].push(address);
+      //
+      // allPresent(newState, 'to')
 
       return newState;
     case SET_ADDRESSES:
@@ -104,13 +107,21 @@ export default function addressesReducer(state = initialState, action) {
       let searchTerm = action.payload.search;
       newState.listSearch = searchTerm;
 
-      newState.list = newState.originalList.filter((address) => {
-        return safeInclude(address.addressName, searchTerm) ||
-               safeInclude(address.nickname, searchTerm) ||
-               safeInclude(address.city, searchTerm) ||
-               safeInclude(address.state, searchTerm) ||
-               safeInclude(address.zip, searchTerm)
-     })
+     //  newState.list = newState.originalList.filter((address) => {
+     //    return safeInclude(address.addressName, searchTerm) ||
+     //           safeInclude(address.nickname, searchTerm) ||
+     //           safeInclude(address.city, searchTerm) ||
+     //           safeInclude(address.state, searchTerm) ||
+     //           safeInclude(address.zip, searchTerm)
+     // })
+
+      return newState;
+    case ADD_SELECTED_ADDRESSES_TO_POSTCARD:
+      for ( selectedAddress of newState.originalList.filter(address => address.selected)) {
+        addToAddress(newState, selectedAddress);
+      }
+
+      newState.addressBook.display = false;
 
       return newState;
     default:
@@ -128,6 +139,21 @@ function addressesEqual(addressA, addressB) {
    addressA.city === addressB.city &&
    addressA.state === addressB.state &&
    addressA.zip === addressB.zip
+}
+
+function addToAddress(newState, address = emptyAddress()) {
+  // don't allow duplicate addresses
+  if (newState['to'].some((existingAddress) => addressesEqual(existingAddress, address))) {
+    return;
+  }
+
+  // if the first address is empty, replace it
+  if (addressesEqual(newState['to'][0], emptyAddress())) {
+    newState['to'][0] = address
+  } else {
+    newState['to'].push(address);
+  }
+  allPresent(newState, 'to')
 }
 
 function allPresent(state, addressType) {

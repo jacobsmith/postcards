@@ -16,10 +16,22 @@ class AddressBook extends Component {
   }
 
   render() {
+    let addresses = this.props.addresses;
+    let filteredAddressList = this.props.addressActions.filterAddresses(addresses, this.props.searchTerm)
+    let selectedAddressCount = addresses.filter(address => address.selected).length;
+
     if (this.props.display || this.props.reallyDisplay) {
       return (
         <div className="AddressBook">
           <PrimaryAction text="address book" />
+
+          <PrimaryButton 
+            link={false}
+            text={`Add ${selectedAddressCount} addresses to postcard`}
+            enabled={selectedAddressCount > 0}
+            wide={true}
+            onClick={this.props.addressActions.addSelectedAddressesToPostcard}
+          />
 
           <div className="AddressBook-Header">
             <AddressSearch />
@@ -43,9 +55,9 @@ class AddressBook extends Component {
 
           <div className="AddressBook-list">
             {
-              this.props.addresses.map((address) => {
+              filteredAddressList.map((address) => {
                 return (
-                  <AddressBookEntry address={address} onClick={() => this.props.addressActions.addressBookAddressSelected(address)}/>
+                  <AddressBookEntry address={address} onClick={() => this.props.addressActions.toggleAddressBookAddressSelected(address)}/>
                 )
               })
             }
@@ -61,9 +73,10 @@ class AddressBook extends Component {
 function mapStateToProps(state) {
   return {
     display:   state.postcard.addresses.addressBook.display,
-    addresses: state.postcard.addresses.list,
+    addresses: state.postcard.addresses.originalList,
     newAddress: state.postcard.addresses.new[0],
     showCreateNewAddress: state.postcard.addresses.addressBook.showCreateNewAddress,
+    searchTerm: state.postcard.addresses.listSearch
   }
 }
 

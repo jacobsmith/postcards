@@ -38,13 +38,39 @@ function handleNewAddressSaved(newAddress) {
   }
 }
 
-export function addressBookAddressSelected(address) {
+export function addSelectedAddressesToPostcard() {
   return {
-    type: actions.ADDRESS_BOOK_ADDRESS_SELECTED,
+    type: actions.ADD_SELECTED_ADDRESSES_TO_POSTCARD
+  }
+}
+
+export function toggleAddressBookAddressSelected(address) {
+  return {
+    type: actions.TOGGLE_ADDRESS_BOOK_ADDRESS_SELECTED,
     payload: {
       address: address
     }
   }
+}
+
+export function filterAddresses(addresses, searchTerm) {
+  return function(dispatch) {
+    if (searchTerm == undefined || searchTerm == '') {
+      return addresses;
+    } else {
+      return addresses.filter((address) => {
+        return safeInclude(address.addressName, searchTerm) ||
+        safeInclude(address.nickname, searchTerm) ||
+        safeInclude(address.city, searchTerm) ||
+        safeInclude(address.state, searchTerm) ||
+        safeInclude(address.zip, searchTerm)
+      })
+    }
+  }
+}
+
+function safeInclude(string, substring) {
+  return (string || '').toLowerCase().includes(substring);
 }
 
 export function addToAddress() {

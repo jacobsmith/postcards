@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import lockIcon from './../assets/lock.svg'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import classNames from 'classnames';
 
 import './primaryButton.css';
 
 class PrimaryButton  extends Component {
   render() {
-    let { text, to, link = true, disabled = false, enabled = true, enabledProp, onClick, type } = this.props
+    let { text, to, link = true, enabled = true, enabledProp, onClick, type, wide = false } = this.props
 
     var deep_value = function(obj, path){
       for (var i=0, path=path.split('.'), len=path.length; i<len; i++){
@@ -17,20 +18,22 @@ class PrimaryButton  extends Component {
       return obj;
     };
 
-    let actuallyEnabled;
+    let actuallyEnabled = false;
     if (enabledProp) {
       actuallyEnabled = deep_value(this.props.state, enabledProp)
-    } else if (!disabled) {
-      actuallyEnabled = true;
     } else if (enabled) {
       actuallyEnabled = true;
-    } else {
-      actuallyEnabled = false;
     }
+
+    let classes = classNames([
+      "primaryButton",
+      wide ? "primaryButton-wide" : "",
+      !actuallyEnabled ? "primaryButton--disabled" : ""
+    ])
 
     if (link && actuallyEnabled) {
       return (
-        <Link to={to} className="primaryButton" onClick={onClick} type={type}>
+        <Link to={to} className={classes} onClick={onClick} type={type}>
           <div>
             {text} &rsaquo;
           </div>
@@ -38,7 +41,7 @@ class PrimaryButton  extends Component {
       )
     } else if (actuallyEnabled) { // no Link
       return (
-        <a href="#" className="primaryButton" onClick={onClick}>
+        <a href="#" className={classes} onClick={onClick}>
           <div>
             <div className="">{text} &rsaquo;</div>
           </div>
@@ -47,7 +50,7 @@ class PrimaryButton  extends Component {
     } else {
       // actually *disabled*
       return (
-        <a href="#" className="primaryButton primaryButton--disabled">
+        <a href="#" className={classes}>
           <div className="disabledContainer">
             <img className="disabled-lock-icon" src={lockIcon} />
             <div className="disabledText">{text} &rsaquo;</div>
