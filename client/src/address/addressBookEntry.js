@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import check from './../assets/check.svg'
+
+import './addressBookEntry.css';
 
 class AddressBookEntry extends Component {
   render() {
@@ -8,12 +11,15 @@ class AddressBookEntry extends Component {
 
     return (
       <div>
-          <div className="Address" onClick={clickHandler} key={`${address.id}:${address.lob_id}`}>
-            { address.selected ? (<div className="Address-selected">Selected</div>) : null }
-            <div>{address.nickname}</div>
-            <div>{address.addressName}</div>
-            <div>{address.street}</div>
-            <div>{address.city}, {address.state} {address.zip}</div>
+          <div className="AddressBookEntry" onClick={clickHandler} key={`${address.id}:${address.lob_id}`}>
+            { address.selected ? (<img src={check} className="Address-selected" />) : null }
+
+            <div>
+              <div>{address.nickname}</div>
+              <div>{address.addressName}</div>
+              <div>{address.street}</div>
+              <div>{address.city}, {address.state} {address.zip}</div>
+            </div>
           </div>
       </div>
     )
