@@ -16,6 +16,10 @@ div.App {
   color: black;
 }
 
+.primary-text {
+  color: var(--dark-teal);
+}
+
 .white-text {
   color: white;
 }

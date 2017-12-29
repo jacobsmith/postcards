@@ -5,6 +5,28 @@ class UsersController < ApplicationController
     render json: current_user || {}
   end
 
+  def credits
+    token = params[:stripeToken]
+
+    charge = $Stripe::Charge.create(
+      :amount => 1499,
+      :currency => "usd",
+      :description => "Postcard Credits",
+      :source => token["id"],
+      metadata: { user_id: current_user.id }
+    )
+
+    if charge[:outcome][:type] == "authorized"
+      current_user.credits += 10
+      current_user.save
+      render json: { success: true }
+    else
+      Rails.logger.info(charge.inspect)
+      render json: { success: false }
+    end
+
+  end
+
   def index
     return unauthorized! unless current_user.email == 'jacob.wesley.smith@gmail.com'
 

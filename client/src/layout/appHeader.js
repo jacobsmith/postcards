@@ -13,6 +13,17 @@ const AppHeader = ({ text }) => {
           <div className="headerName">Say it with a Postcard</div>
       </Link>
       <div className="headerSpacer"></div>
+
+    </div>
+
+    <div className="headerRight">
+      <div>
+        <Link to="/address-book" className="primary-text">Address Book</Link>
+      </div>
+
+      <div>
+        <Link to="/account" className="primary-text">Account</Link>
+      </div>
     </div>
   </div>
 )

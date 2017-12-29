@@ -27,6 +27,8 @@ class AddressBook extends Component {
 
     let selectedAddressCount = addresses.filter(address => address.selected).length;
 
+    let { showActionButtons = true } = this.props;
+
     if (this.props.display || this.props.reallyDisplay) {
       return (
         <div className="AddressBook">
@@ -64,7 +66,7 @@ class AddressBook extends Component {
             }
           </div>
 
-          <div>
+          <div style={{ display: showActionButtons ? '' : 'none' }}>
             <Button
               style={{display: this.props.showCreateNewAddress ? 'none' : ''}}
               link={false}

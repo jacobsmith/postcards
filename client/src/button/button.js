@@ -30,7 +30,8 @@ class Button extends Component {
       buttonClass,
       wide ? `${buttonClass}-wide` : "",
       !actuallyEnabled ? `${buttonClass}--disabled` : "",
-      `${buttonClass}--${buttonStyle}`
+      `${buttonClass}--${buttonStyle}`,
+      rest.className
     ])
 
     let forwardCaret, backwardCaret;

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
     resources :users, only: [:create]
     get '/me', to: 'users#me'
+    post '/user/credits', to: 'users#credits'
 
     resources :addresses
   end
