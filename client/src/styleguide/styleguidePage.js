@@ -4,7 +4,7 @@ import AppHeader from './../layout/appHeader.js';
 import AppNavButton from './../nav/appNavButton.js';
 import PageContent from './../page/pageContent.js';
 import PrimaryAction from './../layout/primaryAction.js';
-import PrimaryButton from './../button/primaryButton.js';
+import Button from './../button/button.js';
 import PostcardImageReview from './../review/postcardImageReview.js';
 
 import LoadingIndicator from './../loading/loadingIndicator';

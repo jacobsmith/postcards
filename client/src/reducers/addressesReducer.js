@@ -9,6 +9,8 @@ import {
   UPDATE_ADDRESS_SEARCH,
   NEW_ADDRESS_SAVED,
   SHOW_CREATE_NEW_ADDRESS,
+  SET_FROM_ADDRESS,
+  HIDE_ADDRESS_BOOK
 } from  '../actions/actionTypes.js';
 import { CREATE_NEW_POSTCARD } from '../actions/postcardActions';
 
@@ -77,6 +79,9 @@ export default function addressesReducer(state = initialState, action) {
     case SHOW_ADDRESS_BOOK:
       newState.addressBook.display = true
       return newState;
+    case HIDE_ADDRESS_BOOK:
+      newState.addressBook.display = false
+      return newState;
     case SHOW_CREATE_NEW_ADDRESS:
       newState.addressBook.showCreateNewAddress = true;
       return newState;
@@ -114,6 +119,11 @@ export default function addressesReducer(state = initialState, action) {
      //           safeInclude(address.state, searchTerm) ||
      //           safeInclude(address.zip, searchTerm)
      // })
+
+      return newState;
+    case SET_FROM_ADDRESS:
+      newState.from[0] = action.payload.address;
+      allPresent(newState, 'from')
 
       return newState;
     case ADD_SELECTED_ADDRESSES_TO_POSTCARD:

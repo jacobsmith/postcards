@@ -5,7 +5,7 @@ import * as addressActions from './../actions/addressActions.js';
 import AddressBookEntry from './addressBookEntry'
 import AddressSearch from './addressSearch.js';
 import AddressForm from './addressForm';
-import PrimaryButton from './../button/primaryButton'
+import Button from './../button/button'
 import PrimaryAction from './../layout/primaryAction'
 
 import './addressBook.css';
@@ -38,7 +38,7 @@ class AddressBook extends Component {
               canRemove={false}
             />
 
-            <PrimaryButton
+            <Button
               link={false}
               text="Save Address"
               enabledProp="postcard.addresses.newAllPresent"
@@ -56,12 +56,19 @@ class AddressBook extends Component {
             }
           </div>
 
-          <PrimaryButton 
+          <Button
             link={false}
             text={`Add ${selectedAddressCount} addresses to postcard`}
             enabled={selectedAddressCount > 0}
             wide={true}
             onClick={this.props.addressActions.addSelectedAddressesToPostcard}
+          />
+
+          <Button
+            link={false}
+            style="secondary"
+            text="Back"
+            onClick={this.props.addressActions.hideAddressBook}
           />
         </div>
       )

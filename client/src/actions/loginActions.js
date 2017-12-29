@@ -59,7 +59,7 @@ function loginResponseReceived(status, json) {
     return {
       type: LOGIN_SUCCESSFUL,
       payload: {
-        credits: json.credits
+        credits: json.credits,
       }
     }
   } else {

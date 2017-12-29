@@ -8,7 +8,7 @@ import MessageReview from './../review/messageReview.js';
 import PostcardImageReview from './../review/postcardImageReview.js';
 import postcardImg from './../icons/postcard.svg'
 import StripeCheckout from 'react-stripe-checkout';
-import PrimaryButton from './../button/primaryButton.js';
+import Button from './../button/button.js';
 import customFetch from './../helpers/customFetch.js';
 import * as previewActions from './../actions/previewActions.js';
 import * as postcardActions from './../actions/postcardActions.js';
@@ -22,7 +22,7 @@ class PostcardCreatedSuccessfully extends Component {
     return (
     <div style={{marginTop: '3rem'}}>
       <div>Your postcard was created successfully!</div>
-      <PrimaryButton to="/start" text="send another postcard!" onClick={this.props.postcardActions.createNewPostcard} />
+      <Button to="/start" text="send another postcard!" onClick={this.props.postcardActions.createNewPostcard} />
     </div>
     )
   }
@@ -33,7 +33,7 @@ class PostcardError extends Component {
     return (
       <div style={{marginTop: '3rem'}}>
         <div>Uh-oh, something happened while trying to make your postcard!</div>
-        <PrimaryButton to="/address/to" text="Double check the information" />
+        <Button to="/address/to" text="Double check the information" />
       </div>
     )
   }
@@ -51,7 +51,7 @@ class Approval extends Component {
   constructor() {
     super()
     this.onToken = this.onToken.bind(this);
-    this.preventCheckout = this.preventCheckout.bind(this);
+    this.allowCheckout = this.allowCheckout.bind(this);
   }
 
   componentWillMount() {
@@ -137,7 +137,7 @@ class Approval extends Component {
   const Checkout = ({ onToken, numberOfPostcards, recipientDescription, enabled, credits = 0}) => {
       let creditCheckout = (
         <div>
-          <PrimaryButton text={`Checkout for ${numberOfPostcards} credit${numberOfPostcards > 1 ? 's' : ''}`} to="#" enabled={enabled()} onClick={() => onToken(null, true)} />
+          <Button text={`Checkout for ${numberOfPostcards} credit${numberOfPostcards > 1 ? 's' : ''}`} to="#" enabled={enabled()} onClick={() => onToken(null, true)} />
           <div className="credits-checkout-desc">{`You have ${credits} credits.`}</div>
         </div>
         )
@@ -155,7 +155,7 @@ class Approval extends Component {
               image={postcardImg}
               disabled={!enabled()}
               >
-                <PrimaryButton text={stripeText} to="#" enabled={enabled()} />
+                <Button text={stripeText} to="#" enabled={enabled()} />
               </StripeCheckout>
           )
         }

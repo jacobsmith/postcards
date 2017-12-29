@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as signupActions from './../actions/signupActions.js';
 import * as flashActions from './../actions/flashActions.js';
-import PrimaryButton from './../button/primaryButton.js';
+import Button from './../button/button.js';
 import { Redirect } from 'react-router-dom';
 
 import './signupForm.css';
@@ -53,7 +53,7 @@ class SignupForm extends Component {
         </div>
 
 
-        <PrimaryButton text="Start making postcards!" onClick={this.signUp} to="#" type="submit" />
+        <Button text="Start making postcards!" onClick={this.signUp} to="#" type="submit" />
       </form>
     )
   }

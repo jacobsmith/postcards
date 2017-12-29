@@ -3,7 +3,7 @@ import Layout from './../layout/layout.js';
 import Message from './message.js';
 import AppHeader from './../layout/appHeader.js';
 import PrimaryAction from './../layout/primaryAction.js';
-import PrimaryButton from './../button/primaryButton.js';
+import Button from './../button/button.js';
 import Footer from './../layout/footer.js';
 
 const MessagePage = () => {
@@ -13,7 +13,7 @@ const MessagePage = () => {
       <PrimaryAction text="What do you want it to say?" />
       <Message />
 
-      <PrimaryButton to="/approve" text="Save my message" enabledProp="postcard.message.value" />
+      <Button to="/approve" text="Save my message" enabledProp="postcard.message.value" />
     </Layout>
   )
 }

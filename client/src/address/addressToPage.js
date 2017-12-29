@@ -5,7 +5,7 @@ import AppHeader from './../layout/appHeader.js';
 import AppNavButton from './../nav/appNavButton.js';
 import PageContent from './../page/pageContent.js';
 import PrimaryAction from './../layout/primaryAction.js';
-import PrimaryButton from './../button/primaryButton.js';
+import Button from './../button/button.js';
 import Footer from './../layout/footer.js';
 import AddressBook from './addressBook.js';
 
@@ -18,7 +18,7 @@ const AddressToPage = () => {
         <AddressTo />
         <AddressBook />
 
-        <PrimaryButton to="/address/from" text="Save to address" enabledProp="postcard.addresses.toAllPresent" />
+        <Button to="/address/from" text="Save to address" enabledProp="postcard.addresses.toAllPresent" />
       </PageContent>
     </Layout>
   )

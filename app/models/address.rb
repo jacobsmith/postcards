@@ -10,7 +10,8 @@ class Address < ApplicationRecord
       country: address.address_country,
       zip: address.address_zip,
       lob_id: address.id,
-      id: id
+      id: id,
+      default_from_address: default_from_address
     }
   end
 end

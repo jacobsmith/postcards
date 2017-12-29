@@ -6,7 +6,7 @@ import './printDropdown.css';
 
 import headerImg from './headerImg.png';
 import cameraImg from './../assets/camera.svg';
-import PrimaryButton from './../button/primaryButton.js'
+import Button from './../button/button.js'
 import DropdownToggle from './dropdown.js';
 
 import ChangeLoginStatus from './../login/changeLoginStatus.js';
@@ -48,7 +48,7 @@ const IndexPage = () => {
           <img src={cameraImg} alt="" className="selectImage"/>
         </Link>
 
-        <PrimaryButton text="Build your postcard" to="/start"/>
+        <Button text="Build your postcard" to="/start"/>
       </div>
 
       <Footer />

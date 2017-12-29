@@ -93,7 +93,7 @@ select {
 
 .AddressBook-list {
   flex: 1;
-  max-height: 65vh;
+  max-height: 50vh;
   overflow: auto;
 }
 

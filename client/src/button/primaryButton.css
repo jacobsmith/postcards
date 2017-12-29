@@ -1,4 +1,4 @@
-.primaryButton {
+.button {
   text-transform: uppercase;
   background-color: white;
   color: #05313F;
@@ -18,7 +18,7 @@
   border-radius: 40px;
 }
 
-.primaryButton--disabled {
+.button--disabled {
   text-transform: uppercase;
   background-color: gray;
   color: #05313F;
@@ -38,8 +38,19 @@
   border-radius: 40px;
 }
 
-.primaryButton-wide {
+.button-wide {
   width: 310px;
+}
+
+.button--secondary {
+  height: 3rem;
+  width: 200px;
+  background-color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1rem;
+}
+
+.button--secondary:hover {
+  background-color: rgba(255, 255, 255, 0.95);
 }
 
 .disabledContainer {

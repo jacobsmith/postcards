@@ -5,7 +5,7 @@ import PageContent from './../page/pageContent.js';
 import AppNavButton from './../nav/appNavButton.js';
 import AppHeader from './../layout/appHeader.js';
 import PrimaryAction from './../layout/primaryAction.js';
-import PrimaryButton from './../button/primaryButton.js';
+import Button from './../button/button.js';
 import Footer from './../layout/footer.js';
 
 const AddressFromPage = () => {
@@ -17,7 +17,7 @@ const AddressFromPage = () => {
 
         <AddressFrom />
 
-        <PrimaryButton to="/message" text="Save from address" enabledProp="postcard.addresses.fromAllPresent" />
+        <Button to="/message" text="Save from address" enabledProp="postcard.addresses.fromAllPresent" />
       </PageContent>
 
     </Layout>

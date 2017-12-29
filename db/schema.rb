@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20171209214923) do
     t.jsonb   "address"
     t.jsonb   "verified_address"
     t.string  "lob_id"
+    t.boolean "default_from_address", default: false
     t.integer "user_id"
     t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
   end

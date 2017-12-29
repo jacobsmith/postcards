@@ -94,9 +94,24 @@ export function showAddressBook() {
   }
 }
 
+export function hideAddressBook() {
+  return {
+    type: actions.HIDE_ADDRESS_BOOK
+  }
+}
+
 export function showCreateNewAddress() {
   return {
     type: actions.SHOW_CREATE_NEW_ADDRESS
+  }
+}
+
+export function setFromAddress(address) {
+  return {
+    type: actions.SET_FROM_ADDRESS,
+    payload: {
+      address: address
+    }
   }
 }
 
