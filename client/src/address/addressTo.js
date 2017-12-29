@@ -9,6 +9,8 @@ import {
  import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import HideUnlessUserPresent from './../helpers/hideUnlessUserPresent';
+import ShowUnlessUserPresent from './../helpers/showUnlessUserPresent';
 
 class AddressTo extends Component {
   constructor() {
@@ -36,7 +38,14 @@ class AddressTo extends Component {
 
     return (
       <div style={{ display: this.props.addressBookDisplay ? 'none' : '' }}>
-        <Link to="#" onClick={this.props.showAddressBook} className="white-text">Address Book</Link>
+        <HideUnlessUserPresent>
+          <Link to="#" onClick={this.props.showAddressBook} className="white-text">Address Book</Link>
+        </HideUnlessUserPresent>
+
+        <ShowUnlessUserPresent>
+          <Link to="/login" className="white-text">Login to use your own Address Book</Link>
+        </ShowUnlessUserPresent>
+
         {toAddresses}
         <div onClick={this.props.addToAddress}>Add Another Recipient</div>
       </div>

@@ -6,6 +6,8 @@ class UsersController < ApplicationController
   end
 
   def credits
+    return unless current_user.present?
+
     token = params[:stripeToken]
 
     charge = $Stripe::Charge.create(

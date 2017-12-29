@@ -65,7 +65,7 @@ function mapStateToProps(state) {
     password:             state.user.signup.password,
     passwordConfirmation: state.user.signup.passwordConfirmation,
     errors:               state.user.signup.errors,
-    loggedIn:             state.user.login.loggedIn
+    loggedIn:             state.user.loggedIn
   }
 }
 

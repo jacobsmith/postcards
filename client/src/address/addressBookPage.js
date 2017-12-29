@@ -7,7 +7,7 @@ import PrimaryAction from './../layout/primaryAction.js';
 import Button from './../button/button.js';
 import Footer from './../layout/footer.js';
 
-const AddressToPage = () => {
+const AddressBookPage = () => {
   return (
     <Layout>
       <PageContent>
@@ -18,4 +18,4 @@ const AddressToPage = () => {
   )
 }
 
-export default AddressToPage;
+export default AddressBookPage;

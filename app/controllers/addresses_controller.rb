@@ -1,6 +1,10 @@
 class AddressesController < ApplicationController
   def index
-    render json: current_user.addresses.map(&:to_json)
+    if current_user.present?
+      render json: current_user.addresses.map(&:to_json)
+    else
+      render json: []
+    end
   end
 
   def create

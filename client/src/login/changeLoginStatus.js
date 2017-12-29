@@ -34,7 +34,7 @@ class ChangeLoginStatus extends Component {
 
 function mapStateToProps(state) {
   return {
-    loggedIn: state.user.login.loggedIn
+    loggedIn: state.user.loggedIn
   }
 }
 

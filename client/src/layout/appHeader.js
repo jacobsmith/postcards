@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import headerImg from './../index/headerImg.png';
+import HideUnlessUserPresent from './../helpers/hideUnlessUserPresent.js';
 
 import './appHeader.css';
 
@@ -16,15 +17,17 @@ const AppHeader = ({ text }) => {
 
     </div>
 
-    <div className="headerRight">
-      <div>
-        <Link to="/address-book" className="primary-text">Address Book</Link>
-      </div>
+    <HideUnlessUserPresent>
+      <div className="headerRight">
+        <div>
+          <Link to="/address-book" className="primary-text">Address Book</Link>
+        </div>
 
-      <div>
-        <Link to="/account" className="primary-text">Account</Link>
+        <div>
+          <Link to="/account" className="primary-text">Account</Link>
+        </div>
       </div>
-    </div>
+    </HideUnlessUserPresent>
   </div>
 )
 }

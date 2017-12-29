@@ -12,11 +12,11 @@ import IndexPage from './index/indexPage.js';
 import AdminPage from './admin/adminPage';
 import AddressBookPage from './address/addressBookPage';
 import AccountPage from './account/accountPage.js';
+import RequireUser from './helpers/requireUser.js';
+
 
 import StyleguidePage from './styleguide/styleguidePage.js';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-
-
 
 class App extends Component {
   render() {
@@ -26,9 +26,9 @@ class App extends Component {
           <Switch>
             <Route path="/" exact={true} component={IndexPage} />
             <Route path="/login" exact={true} component={LoginPage} />
-            <Route path="/address-book" exact={true} component={AddressBookPage) />
+            <Route path="/address-book" exact={true} component={RequireUser(AddressBookPage)} />
             <Route path="/signup" exact={true} component={SignupPage} />
-            <Route path="/account" exact={true} component={AccountPage} />
+            <Route path="/account" exact={true} component={RequireUser(AccountPage)} />
             <Route path="/start" exact={true} component={ImageUploadPage} />
             <Route path="/address/to" exact={true} component={AddressToPage} />
             <Route path="/address/from" exact={true} component={AddressFromPage} />

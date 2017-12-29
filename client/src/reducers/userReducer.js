@@ -18,10 +18,10 @@ import {
 } from './../actions/signupActions.js';
 
 let initialState = {
+  loggedIn:               window.localStorage.getItem('postcardToken'),
   login: {
     email:                '',
     password:             '',
-    loggedIn:             window.localStorage.getItem('postcardToken')
   },
   signup: {
     email:                '',
@@ -46,23 +46,23 @@ function userReducer(state = initialState, action) {
       newState.login.password = action.payload;
       return newState;
     case LOGIN_SUCCESSFUL:
-      newState.login.loggedIn = true;
+      newState.loggedIn = true;
       newState.login.errored = false;
       newState.credits = action.payload.credits;
 
       return newState;
     case LOGIN_UNSUCCESSFUL:
-      newState.login.loggedIn = false;
+      newState.loggedIn = false;
       newState.login.errored = true;
       return newState;
     case USER_LOGGED_OUT:
-      newState.login.loggedIn = false;
+      newState.loggedIn = false;
       return newState;
     case SIGNUP_VALUE_CHANGED:
       newState.signup[action.payload.field] = action.payload.value
       return newState;
     case SIGNUP_SUCCESSFUL:
-      newState.login.loggedIn = true;
+      newState.loggedIn = true;
       newState.signup.success = true;
       return newState;
     case SIGNUP_NOT_SUCCESSFUL:

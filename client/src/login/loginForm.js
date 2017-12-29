@@ -54,7 +54,7 @@ function mapStateToProps(state) {
     email:    state.user.login.email,
     password: state.user.login.password,
     errors:   state.user.login.errored,
-    loggedIn: state.user.login.loggedIn
+    loggedIn: state.user.loggedIn
   }
 }
 
