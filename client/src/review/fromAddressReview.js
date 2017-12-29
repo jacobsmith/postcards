@@ -4,7 +4,9 @@ import AddressReview from './addressReview.js';
 
 const FromAddressReview = ({ address }) => {
   return (
-    <AddressReview address={address[0]} editLocation="/address/from" type="from" />
+    <div>
+      <AddressReview address={address[0]} editLocation="/address/from" type="from" />
+    </div>
   )
 }
 

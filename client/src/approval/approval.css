@@ -18,10 +18,10 @@
 .address-reviews {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
 }
 
 .AddressReview {
-  width: 40%;
   margin: 1em;
 }
 
