@@ -56,7 +56,7 @@ function userReducer(state = initialState, action) {
       newState.login.errored = true;
       return newState;
     case USER_LOGGED_OUT:
-      newState.loggedIn = false;
+      newState = initialState;
       return newState;
     case SIGNUP_VALUE_CHANGED:
       newState.signup[action.payload.field] = action.payload.value

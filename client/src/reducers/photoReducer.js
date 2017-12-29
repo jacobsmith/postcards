@@ -4,12 +4,23 @@ import {
   IMAGE_UPLOAD_FAILURE,
 } from  '../actions/actionTypes.js';
 
+import {
+  CREATE_NEW_POSTCARD
+} from '../actions/postcardActions';
+
 let initialState = {
   imgSrc: ''
 }
 
 export default function photo(state = initialState, action) {
   switch (action.type) {
+    case CREATE_NEW_POSTCARD:
+      return {
+        ...state,
+        imgSrc: null,
+        photoId: null,
+        uploadInProgress: false
+      }
     case IMAGE_UPLOAD_BEGIN:
       return { ...state, uploadInProgress: true }
     case IMAGE_UPLOAD_SUCCESS:

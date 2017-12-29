@@ -34,7 +34,7 @@ class ImageUpload extends Component {
     }
 
     return (
-      <label>
+      <label style={{cursor: 'pointer'}}>
         {this.props.imgSrc ? photo : emptyState}
 
         <input
@@ -46,7 +46,6 @@ class ImageUpload extends Component {
           onChange={() => this.uploadPhoto()}
         />
       </label>
-
     )
   }
 }

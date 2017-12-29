@@ -22,6 +22,7 @@ export function previewPostcard(postcard) {
 }
 
 export function resetPreviewState() {
+  console.log('resetting preview state')
   return {
     type: actions.RESET_PREVIEW_STATE
   }

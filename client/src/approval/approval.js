@@ -33,6 +33,7 @@ class PostcardError extends Component {
     return (
       <div style={{marginTop: '3rem'}}>
         <div>Uh-oh, something happened while trying to make your postcard!</div>
+        <div>You have not been charged yet. Please double check the addresses or email jacob.wesley.smith@gmail.com for assistance.</div>
         <Button to="/address/to" text="Double check the information" />
       </div>
     )
@@ -149,7 +150,7 @@ class Approval extends Component {
               token={onToken}
               stripeKey="pk_live_lzEl0T1QkJfJNGTu8mwlANIK"
               // stripeKey="pk_test_1fP6F3hjLbG2TbLXPuEL3jEx"
-              amount={149 * numberOfPostcards}
+              amount={179 * numberOfPostcards}
               name="Postcard"
               description={`Send postcard to ${recipientDescription}`}
               image={postcardImg}

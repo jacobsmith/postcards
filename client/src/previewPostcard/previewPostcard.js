@@ -44,7 +44,7 @@ class PreviewPostcard extends Component {
           <StripeCheckout
             token={this.onToken}
             stripeKey="pk_live_lzEl0T1QkJfJNGTu8mwlANIK"
-            amount={149}
+            amount={179}
             name="Postcard"
             description={`Send postcard to ${this.props.recipient}`}
             image={postcardImg}

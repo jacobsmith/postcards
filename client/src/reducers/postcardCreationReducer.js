@@ -5,6 +5,10 @@ import {
   CREATING_POSTCARD
 } from './../actions/postcardActions.js';
 
+import {
+  RESET_PREVIEW_STATE
+} from './../actions/actionTypes.js';
+
 let initialState = {};
 
 export default function postcardCreationReducer(state = initialState, action) {
@@ -18,6 +22,10 @@ export default function postcardCreationReducer(state = initialState, action) {
     case POSTCARD_CREATION_ERROR:
       newState.creatingPostcard = false;
       newState.postcardCreatedSuccessfully = false;
+      return newState;
+    case RESET_PREVIEW_STATE:
+      // allow changes to be made and then maybe it will have been fixed
+      newState.postcardCreatedSuccessfully = undefined;
       return newState;
     case CREATE_NEW_POSTCARD:
       newState.creatingPostcard = false;
