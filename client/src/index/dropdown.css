@@ -25,6 +25,7 @@
 
 .pricecard {
   margin: 1.5em;
+  width: 15vw;
 }
 
 .pricecardMain {
@@ -45,4 +46,11 @@
   padding-bottom: 3rem;
   color: #C4E4DD;
   text-transform: uppercase;
+}
+
+@media all and (max-width: 768px) {
+  .pricecard {
+    margin: 1.5em;
+    width: 45vw;
+  }
 }

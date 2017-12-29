@@ -103,7 +103,7 @@ class PostcardsController < ApplicationController
       else
         # Charge the user's card:
         charge = $Stripe::Charge.create(
-          :amount => number_of_postcards * 149,
+          :amount => number_of_postcards * 179,
           :currency => "usd",
           :description => "Postcard",
           :source => token["id"],

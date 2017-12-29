@@ -31,64 +31,16 @@ class Payment extends Component {
         <div className="PaymentReady-Text">
           Your postcard is ready to be sent!<br /> Simply click the button below to pay and it will be on its way!
         </div>
-{/*
-        <div className="PreviewPostcard-ButtonContainer">
-          <StripeCheckout
-            token={this.onToken}
-            stripeKey="pk_live_lzEl0T1QkJfJNGTu8mwlANIK"
-            amount={1250}
-            name="Postcard"
-            description={`Send postcard to ${this.props.recipient}`}
-            image={postcardImg}
-            label="Buy 10 cards for $14"
-          />
-        </div>
 
         <div className="PreviewPostcard-ButtonContainer">
           <StripeCheckout
             token={this.onToken}
             stripeKey="pk_live_lzEl0T1QkJfJNGTu8mwlANIK"
-            amount={2500}
+            amount={179}
             name="Postcard"
             description={`Send postcard to ${this.props.recipient}`}
             image={postcardImg}
-            label="Buy 20 cards for $25"
-          />
-        </div>
-
-        <div className="PreviewPostcard-ButtonContainer">
-          <StripeCheckout
-            token={this.onToken}
-            stripeKey="pk_live_lzEl0T1QkJfJNGTu8mwlANIK"
-            amount={4500}
-            name="Postcard"
-            description={`Send postcard to ${this.props.recipient}`}
-            image={postcardImg}
-            label="Buy 50 cards for $60"
-          />
-        </div>
-
-        <div className="PreviewPostcard-ButtonContainer">
-          <StripeCheckout
-            token={this.onToken}
-            stripeKey="pk_live_lzEl0T1QkJfJNGTu8mwlANIK"
-            amount={4500}
-            name="Postcard"
-            description={`Send postcard to ${this.props.recipient}`}
-            image={postcardImg}
-            label="Buy 100 cards for $110"
-          />
-        </div> */}
-
-        <div className="PreviewPostcard-ButtonContainer">
-          <StripeCheckout
-            token={this.onToken}
-            stripeKey="pk_live_lzEl0T1QkJfJNGTu8mwlANIK"
-            amount={149}
-            name="Postcard"
-            description={`Send postcard to ${this.props.recipient}`}
-            image={postcardImg}
-            label="Send the postcard for $1.49"
+            label="Send the postcard for $1.79"
           />
         </div>
 

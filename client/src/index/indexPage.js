@@ -31,7 +31,7 @@ const IndexPage = () => {
         <div className="headerRight">
           <DropdownToggle text="Pricing" dropdownId="pricing" />
           <DropdownToggle text="Process" dropdownId="process" />
-          <DropdownToggle text="Prints"  dropdownId="prints" />
+          <DropdownToggle text="About"  dropdownId="prints" />
           <ChangeLoginStatus />
         </div>
       </div>
@@ -42,7 +42,9 @@ const IndexPage = () => {
         <DropdownsDisplay />
 
         <Link to="/start" className="getStarted">let's get started</Link>
-        <div className="frontCopy">In this day of hustle and bustle, take a minute to let someone know you care. A real, physical postcard delivered straight to their mailbox will surely bring a smile to their face!</div>
+        <div className="frontCopy">Send high quality, full color, 4" x 6" postcards directly to someone's mailbox</div>
+        <div className="frontCopy">Great for thank you notes, party invitations, business connections, and more</div>
+        <div className="frontCopy">Uses your own photos so you truly stand out - click below to get started!</div>
 
         <Link to="/start">
           <img src={cameraImg} alt="" className="selectImage"/>
