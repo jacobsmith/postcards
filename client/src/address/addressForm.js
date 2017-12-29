@@ -5,10 +5,11 @@ let stateOptions = stateList.map((stateOption) => <option value={stateOption} ke
 
 class AddressForm extends Component {
   render() {
-    let { namePlaceholder, addressName, street, city, state, zip, onChange, postcardImage, canRemove, onRemove } = this.props;
+    let { namePlaceholder, addressName, street, city, state, zip, onChange, postcardImage, canRemove, onRemove, error } = this.props;
 
     return (
       <div className="Address">
+        <div className="address-error">{error}</div>
         { canRemove ? (<div className="remove" onClick={onRemove}>remove</div>) : '' }
 
         <form>

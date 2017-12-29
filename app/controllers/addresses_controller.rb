@@ -26,5 +26,8 @@ class AddressesController < ApplicationController
     else
       render json: { error: lob_address.error }
     end
+
+  rescue Lob::InvalidRequestError => e
+    render json: { error: JSON.parse(e.http_body)["error"]["message"] }
   end
 end

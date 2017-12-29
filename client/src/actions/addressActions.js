@@ -25,7 +25,13 @@ export function saveNewAddress(newAddress) {
       method: 'post',
       body: JSON.stringify(newAddress)
     })
-    .then((response) => dispatch(handleNewAddressSaved(response)))
+    .then((response) => {
+      if (response.error) {
+        dispatch(handleNewAddressError(response))
+      } else {
+        dispatch(handleNewAddressSaved(response))
+      }
+    })
   }
 }
 
@@ -34,6 +40,15 @@ function handleNewAddressSaved(newAddress) {
     type: actions.NEW_ADDRESS_SAVED,
     payload: {
       address: newAddress
+    }
+  }
+}
+
+function handleNewAddressError(response) {
+  return {
+    type: actions.NEW_ADDRESS_SAVE_ERROR,
+    payload: {
+      error: response.error
     }
   }
 }

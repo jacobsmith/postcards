@@ -40,6 +40,7 @@ class AddressBook extends Component {
 
           <div className="AddressBook-NewAddress" style={{ display: this.props.showCreateNewAddress ? '' : 'none'}}>
             <AddressForm
+              error={this.props.newAddressError}
               namePlaceholder="Address Name"
               onChange={this.props.addressActions.updateAddressInfo('new', 0)}
               canRemove={false}
@@ -93,6 +94,7 @@ function mapStateToProps(state) {
     display:   state.postcard.addresses.addressBook.display,
     addresses: state.postcard.addresses.originalList,
     newAddress: state.postcard.addresses.new[0],
+    newAddressError: state.postcard.addresses.addressBook.newAddressError,
     showCreateNewAddress: state.postcard.addresses.addressBook.showCreateNewAddress,
     searchTerm: state.postcard.addresses.listSearch
   }

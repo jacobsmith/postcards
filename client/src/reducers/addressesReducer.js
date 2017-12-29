@@ -8,6 +8,7 @@ import {
   SET_ADDRESSES,
   UPDATE_ADDRESS_SEARCH,
   NEW_ADDRESS_SAVED,
+  NEW_ADDRESS_SAVE_ERROR,
   SHOW_CREATE_NEW_ADDRESS,
   SET_FROM_ADDRESS,
   HIDE_ADDRESS_BOOK
@@ -48,6 +49,11 @@ export default function addressesReducer(state = initialState, action) {
       newState.originalList.push(action.payload.address);
       newState.addressBook.display = true;
       newState.addressBook.showCreateNewAddress = false;
+      newState.addressBook.newAddressError = null;
+
+      return newState;
+    case NEW_ADDRESS_SAVE_ERROR:
+      newState.addressBook.newAddressError = action.payload.error
 
       return newState;
     case ADDRESS_INFO_UPDATED:
