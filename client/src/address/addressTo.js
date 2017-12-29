@@ -6,6 +6,7 @@ import {
    removeToAddress,
    showAddressBook,
  } from './../actions/addressActions.js';
+ import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -34,8 +35,8 @@ class AddressTo extends Component {
     })
 
     return (
-      <div>
-        <div onClick={this.props.showAddressBook}>Address Book</div>
+      <div style={{ display: this.props.addressBookDisplay ? 'none' : '' }}>
+        <Link to="#" onClick={this.props.showAddressBook} className="white-text">Address Book</Link>
         {toAddresses}
         <div onClick={this.props.addToAddress}>Add Another Recipient</div>
       </div>
@@ -46,7 +47,8 @@ class AddressTo extends Component {
 function mapStateToProps(state) {
   return {
     to: state.postcard.addresses.to,
-    postcardImage: state.postcard.photo.imgSrc
+    postcardImage: state.postcard.photo.imgSrc,
+    addressBookDisplay:   state.postcard.addresses.addressBook.display,
   }
 }
 

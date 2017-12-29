@@ -9,7 +9,7 @@ import './primaryButton.css';
 
 class Button extends Component {
   render() {
-    let { text, to, link = true, enabled = true, enabledProp, onClick, type, wide = false, style = "primary" } = this.props
+    let { text, to, link = true, enabled = true, enabledProp, onClick, type, wide = false, buttonStyle = "primary", ...rest } = this.props
 
     var deep_value = function(obj, path){
       for (var i=0, path=path.split('.'), len=path.length; i<len; i++){
@@ -30,14 +30,14 @@ class Button extends Component {
       buttonClass,
       wide ? `${buttonClass}-wide` : "",
       !actuallyEnabled ? `${buttonClass}--disabled` : "",
-      `${buttonClass}--${style}`
+      `${buttonClass}--${buttonStyle}`
     ])
 
     let forwardCaret, backwardCaret;
-    if (style == "primary") {
+    if (buttonStyle == "primary") {
       forwardCaret = `\u{203A}`
       backwardCaret = '';
-    } else if (style == "secondary") {
+    } else if (buttonStyle == "secondary") {
       forwardCaret = '';
       backwardCaret = "\u{2039}";
     }
@@ -46,7 +46,7 @@ class Button extends Component {
 
     if (link && actuallyEnabled) {
       return (
-        <Link to={to} className={classes} onClick={onClick} type={type}>
+        <Link {...rest} to={to} className={classes} onClick={onClick} type={type} >
           <div>
             {buttonText}
           </div>
@@ -54,7 +54,7 @@ class Button extends Component {
       )
     } else if (actuallyEnabled) { // no Link
       return (
-        <a href="#" className={classes} onClick={onClick}>
+        <a {...rest} href="#" className={classes} onClick={onClick}>
           <div>
             <div className="">{buttonText}</div>
           </div>
@@ -63,7 +63,7 @@ class Button extends Component {
     } else {
       // actually *disabled*
       return (
-        <a href="#" className={classes}>
+        <a href="#" {...rest} className={classes}>
           <div className="disabledContainer">
             <img className="disabled-lock-icon" src={lockIcon} />
             <div className="disabledText">{buttonText}</div>

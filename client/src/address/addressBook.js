@@ -17,7 +17,14 @@ class AddressBook extends Component {
 
   render() {
     let addresses = this.props.addresses;
-    let filteredAddressList = this.props.addressActions.filterAddresses(addresses, this.props.searchTerm)
+    let filteredAddressList = this.props.addressActions
+    .filterAddresses(addresses, this.props.searchTerm)
+    .sort((a, b) => {
+      if (a.addressName.toLowerCase() < b.addressName.toLowerCase()) return -1;
+      if (a.addressName.toLowerCase() > b.addressName.toLowerCase()) return 1;
+      return 0;
+    })
+
     let selectedAddressCount = addresses.filter(address => address.selected).length;
 
     if (this.props.display || this.props.reallyDisplay) {
@@ -31,7 +38,7 @@ class AddressBook extends Component {
             <div onClick={this.props.addressActions.showCreateNewAddress}>Add Address</div>
           </div>
 
-          <div style={{ display: this.props.showCreateNewAddress ? '' : 'none'}}>
+          <div className="AddressBook-NewAddress" style={{ display: this.props.showCreateNewAddress ? '' : 'none'}}>
             <AddressForm
               namePlaceholder="Address Name"
               onChange={this.props.addressActions.updateAddressInfo('new', 0)}
@@ -46,7 +53,7 @@ class AddressBook extends Component {
             />
           </div>
 
-          <div className="AddressBook-list">
+          <div className="AddressBook-list" style={{display: this.props.showCreateNewAddress ? 'none' : ''}}>
             {
               filteredAddressList.map((address) => {
                 return (
@@ -56,20 +63,23 @@ class AddressBook extends Component {
             }
           </div>
 
-          <Button
-            link={false}
-            text={`Add ${selectedAddressCount} addresses to postcard`}
-            enabled={selectedAddressCount > 0}
-            wide={true}
-            onClick={this.props.addressActions.addSelectedAddressesToPostcard}
-          />
+          <div>
+            <Button
+              style={{display: this.props.showCreateNewAddress ? 'none' : ''}}
+              link={false}
+              text={`Add ${selectedAddressCount} addresses to postcard`}
+              enabled={selectedAddressCount > 0}
+              wide={true}
+              onClick={this.props.addressActions.addSelectedAddressesToPostcard}
+            />
 
-          <Button
-            link={false}
-            style="secondary"
-            text="Back"
-            onClick={this.props.addressActions.hideAddressBook}
-          />
+            <Button
+              link={false}
+              buttonStyle="secondary"
+              text="Back"
+              onClick={this.props.addressActions.hideAddressBook}
+            />
+          </div>
         </div>
       )
     } else {

@@ -9,6 +9,10 @@
   overflow: scroll;
 }
 
+.AddressBook-NewAddress .Address {
+  margin: auto;
+}
+
 .AddressBook-list .Address {
   width: 100%;
 }

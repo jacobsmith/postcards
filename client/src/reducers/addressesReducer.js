@@ -45,9 +45,8 @@ export default function addressesReducer(state = initialState, action) {
 
   switch (action.type) {
     case NEW_ADDRESS_SAVED:
-      console.log('hey!', state, action)
       newState.originalList.push(action.payload.address);
-      newState.addressBook.display = false;
+      newState.addressBook.display = true;
       newState.addressBook.showCreateNewAddress = false;
 
       return newState;
@@ -81,6 +80,7 @@ export default function addressesReducer(state = initialState, action) {
       return newState;
     case HIDE_ADDRESS_BOOK:
       newState.addressBook.display = false
+      newState.addressBook.showCreateNewAddress = false;
       return newState;
     case SHOW_CREATE_NEW_ADDRESS:
       newState.addressBook.showCreateNewAddress = true;
