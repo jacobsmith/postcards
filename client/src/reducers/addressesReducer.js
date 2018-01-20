@@ -5,12 +5,12 @@ import {
   SHOW_ADDRESS_BOOK,
   TOGGLE_ADDRESS_BOOK_ADDRESS_SELECTED,
   ADD_SELECTED_ADDRESSES_TO_POSTCARD,
-  SET_ADDRESSES,
+  SET_FROM_ADDRESS,
   UPDATE_ADDRESS_SEARCH,
   NEW_ADDRESS_SAVED,
   NEW_ADDRESS_SAVE_ERROR,
   SHOW_CREATE_NEW_ADDRESS,
-  SET_FROM_ADDRESS,
+  FETCH_ADDRESS_BOOK_ADDRESSES_SUCCESS,
   HIDE_ADDRESS_BOOK
 } from  '../actions/actionTypes.js';
 import { CREATE_NEW_POSTCARD } from '../actions/postcardActions';
@@ -46,10 +46,12 @@ export default function addressesReducer(state = initialState, action) {
 
   switch (action.type) {
     case NEW_ADDRESS_SAVED:
-      newState.originalList.push(action.payload.address);
-      newState.addressBook.display = true;
-      newState.addressBook.showCreateNewAddress = false;
-      newState.addressBook.newAddressError = null;
+      if (action.payload.id) {
+        newState.originalList.push(action.payload.address);
+        newState.addressBook.display = true;
+        newState.addressBook.showCreateNewAddress = false;
+        newState.addressBook.newAddressError = null;
+      }
 
       return newState;
     case NEW_ADDRESS_SAVE_ERROR:
@@ -95,36 +97,16 @@ export default function addressesReducer(state = initialState, action) {
       let selectedAddress = newState.originalList.find((originalListAddress) => originalListAddress.id == action.payload.address.id)
       selectedAddress.selected = !selectedAddress.selected;
 
-      // let address;
-      // if (addressesEqual(newState.to[0], emptyAddressNoId())) {
-      //   address = newState.to[0]
-      // } else {
-      //   address = emptyAddress();
-      // }
-      //
-      // let selectedAddress = action.payload.address;
-      //
-      // Object.assign(address, selectedAddress)
-      // newState['to'].push(address);
-      //
-      // allPresent(newState, 'to')
-
       return newState;
-    case SET_ADDRESSES:
-      newState.originalList = action.payload.addresses;
-      newState.list = action.payload.addresses;
+    case FETCH_ADDRESS_BOOK_ADDRESSES_SUCCESS:
+      const addresses = action.payload.addresses;
+
+      newState.originalList = addresses;
+      newState.list = addresses;
       return newState;
     case UPDATE_ADDRESS_SEARCH:
       let searchTerm = action.payload.search;
       newState.listSearch = searchTerm;
-
-     //  newState.list = newState.originalList.filter((address) => {
-     //    return safeInclude(address.addressName, searchTerm) ||
-     //           safeInclude(address.nickname, searchTerm) ||
-     //           safeInclude(address.city, searchTerm) ||
-     //           safeInclude(address.state, searchTerm) ||
-     //           safeInclude(address.zip, searchTerm)
-     // })
 
       return newState;
     case SET_FROM_ADDRESS:

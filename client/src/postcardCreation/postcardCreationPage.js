@@ -7,8 +7,6 @@ import PreviewPostcard from './../previewPostcard/previewPostcard.js';
 
 import AddressInputs from './../address/addressInputs.js';
 
-import LoginWithFacebook from './../login/loginWithFacebook.js';
-
 import { connect } from 'react-redux';
 
 class PostcardCreationPage extends Component {

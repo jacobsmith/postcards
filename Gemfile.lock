@@ -48,17 +48,26 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     arel (7.1.4)
+    axiom-types (0.1.1)
+      descendants_tracker (~> 0.0.4)
+      ice_nine (~> 0.11.0)
+      thread_safe (~> 0.3, >= 0.3.1)
     bcrypt (3.1.11)
     builder (3.2.3)
     byebug (9.1.0)
     coderay (1.1.1)
+    coercible (1.0.0)
+      descendants_tracker (~> 0.0.1)
     concurrent-ruby (1.0.5)
+    descendants_tracker (0.0.4)
+      thread_safe (~> 0.3, >= 0.3.1)
     domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.2.0)
     dotenv-rails (2.2.0)
       dotenv (= 2.2.0)
       railties (>= 3.2, < 5.1)
+    equalizer (0.0.11)
     erubis (2.7.0)
     faraday (0.13.1)
       multipart-post (>= 1.2, < 3)
@@ -70,6 +79,10 @@ GEM
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (0.8.6)
+    ice_nine (0.11.2)
+    jbuilder (2.7.0)
+      activesupport (>= 4.2.0)
+      multi_json (>= 1.2)
     json (2.1.0)
     jwt (1.5.6)
     koala (3.0.0)
@@ -92,6 +105,7 @@ GEM
     mini_magick (4.8.0)
     mini_portile2 (2.3.0)
     minitest (5.10.3)
+    multi_json (1.13.1)
     multipart-post (2.0.0)
     netrc (0.11.0)
     nio4r (2.1.0)
@@ -139,6 +153,9 @@ GEM
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
     slop (3.6.0)
+    soulless (1.2.1)
+      activemodel (>= 4.2.0, < 5.2)
+      virtus (~> 1.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -158,6 +175,11 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.4)
+    virtus (1.0.5)
+      axiom-types (~> 0.1)
+      coercible (~> 1.0)
+      descendants_tracker (~> 0.0, >= 0.0.3)
+      equalizer (~> 0.0, >= 0.0.9)
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
@@ -170,6 +192,7 @@ DEPENDENCIES
   byebug
   dotenv-rails
   foreman (~> 0.84.0)
+  jbuilder (~> 2.5)
   jwt
   koala
   listen (~> 3.0.5)
@@ -179,10 +202,11 @@ DEPENDENCIES
   pry
   puma (~> 3.0)
   rails (~> 5.0.5)
+  soulless
   spring
   spring-watcher-listen (~> 2.0.0)
   stripe!
   tzinfo-data
 
 BUNDLED WITH
-   1.14.3
+   1.16.0

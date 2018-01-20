@@ -17,11 +17,15 @@ class AddressBook extends Component {
 
   render() {
     let addresses = this.props.addresses;
+
     let filteredAddressList = this.props.addressActions
     .filterAddresses(addresses, this.props.searchTerm)
     .sort((a, b) => {
-      if (a.addressName.toLowerCase() < b.addressName.toLowerCase()) return -1;
-      if (a.addressName.toLowerCase() > b.addressName.toLowerCase()) return 1;
+      let aName = a.addressName || '';
+      let bName = b.addressName || '';
+
+      if (aName.toLowerCase() < bName.toLowerCase()) return -1;
+      if (aName.toLowerCase() > bName.toLowerCase()) return 1;
       return 0;
     })
 
@@ -33,7 +37,6 @@ class AddressBook extends Component {
       return (
         <div className="AddressBook">
           <PrimaryAction text="address book" />
-
 
           <div className="AddressBook-Header">
             <AddressSearch />

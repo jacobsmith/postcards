@@ -1,17 +1,14 @@
 class Address < ApplicationRecord
-  def to_json
-    address = OpenStruct.new(verified_address)
+  before_save :set_address_hash
+  serialize :address, AddressSchema
 
-    {
-      addressName: address.name,
-      street: address.address_line1,
-      city: address.address_city,
-      state: address.address_state,
-      country: address.address_country,
-      zip: address.address_zip,
-      lob_id: address.id,
-      id: id,
-      default_from_address: default_from_address
-    }
+  belongs_to :user
+
+  delegate :to_lob_compatible_hash, to: :address
+
+  private
+
+  def set_address_hash
+    self.schema_hash = address.schema_hash
   end
 end

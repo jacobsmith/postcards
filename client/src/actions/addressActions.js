@@ -88,7 +88,15 @@ function safeInclude(string, substring) {
   return (string || '').toLowerCase().includes(substring);
 }
 
-export function addToAddress() {
+export function saveAddresses(addresses) {
+  return function(dispatch) {
+    for (const address of addresses) {
+      dispatch(saveNewAddress(address));
+    }
+  }
+}
+
+export function addToAddress(address) {
   return {
     type: actions.ADD_TO_ADDRESS
   }
@@ -133,15 +141,16 @@ export function setFromAddress(address) {
 export function fetchAddresses() {
   return function(dispatch) {
     customFetch('/api/addresses')
-    .then(response => dispatch(setAddresses(response)))
+    .then(response => dispatch(fetchAddressBookAddressesSuccess(response)))
   }
 }
 
-export function setAddresses(addresses) {
+export function fetchAddressBookAddressesSuccess(response) {
   return {
-    type: actions.SET_ADDRESSES,
+    type: actions.FETCH_ADDRESS_BOOK_ADDRESSES_SUCCESS,
     payload: {
-      addresses: addresses
+      addresses: response.items,
+      count: response.count
     }
   }
 }

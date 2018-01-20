@@ -10,18 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171209214923) do
+ActiveRecord::Schema.define(version: 20180120165119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
   create_table "addresses", force: :cascade do |t|
-    t.jsonb   "address"
-    t.jsonb   "verified_address"
-    t.string  "lob_id"
-    t.boolean "default_from_address", default: false
-    t.integer "user_id"
+    t.jsonb    "address"
+    t.boolean  "default_from_address", default: false
+    t.integer  "user_id"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.string   "schema_hash"
     t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
   end
 
