@@ -47,8 +47,8 @@ class Button extends Component {
 
     if (link && actuallyEnabled) {
       return (
-        <Link {...rest} to={to} className={classes} type={type} >
-          <div onClick={onClick}>
+        <Link {...rest} to={to} className={classes} type={type} onClick={onClick}>
+          <div>
             {buttonText}
           </div>
         </Link>
