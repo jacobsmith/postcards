@@ -46,7 +46,7 @@ export default function addressesReducer(state = initialState, action) {
 
   switch (action.type) {
     case NEW_ADDRESS_SAVED:
-      if (action.payload.id) {
+      if (action.payload.address.addressName) { // basically, if we got anything back from the server
         newState.originalList.push(action.payload.address);
         newState.addressBook.display = true;
         newState.addressBook.showCreateNewAddress = false;
