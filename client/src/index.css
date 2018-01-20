@@ -24,6 +24,10 @@ div.App {
   color: white;
 }
 
+.handOnHover {
+  cursor: pointer;
+}
+
 input {
   font-size: 16px; /* make all inputs 16px to avoid iphone zoom %*/
 }

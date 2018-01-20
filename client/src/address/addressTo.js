@@ -47,7 +47,7 @@ class AddressTo extends Component {
         </ShowUnlessUserPresent>
 
         {toAddresses}
-        <div onClick={this.props.addToAddress}>Add Another Recipient</div>
+        <div className="handOnHover" onClick={this.props.addToAddress}>Add Another Recipient</div>
       </div>
     )
   }

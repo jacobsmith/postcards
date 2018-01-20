@@ -40,7 +40,7 @@ class AddressBook extends Component {
 
           <div className="AddressBook-Header">
             <AddressSearch />
-            <div onClick={this.props.addressActions.showCreateNewAddress}>Add Address</div>
+            <div className="handOnHover" onClick={this.props.addressActions.showCreateNewAddress}>Add Address</div>
           </div>
 
           <div className="AddressBook-NewAddress" style={{ display: this.props.showCreateNewAddress ? '' : 'none'}}>
