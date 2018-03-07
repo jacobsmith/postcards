@@ -74,10 +74,10 @@ export default function addressesReducer(state = initialState, action) {
       allPresent(newState, 'to')
       allPresent(newState, 'from')
 
+      return newState;
     case ADD_TO_ADDRESS:
       addToAddress(newState)
       return newState;
-
     case REMOVE_TO_ADDRESS:
       newState['to'].splice(action.payload.index, 1)
       allPresent(newState, 'to')
@@ -94,7 +94,7 @@ export default function addressesReducer(state = initialState, action) {
       newState.addressBook.showCreateNewAddress = true;
       return newState;
     case TOGGLE_ADDRESS_BOOK_ADDRESS_SELECTED:
-      let selectedAddress = newState.originalList.find((originalListAddress) => originalListAddress.id == action.payload.address.id)
+      let selectedAddress = newState.originalList.find((originalListAddress) => originalListAddress.id === action.payload.address.id)
       selectedAddress.selected = !selectedAddress.selected;
 
       return newState;
@@ -125,10 +125,6 @@ export default function addressesReducer(state = initialState, action) {
     default:
       return newState;
   }
-}
-
-function safeInclude(string, substring) {
-  return (string || '').toLowerCase().includes(substring);
 }
 
 function addressesEqual(addressA, addressB) {

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import cameraImg from './../camera.png';
 
 import uploadImg from './../../assets/upload-icon.svg';
 import addressImg from './../../assets/address-icon.svg';
@@ -17,7 +16,7 @@ class ProcessDropdown extends Component {
           <Link to="/start" className="processCard">
             <div className="processImageContainer">
               <div className="processImage">
-                <img src={uploadImg} />
+                <img src={uploadImg} alt="upload" />
               </div>
             </div>
 
@@ -32,7 +31,7 @@ class ProcessDropdown extends Component {
           </Link>
           <div className="processCard">
             <div className="processImage">
-                <img src={addressImg} />
+                <img src={addressImg} alt="address" />
             </div>
 
             <div className="processStep secondary-action">
@@ -46,7 +45,7 @@ class ProcessDropdown extends Component {
           </div>
           <div className="processCard">
             <div className="processImage">
-                <img src={noteImg} />
+                <img src={noteImg} alt="note"/>
             </div>
 
             <div className="processStep secondary-action">
@@ -60,7 +59,7 @@ class ProcessDropdown extends Component {
           </div>
           <div className="processCard">
             <div className="processImage">
-                <img src={sendImg} />
+                <img src={sendImg} alt="send"/>
             </div>
 
             <div className="processStep secondary-action">

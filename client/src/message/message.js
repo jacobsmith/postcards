@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import AppNavButton from './../nav/appNavButton.js';
-import { updateAddressInfo } from './../actions/actions.js';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PostcardMessageInput from './../postcardMessageInput/postcardMessageInput.js';
 import MessageLiveUpdate from './messageLiveUpdate.js';

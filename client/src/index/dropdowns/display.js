@@ -3,7 +3,6 @@ import PricingDropdown      from './pricing.js';
 import ProcessDropdown      from './process.js';
 import PrintsDropdown       from './prints.js';
 
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 class DropdownsDisplay extends Component {
@@ -11,7 +10,7 @@ class DropdownsDisplay extends Component {
     let mapping = {
       'pricing': PricingDropdown,
       'process': ProcessDropdown,
-      'prints': PrintsDropdown
+      'prints':  PrintsDropdown
     }
 
     let activeDropdown = mapping[this.props.activeDropdownId]

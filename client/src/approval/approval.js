@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import AppNavButton from './../nav/appNavButton.js';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import FromAddressReview from './../review/fromAddressReview.js';

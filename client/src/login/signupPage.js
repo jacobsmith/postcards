@@ -3,8 +3,6 @@ import Layout from './../layout/layout.js';
 import PageContent from './../page/pageContent.js';
 import AppHeader from './../layout/appHeader.js';
 import PrimaryAction from './../layout/primaryAction.js';
-import Button from './../button/button.js';
-import Footer from './../layout/footer.js';
 import SignupForm from './signupForm.js';
 
 const SignupPage = ({ match }) => {

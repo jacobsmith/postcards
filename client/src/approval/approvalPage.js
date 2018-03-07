@@ -4,8 +4,6 @@ import Approval from './approval.js';
 import AppHeader from './../layout/appHeader.js';
 import PageContent from './../page/pageContent.js';
 import PrimaryAction from './../layout/primaryAction.js';
-import Button from './../button/button.js';
-import Footer from './../layout/footer.js';
 
 const ApprovalPage = () => {
   return (

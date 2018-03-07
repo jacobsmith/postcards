@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import lockIcon from './../assets/lock.svg'
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 
@@ -35,10 +34,10 @@ class Button extends Component {
     ])
 
     let forwardCaret, backwardCaret;
-    if (buttonStyle == "primary") {
+    if (buttonStyle === "primary") {
       forwardCaret = `\u{203A}`
       backwardCaret = '';
-    } else if (buttonStyle == "secondary") {
+    } else if (buttonStyle === "secondary") {
       forwardCaret = '';
       backwardCaret = "\u{2039}";
     }
@@ -66,7 +65,7 @@ class Button extends Component {
       return (
         <a href="#" {...rest} className={classes}>
           <div className="disabledContainer">
-            <img className="disabled-lock-icon" src={lockIcon} />
+            <img className="disabled-lock-icon" src={lockIcon} alt="locked"/>
             <div className="disabledText">{buttonText}</div>
           </div>
         </a>

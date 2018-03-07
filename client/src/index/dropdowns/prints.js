@@ -11,7 +11,7 @@ class PrintsDropdown extends Component {
           <div className="postcardPrintGraphic">
             <div className="four-inches">4"</div>
             <div className="six-inches">6"</div>
-            <img src={postcardImg} />
+            <img src={postcardImg} alt="postcard dimensions"/>
           </div>
 
           <div className="postcardPrintExplanation small-detail">

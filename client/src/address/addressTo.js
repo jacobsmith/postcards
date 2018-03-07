@@ -13,10 +13,6 @@ import HideUnlessUserPresent from './../helpers/hideUnlessUserPresent';
 import ShowUnlessUserPresent from './../helpers/showUnlessUserPresent';
 
 class AddressTo extends Component {
-  constructor() {
-    super()
-  }
-
   render() {
     let toAddresses = this.props.to.map((address, index) => {
       return (

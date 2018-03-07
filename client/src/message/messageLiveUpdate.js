@@ -18,7 +18,7 @@ class MessageLiveUpdate extends Component {
               </div>
               { this.props.message }
 
-              <img src={ logo } id="logo" />
+              <img src={ logo } id="logo" alt="Say It With A Postcard!"/>
             </div>
           </div>
         </div>

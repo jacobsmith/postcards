@@ -1,7 +1,6 @@
 export const customFetch = (url, opts) => {
   opts = opts || {}; // initialize opts
 
-  let noop = () => ( true )
   let reject = function() {
     return Promise.reject('Route not found');
   }

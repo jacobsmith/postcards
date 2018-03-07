@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-var stateList = new Array("","AK","AL","AR","AZ","CA","CO","CT","DC","DE","FL","GA","GU","HI","IA","ID", "IL","IN","KS","KY","LA","MA","MD","ME","MH","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY", "OH","OK","OR","PA","PR","PW","RI","SC","SD","TN","TX","UT","VA","VI","VT","WA","WI","WV","WY");
+var stateList = ["","AK","AL","AR","AZ","CA","CO","CT","DC","DE","FL","GA","GU","HI","IA","ID", "IL","IN","KS","KY","LA","MA","MD","ME","MH","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY", "OH","OK","OR","PA","PR","PW","RI","SC","SD","TN","TX","UT","VA","VI","VT","WA","WI","WV","WY"];
 let stateOptions = stateList.map((stateOption) => <option value={stateOption} key={stateOption}>{stateOption}</option>)
 
 class AddressForm extends Component {
   render() {
-    let { namePlaceholder, addressName, street, city, state, zip, onChange, postcardImage, canRemove, onRemove, error } = this.props;
+    let { addressName, street, city, state, zip, onChange, canRemove, onRemove, error } = this.props;
 
     return (
       <div className="Address">

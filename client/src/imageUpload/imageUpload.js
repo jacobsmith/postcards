@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './imageUpload.css';
-import postcardImg from './../icons/postcard.svg';
 import * as photoActions from './../actions/photoActions.js';
 import photoImg from './../assets/polaroid-icon.svg';
 import LoadingIndicator from './../loading/loadingIndicator';

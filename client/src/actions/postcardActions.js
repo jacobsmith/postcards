@@ -16,7 +16,7 @@ export function creatingPostcard() {
 }
 
 export function postcardCreated(response) {
-  if (response.success == true) {
+  if (response.success === true) {
     return postcardCreatedSuccessfully();
   } else {
     return postcardCreationError();

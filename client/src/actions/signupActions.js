@@ -1,7 +1,5 @@
-import customFetch from './../helpers/customFetch.js';
-
-export const SIGNUP_VALUE_CHANGED = 'SIGNUP_VALUE_CHANGED';
-export const SIGNUP_SUCCESSFUL = 'SIGNUP_SUCCESSFUL';
+export const SIGNUP_VALUE_CHANGED  = 'SIGNUP_VALUE_CHANGED';
+export const SIGNUP_SUCCESSFUL     = 'SIGNUP_SUCCESSFUL';
 export const SIGNUP_NOT_SUCCESSFUL = 'SIGNUP_NOT_SUCCESSFUL';
 
 export function signupValueChanged(field, value) {

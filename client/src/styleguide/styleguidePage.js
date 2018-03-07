@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import Layout from './../layout/layout.js';
 import AppHeader from './../layout/appHeader.js';
-import AppNavButton from './../nav/appNavButton.js';
 import PageContent from './../page/pageContent.js';
 import PrimaryAction from './../layout/primaryAction.js';
-import Button from './../button/button.js';
 import PostcardImageReview from './../review/postcardImageReview.js';
 
 import LoadingIndicator from './../loading/loadingIndicator';
@@ -15,7 +13,6 @@ import * as addressActions from './../actions/addressActions.js';
 import './styleguide.css';
 
 import AddressBook from './../address/addressBook'
-
 
 const Text = (props) => {
   return (

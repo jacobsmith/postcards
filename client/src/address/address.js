@@ -6,7 +6,7 @@ const Address = ({ namePlaceholder, addressName, street, city, state, zip, onCha
   return (
     <div className="AddressContainer">
       <div className="postcardImageContainer">
-        <img src={postcardImage} className="postcardImage"/>
+        <img src={postcardImage} className="postcardImage" alt="postcard"/>
       </div>
 
       <AddressForm

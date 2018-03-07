@@ -6,7 +6,7 @@ import pencilIcon from './../assets/pencil-edit-button.svg'
 class EditInfo extends Component {
   render() {
     return (
-      <Link to={this.props.editLocation} className="edit"><img src={pencilIcon} /></Link>
+      <Link to={this.props.editLocation} className="edit"><img src={pencilIcon} alt="edit"/></Link>
     )
   }
 }

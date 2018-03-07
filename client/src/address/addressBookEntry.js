@@ -10,7 +10,7 @@ class AddressBookEntry extends Component {
     return (
       <div>
           <div className="AddressBookEntry" onClick={clickHandler} key={`${address.id}:${address.lob_id}`}>
-            { address.selected ? (<img src={check} className="AddressBookEntry-icon--selected" />) : null }
+            { address.selected ? (<img src={check} className="AddressBookEntry-icon--selected" alt="selected" />) : null }
 
             <div>
               <div>{address.nickname}</div>

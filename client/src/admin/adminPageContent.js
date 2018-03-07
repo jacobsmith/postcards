@@ -4,10 +4,6 @@ import { connect } from 'react-redux';
 import * as adminActions from './../actions/adminActions.js';
 
 class AdminPageContent extends Component {
-  constructor() {
-    super();
-  }
-
   componentWillMount() {
     this.props.adminActions.fetchAllUsers();
   }

@@ -70,7 +70,7 @@ export function toggleAddressBookAddressSelected(address) {
 
 export function filterAddresses(addresses, searchTerm) {
   return function(dispatch) {
-    if (searchTerm == undefined || searchTerm == '') {
+    if (searchTerm === undefined || searchTerm === '') {
       return addresses;
     } else {
       return addresses.filter((address) => {

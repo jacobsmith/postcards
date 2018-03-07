@@ -27,13 +27,13 @@ class ImageFlipper extends Component {
       <div className={containerClassName} onTouchStart={this.toggleHover} onClick={this.toggleHover}>
         <div className="flipper">
           <div className="front">
-            <img src={arrowFlipLeft} className="flipperArrow flipperArrow-Left" style={{display: this.state.hasFlipped ? 'none' : ''}}/>
-            <img src={this.props.frontImage} className="image" />
-            <img src={arrowFlipLeft} className="flipperArrow flipperArrow-Right" style={{display: this.state.hasFlipped ? 'none' : ''}}/>
+            <img src={arrowFlipLeft} className="flipperArrow flipperArrow-Left" style={{display: this.state.hasFlipped ? 'none' : ''}} alt="flip left"/>
+            <img src={this.props.frontImage} className="image" alt="font of postcard" />
+            <img src={arrowFlipLeft} className="flipperArrow flipperArrow-Right" style={{display: this.state.hasFlipped ? 'none' : ''}} alt="flip right"/>
           </div>
 
           <div className="back">
-            <img src={this.props.backImage} className="image" />
+            <img src={this.props.backImage} className="image" alt="back of postcard"/>
           </div>
         </div>
       </div>

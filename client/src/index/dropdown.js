@@ -21,8 +21,8 @@ class DropdownToggle extends Component {
   }
 
   render() {
-    let upArrow = <img className="dropdownArrow" src={upArrowImg} />
-    let downArrow = <img className="dropdownArrow" src={downArrowImg} />
+    let upArrow =   <img className="dropdownArrow" src={upArrowImg}   alt=""/>
+    let downArrow = <img className="dropdownArrow" src={downArrowImg} alt=""/>
 
     return (
       <div onClick={this.toggleDisplay}>

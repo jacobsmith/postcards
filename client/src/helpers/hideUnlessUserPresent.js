@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
+import { Component } from 'react';
 import { connect } from 'react-redux';
 
 class HideUnlessUserPresent extends Component {

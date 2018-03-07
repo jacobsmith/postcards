@@ -38,9 +38,9 @@ class Flash extends Component {
       return (
         <div className="flash">
           <div className="flash-stamp">
-            <img src={flashStamp} className="flash-stamp-image" style={{display: this.state.stampVisible ? '' : 'none'}}/>
+            <img src={flashStamp} className="flash-stamp-image" style={{display: this.state.stampVisible ? '' : 'none'}} alt="stamp"/>
           </div>
-          <img src={flashPostcard} className="flash-postcard-image"/>
+          <img src={flashPostcard} className="flash-postcard-image" alt="postcard"/>
           <div className={`flash-text ${this.props.level}`}>
             {this.props.message}
           </div>

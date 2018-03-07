@@ -3,15 +3,12 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-
 import Layout from './../layout/layout.js';
 import AddressTo from './addressTo.js';
 import AppHeader from './../layout/appHeader.js';
-import AppNavButton from './../nav/appNavButton.js';
 import PageContent from './../page/pageContent.js';
 import PrimaryAction from './../layout/primaryAction.js';
 import Button from './../button/button.js';
-import Footer from './../layout/footer.js';
 import AddressBook from './addressBook.js';
 import * as addressActions from './../actions/addressActions';
 
